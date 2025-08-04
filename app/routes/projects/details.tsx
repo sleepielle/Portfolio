@@ -7,7 +7,9 @@ export async function clientLoader({
   request,
   params,
 }: Route.ClientLoaderArgs): Promise<Projects> {
-  const res = await fetch(`http://localhost:8000/projects/${params.id}`);
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/projects/${params.id}`
+  );
   if (!res.ok) throw new Response("Project not found", { status: 404 });
 
   const project: Projects = await res.json();
@@ -31,7 +33,8 @@ export function HydrateFallback() {
 }
 
 const ProjectDetailsPage = ({ loaderData }: Route.ComponentProps) => {
-  const project = loaderData;
+  const { projects } = loaderData as { projects: Projects[] };
+
   return (
     <>
       <Link
