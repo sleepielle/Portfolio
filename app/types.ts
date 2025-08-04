@@ -1,3 +1,5 @@
+//This defines the structure of the project data and enables type checking
+
 export type Projects = {
   id: string;
   title: string;

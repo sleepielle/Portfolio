@@ -26,14 +26,14 @@ export async function clientLoader({
 }
 
 {
-  /*El cliente se hidrata, mientras esta cargando la pagina, se muestra esto para que el usuario vea que si se esta cargando la pagina*/
+  /*El cliente se hidrata, mientras esta cargando la pagina, se muestra esto para que el usuario vea que si se esta cargando la pagina. Aqui se puede agregar un spinner, loading, etc  */
 }
 export function HydrateFallback() {
   return <div>Loading...</div>;
 }
 
 const ProjectDetailsPage = ({ loaderData }: Route.ComponentProps) => {
-  const { projects } = loaderData as { projects: Projects[] };
+  const projects = loaderData;
 
   return (
     <>
@@ -47,25 +47,25 @@ const ProjectDetailsPage = ({ loaderData }: Route.ComponentProps) => {
 
       <div className="grid gap-8 md:grid-cols-2 items-center">
         <img
-          src={project.image}
-          alt={project.title}
+          src={projects.image}
+          alt={projects.title}
           className="w-full rounded-lg shadow-md"
         />
       </div>
 
       <div>
         <h1 className="text-3xl font-bold text-blue-400 mb-4">
-          {project.title}
+          {projects.title}
         </h1>
 
         <p className="text-gray-300 text-sm mb-4">
-          {new Date(project.date).toLocaleDateString()} • {project.category}
+          {new Date(projects.date).toLocaleDateString()} • {projects.category}
         </p>
 
-        <p className="text-gray-200 mb-6">{project.description}</p>
+        <p className="text-gray-200 mb-6">{projects.description}</p>
 
         <a
-          href={project.url}
+          href={projects.url}
           target="_blank"
           className="inline-block text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded transition"
         >
