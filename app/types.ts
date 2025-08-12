@@ -2,6 +2,7 @@
 
 export type Projects = {
   id: string;
+  documentId: string;
   title: string;
   description: string;
   image: string;
@@ -17,4 +18,30 @@ export type PostMeta = {
   title: string;
   excerpt: string;
   date: string;
+};
+
+// Strapi response  w generic type, an array that can be anything
+export type StrapiResponse<T> = {
+  data: T[];
+};
+
+// type for project attributes from STRAPI , including document id
+export type StrapiProject = {
+  id: string;
+  documentId: string;
+  title: string;
+  description: string;
+  image?: {
+    url: string;
+    formats?: {
+      thumnail?: { url: string };
+      small?: { url: string };
+      medium?: { url: string };
+      large?: { url: string };
+    };
+  };
+  url?: string;
+  date: Date;
+  category: string;
+  featured: boolean;
 };

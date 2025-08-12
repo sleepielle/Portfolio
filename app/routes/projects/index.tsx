@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ProjectCard from "~/components/ProjectCard";
 import type { Route } from "./+types/index";
-import type { Projects } from "~/types";
+import type { Projects, StrapiProject, StrapiResponse } from "~/types";
 import Pagination from "~/components/Pagination";
 import { AnimatePresence, motion } from "framer-motion";
 /**
@@ -22,13 +22,52 @@ export function meta({}: Route.MetaArgs) {
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ projects: Projects[] }> {
-  // Fetch projects data from the local API endpoint
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/projects`);
-  // Parse the JSON response into JavaScript data
-  const data = await res.json();
+  /* EXAMPLE OBJECT FROM API 
+    0	
+    id	2
+    documentId	"j07g2jwn05wvjvmymbgt1cg6"
+    createdAt	"2025-08-11T22:44:53.754Z"
+    updatedAt	"2025-08-11T22:44:53.754Z"
+    publishedAt	"2025-08-11T22:44:55.173Z"
+    title	"DevDash"
+    description	"A productivity dashboard for developers to track tasks, goals, and inspiration."
+    url	"https://example.com"
+    date	"2025-08-11"
+    category	"full-stack"
+    featured	false
+    image	
+    id	1
+    documentId	"oea5qqfcdf4vdh9krivv0a7x"
+    name	"project-1.png"
+    alternativeText	null
+    caption	null
+    width	1080
+    height	720
+    formats
+  */
 
+  // Fetch projects data from the local API endpoint
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/projects?populate=*`
+  );
+  // Parse the JSON response into JavaScript data
+  const json: StrapiResponse<StrapiProject> = await res.json();
+
+  const projects = json.data.map((item) => ({
+    id: item.id,
+    documentId: item.documentId,
+    title: item.title,
+    description: item.description,
+    image: item.image?.url
+      ? `${import.meta.env.VITE_STRAPI_URL}${item.image.url}`
+      : "/images/no-image.png",
+    url: item.url,
+    date: item.date,
+    category: item.category,
+    featured: item.featured,
+  }));
   // Return the projects data in the format expected by the component
-  return { projects: data };
+  return { projects };
 }
 
 /**
