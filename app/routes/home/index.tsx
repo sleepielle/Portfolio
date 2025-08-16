@@ -1,7 +1,12 @@
 import Hero from "~/components/Hero";
 import type { Route } from "./+types/index";
 import FeaturedProjects from "~/components/FeaturedProjects";
-import type { Projects, StrapiProject, StrapiResponse } from "~/types";
+import type {
+  Projects,
+  StrapiPost,
+  StrapiProject,
+  StrapiResponse,
+} from "~/types";
 import AboutPreview from "~/components/AboutPreview";
 import type { PostMeta } from "~/types";
 import LatestPosts from "~/components/LatestPots";
@@ -13,25 +18,28 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export async function loader({ request }: Route.LoaderArgs): Promise<{
-  projects: Projects[];
-  posts: PostMeta[];
-}> {
+export async function loader({
+  request,
+}: Route.LoaderArgs): Promise<{ projects: Projects[]; posts: PostMeta[] }> {
   const url = new URL(request.url);
-  // when we use a filter, it is gonna come back as an array called data
+
   const [projectRes, postRes] = await Promise.all([
     fetch(
-      `${import.meta.env.VITE_API_URL}/projects?filters[featured][$eq]=true&populate=*`
+      `${
+        import.meta.env.VITE_API_URL
+      }/projects?filters[featured][$eq]=true&populate=*`
     ),
-    fetch(new URL("/posts-meta.json", url)),
+    fetch(`${import.meta.env.VITE_API_URL}/posts?sort[0]=date:desc&populate=*`),
   ]);
 
   if (!projectRes.ok || !postRes.ok) {
     throw new Error("Failed to fetch projects or posts");
   }
 
-  const postJson = await postRes.json();
   const projectJson: StrapiResponse<StrapiProject> = await projectRes.json();
+
+  const postJson: StrapiResponse<StrapiPost> = await postRes.json();
+
   // Process the projects data to extract the actual projects array
   const projects = projectJson.data.map((item: any) => ({
     id: item.id,
@@ -47,7 +55,19 @@ export async function loader({ request }: Route.LoaderArgs): Promise<{
     featured: item.featured,
   }));
 
-  return { projects, posts: postJson };
+  const posts = postJson.data.map((item) => ({
+    id: item.id,
+    title: item.title,
+    slug: item.slug,
+    excerpt: item.excerpt,
+    body: item.body,
+    image: item.image?.url
+      ? `${import.meta.env.VITE_STRAPI_URL}${item.image?.url}`
+      : "/images/no-image.png",
+    date: item.date,
+  }));
+
+  return { projects, posts };
 }
 
 // The data from the loader is accessed by passing it to the component as props

@@ -21,7 +21,7 @@ const LatestPosts = ({ posts, limit = 3 }: LatestPostsProps) => {
         {latestPosts.map((post) => (
           <Link
             key={post.slug}
-            to={`/blog/posts/${post.slug}`}
+            to={`/blog/${post.slug}`}
             className="block p-4 border border-gray-700 rounded-lg bg-gray-800 hover:shadow-md transition"
           >
             <h3 className="text-lg font-semibold text-blue-400">
