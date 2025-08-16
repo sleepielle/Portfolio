@@ -1,47 +1,56 @@
 import ReactMarkdown from "react-markdown";
 import type { Route } from "./+types/details";
-import type { PostMeta } from "~/types";
+import type { PostMeta, StrapiResponse, StrapiPost } from "~/types";
 import { Link } from "react-router";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
   const { slug } = params;
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/posts?filters[slug][$eq]=${slug}&populate=image`
+  );
 
-  const url = new URL("/posts-meta.json", request.url);
-  const res = await fetch(url.href);
+  if (!res.ok) throw new Error("Failed ot fectch data");
 
-  if (!res.ok) throw new Error("failed to fetch data");
+  const json: StrapiResponse<StrapiPost> = await res.json();
 
-  // putting the entire array on index
-  const index = await res.json();
+  if (!json.data.length) throw new Response("Not Found", { status: 404 });
 
-  // only getting the slug that matches postmeta
-  const postMeta = index.find((post: PostMeta) => post.slug === slug);
+  const item = json.data[0];
+  const post = {
+    id: item.id,
+    slug: item.slug,
+    excerpt: item.excerpt,
+    title: item.title,
+    date: item.date,
+    body: item.body,
+    image: item.image?.url
+      ? `${import.meta.env.VITE_STRAPI_URL}${item.image.url}`
+      : "/images/no-image.png",
+  };
 
-  if (!postMeta) throw new Response("Not Found", { status: 404 });
-
-  // Get actual markdown content based on the slug of the file on postmeta
-  const markdown = await import(`../../posts/${slug}.md?raw`);
-
-  return { postMeta, markdown: markdown.default };
+  return { post };
 }
 
 type BlogPostDetailsPageProps = {
-  loaderData: { postMeta: PostMeta; markdown: string };
+  loaderData: { post: PostMeta };
 };
 
 const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
-  const { postMeta, markdown } = loaderData;
+  const { post } = loaderData;
   return (
     <div className="max-w-2xl mx-auto px-6 py-2 bg-gray-900">
-      <h1 className="text-2xl font-bold text-blue-400 mb-2">
-        {postMeta.title}
-      </h1>
+      <h1 className="text-2xl font-bold text-blue-400 mb-2">{post.title}</h1>
       <p className="text sm text-gray-400 mb-6">
-        {new Date(postMeta.date).toDateString()}
+        {new Date(post.date).toDateString()}
       </p>
+      <img
+        src={post.image}
+        alt={post.title}
+        className="w-full h-64 object-cover"
+      />
 
       <div className="prose prose-invert max-2-none mb-12">
-        <ReactMarkdown>{markdown}</ReactMarkdown>
+        <ReactMarkdown>{post.body}</ReactMarkdown>
       </div>
 
       <Link

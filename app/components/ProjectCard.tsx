@@ -1,4 +1,4 @@
-import type { Projects } from "~/types";
+import type { Projects, StrapiProject } from "~/types";
 import { Link } from "react-router";
 
 const ProjectCard = ({ project }: { project: Projects }) => {
