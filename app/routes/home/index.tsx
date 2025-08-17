@@ -25,9 +25,7 @@ export async function loader({
 
   const [projectRes, postRes] = await Promise.all([
     fetch(
-      `${
-        import.meta.env.VITE_API_URL
-      }/projects?filters[featured][$eq]=true&populate=*`
+      `${import.meta.env.VITE_API_URL}/projects?filters[featured][$eq]=true&populate=*`
     ),
     fetch(`${import.meta.env.VITE_API_URL}/posts?sort[0]=date:desc&populate=*`),
   ]);
@@ -46,9 +44,7 @@ export async function loader({
     documentId: item.documentId,
     title: item.title,
     description: item.description,
-    image: item.image?.url
-      ? `${import.meta.env.VITE_STRAPI_URL}${item.image?.url}`
-      : "/images/no-image.png",
+    image: item.image?.url ? `${item.image?.url}` : "/images/no-image.png",
     url: item.url,
     date: item.date,
     category: item.category,

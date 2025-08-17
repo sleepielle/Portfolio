@@ -1,13 +1,12 @@
-import type { Projects, StrapiProject } from "~/types";
+import type { Projects } from "~/types";
 import { Link } from "react-router";
 
 const ProjectCard = ({ project }: { project: Projects }) => {
   return (
     <Link
-      className="block transform transition durantion-300 hover:scale-[1.02]"
+      className="block transform transition duration-300 hover:scale-[1.02]"
       to={`/projects/${project.documentId}`}
     >
-      {" "}
       <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-sm transition hover:shadow-md">
         <img
           src={project.image}
@@ -20,7 +19,7 @@ const ProjectCard = ({ project }: { project: Projects }) => {
           </h3>
           <p className="text-sm text-gray-300 mb-2">{project.description}</p>
           <div className="flex justify-between items-center text-sm text-gray-400">
-            <span className="">{project.category}</span>
+            <span>{project.category}</span>
             <span>{new Date(project.date).toLocaleDateString()}</span>
           </div>
         </div>
