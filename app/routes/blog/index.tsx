@@ -8,28 +8,18 @@ import PostFilter from "~/components/PostFilter";
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ posts: PostMeta[] }> {
-  const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/posts?populate=image&sort=date:desc`
-  );
+  const url = new URL("/posts-meta.json", request.url);
+  const res = await fetch(url.href);
 
   if (!res.ok) throw new Error("Failed to fetch data");
 
-  //get json data
-  const json: StrapiResponse<StrapiPost> = await res.json();
+  const data = await res.json();
 
-  //construct our own post array
-  const posts = json.data.map((item) => ({
-    id: item.id,
-    title: item.title,
-    excerpt: item.excerpt,
-    slug: item.slug,
-    date: item.date,
-    body: item.body,
-    image: item.image?.url ? `${item.image.url}` : "/images/no-image.png",
-  }));
+  data.sort((a: PostMeta, b: PostMeta) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 
-  //gets all the json objects in that file and returns it
-  return { posts };
+  return { posts: data };
 }
 
 const BlogPage = ({ loaderData }: Route.ComponentProps) => {
@@ -86,3 +76,32 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
 };
 
 export default BlogPage;
+
+/*
+export async function loader({
+  request,
+}: Route.LoaderArgs): Promise<{ posts: PostMeta[] }> {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/posts?populate=image&sort=date:desc`
+  );
+
+  if (!res.ok) throw new Error("Failed to fetch data");
+
+  //get json data
+  const json: StrapiResponse<StrapiPost> = await res.json();
+
+  //construct our own post array
+  const posts = json.data.map((item) => ({
+    id: item.id,
+    title: item.title,
+    excerpt: item.excerpt,
+    slug: item.slug,
+    date: item.date,
+    body: item.body,
+    image: item.image?.url ? `${item.image.url}` : "/images/no-image.png",
+  }));
+
+  //gets all the json objects in that file and returns it
+  return { posts };
+}
+*/

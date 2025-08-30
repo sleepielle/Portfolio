@@ -4,13 +4,6 @@ import type { Route } from "./+types/index";
 import type { Projects, StrapiProject, StrapiResponse } from "~/types";
 import Pagination from "~/components/Pagination";
 import { AnimatePresence, motion } from "framer-motion";
-/**
- * Loader function - runs on the server before the component renders
- * This function fetches project data from the API and makes it available to the component
- *
- * @param request - The incoming request object (provided by React Router)
- * @returns Promise containing the projects data
- */
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -42,12 +35,6 @@ export async function loader({
   return { projects };
 }
 
-/**
- * ProjectsPage Component
- * Displays a list of projects fetched by the loader
- *
- * @param loaderData - Data returned from the loader function
- */
 const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
   // Extract projects from the loader data with proper TypeScript typing
   const [selectedCategory, setSelectedCategory] = useState("All");
