@@ -1,7 +1,7 @@
 import type { Route } from "./+types";
-import { Form } from "react-router";
+import { useForm, ValidationError } from "@formspree/react";
 
-/**
+/*
 export async function action({ request }: Route.ActionArgs) {
   // Extract form data from the request
   const formData = await request.formData();
@@ -44,86 +44,24 @@ export async function action({ request }: Route.ActionArgs) {
   // Return success message and form data
   return { message: "Form submitted successfully", data };
 }
- */
+*/
 
 const ContactPage = ({ actionData }: Route.ComponentProps) => {
+  const [state, handleSubmit] = useForm("mdkdvayw");
+  if (state.succeeded) {
+    return <p>Thanks for joining!</p>;
+  }
   return (
-    <div className="max-w-3xl mx-auto mt-12 px-6 py-8 bg-gray-900">
-      <h2 className="text-3xl font-bold text-white mb-8 text-center">
-        📩 Contact me
-      </h2>
-
-      <form
-        action="https://formspree.io/f/mdkdvayw"
-        className="space-y-6"
-        method="post"
-      >
-        <div>
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-300"
-            >
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className="w-full mt-1 px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-100"
-            ></input>
-          </div>
-
-          <div className="mt-8 mb-8">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-300"
-            >
-              E-Mail
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="w-full mt-1 px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-100"
-            ></input>
-          </div>
-
-          <div>
-            <label
-              htmlFor="subject"
-              className="block text-sm font-medium text-gray-300"
-            >
-              Subject{" "}
-            </label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              className="w-full mt-1 px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-100"
-            ></input>
-          </div>
-
-          <div className="mt-8 mb-8">
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium text-gray-300"
-            >
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              className="w-full mt-1 px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-100"
-            ></textarea>
-          </div>
-
-          <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-800 cursor-pointer ">
-            Send Message
-          </button>
-        </div>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="text-white ">
+      <label htmlFor="email">Email Address</label>
+      <input id="email" type="email" name="email" />
+      <ValidationError prefix="Email" field="email" errors={state.errors} />
+      <textarea id="message" name="message" />
+      <ValidationError prefix="Message" field="message" errors={state.errors} />
+      <button type="submit" disabled={state.submitting}>
+        Submit
+      </button>
+    </form>
   );
 };
 

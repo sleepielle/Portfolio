@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ProjectCard from "~/components/ProjectCard";
 import type { Route } from "./+types/index";
-import type { Projects, StrapiProject, StrapiResponse } from "~/types";
+import type { Projects } from "~/types";
 import Pagination from "~/components/Pagination";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -15,19 +15,17 @@ export function meta({}: Route.MetaArgs) {
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ projects: Projects[] }> {
-  const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/projects?populate=*`
-  );
-  const json: StrapiResponse<StrapiProject> = await res.json();
+  // Load projects from local JSON file
+  const projectsData = await import("~/data/projects.json");
 
-  const projects = json.data.map((item) => ({
-    id: item.id,
+  const projects = projectsData.data.map((item: any) => ({
+    id: item.id.toString(),
     documentId: item.documentId,
     title: item.title,
     description: item.description,
-    image: item.image?.url ? `${item.image.url}` : "/images/no-image.png",
+    image: item.image?.url || "/images/no-image.png",
     url: item.url,
-    date: item.date,
+    date: new Date(item.date),
     category: item.category,
     featured: item.featured,
   }));
@@ -64,41 +62,47 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
   const currentProjects = filteredProjects.slice(indexOfFirst, indexOfLast);
 
   return (
-    <section>
-      <h2 className="text-3xl font-bold text-white mb-8 text-center">
-        Projects
-      </h2>
+    <section className="bg-primary text-primary min-h-screen py-8">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-primary mb-8 text-center">
+          Projects
+        </h2>
 
-      <div className="flex flex-wrap gap-2 mb-8">
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => {
-              setSelectedCategory(category);
-              setCurrentPage(1);
-            }}
-            className={`px-3 py-1 rounded text-sm cursor-pointer ${selectedCategory === category ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200"}`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      <AnimatePresence mode="wait">
-        <motion.div className="grid gap-6 sm:grid-cols-2">
-          {currentProjects.map((project) => (
-            <motion.div key={project.id} layout>
-              <ProjectCard key={project.id} project={project} />
-            </motion.div>
+        <div className="flex flex-wrap gap-2 mb-8">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => {
+                setSelectedCategory(category);
+                setCurrentPage(1);
+              }}
+              className={`px-3 py-1 rounded text-sm cursor-pointer transition-colors ${
+                selectedCategory === category
+                  ? "bg-accent text-white"
+                  : "bg-tertiary text-secondary hover:bg-secondary"
+              }`}
+            >
+              {category}
+            </button>
           ))}
-        </motion.div>
-      </AnimatePresence>
+        </div>
 
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />
+        <AnimatePresence mode="wait">
+          <motion.div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {currentProjects.map((project) => (
+              <motion.div key={project.id} layout>
+                <ProjectCard key={project.id} project={project} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
+      </div>
     </section>
   );
 };
