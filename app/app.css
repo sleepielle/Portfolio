@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
@@ -63,16 +62,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --color-1:
-    oklch(66.2% 0.225 25.9);
-  --color-2:
-    oklch(60.4% 0.26 302);
-  --color-3:
-    oklch(69.6% 0.165 251);
-  --color-4:
-    oklch(80.2% 0.134 225);
-  --color-5:
-    oklch(90.7% 0.231 133);
+  --color-1: oklch(66.2% 0.225 25.9);
+  --color-2: oklch(60.4% 0.26 302);
+  --color-3: oklch(69.6% 0.165 251);
+  --color-4: oklch(80.2% 0.134 225);
+  --color-5: oklch(90.7% 0.231 133);
 }
 
 .dark {
@@ -126,16 +120,11 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-  --color-1:
-    oklch(66.2% 0.225 25.9);
-  --color-2:
-    oklch(60.4% 0.26 302);
-  --color-3:
-    oklch(69.6% 0.165 251);
-  --color-4:
-    oklch(80.2% 0.134 225);
-  --color-5:
-    oklch(90.7% 0.231 133);
+  --color-1: oklch(66.2% 0.225 25.9);
+  --color-2: oklch(60.4% 0.26 302);
+  --color-3: oklch(69.6% 0.165 251);
+  --color-4: oklch(80.2% 0.134 225);
+  --color-5: oklch(90.7% 0.231 133);
 }
 
 /* Apply theme colors */
@@ -267,26 +256,18 @@ body {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --animate-rainbow:
-    rainbow var(--speed, 2s) infinite linear;
-  --color-color-5:
-    var(--color-5);
-  --color-color-4:
-    var(--color-4);
-  --color-color-3:
-    var(--color-3);
-  --color-color-2:
-    var(--color-2);
-  --color-color-1:
-    var(--color-1);
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+  --color-color-5: var(--color-5);
+  --color-color-4: var(--color-4);
+  --color-color-3: var(--color-3);
+  --color-color-2: var(--color-2);
+  --color-color-1: var(--color-1);
   @keyframes rainbow {
-  0% {
-    background-position:
-    0%;
+    0% {
+      background-position: 0%;
     }
-  100% {
-    background-position:
-    200%;
+    100% {
+      background-position: 200%;
     }
   }
 }
@@ -297,5 +278,41 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .stroke-text {
+    /* Estado inicial */
+    fill: transparent; /* Sin relleno al inicio */
+    stroke: #3b82f6; /* Azul (tailwind blue-500) */
+    stroke-width: 1;
+    stroke-linejoin: bevel;
+
+    /* Para simular el trazo que se dibuja */
+    stroke-dasharray: 1200; /* longitud del trazo */
+    stroke-dashoffset: 1200;
+
+    filter: drop-shadow(2px 2px 4px rgba(139, 137, 137, 0.3));
+
+    /* Animaciones encadenadas */
+    animation:
+      draw 1s ease-in-out forwards,
+      fillin 0.8s ease-in-out 1s forwards;
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    } /* Se va dibujando el contorno */
+  }
+
+  @keyframes fillin {
+    from {
+      fill: transparent;
+      stroke: #3b82f6;
+    }
+    to {
+      fill: #3b82f6;
+      stroke: #40a9f9;
+    } /* Relleno final (amber-500) */
   }
 }
