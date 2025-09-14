@@ -3,7 +3,8 @@ import type { Route } from "./+types/index";
 import FeaturedProjects from "~/components/FeaturedProjects";
 import type { Projects, PostMeta } from "~/types";
 import AboutPreview from "~/components/AboutPreview";
-import LatestPosts from "~/components/LatestPots";
+import LatestPosts from "~/components/LatestPosts";
+import Footer from "~/components/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -36,7 +37,8 @@ export async function loader({
       title: item.title,
       description: item.description,
       image: item.image?.url || "/images/no-image.png",
-      url: item.url,
+      liveSite: item.liveSite,
+      github: item.github,
       date: new Date(item.date),
       category: item.category,
       featured: item.featured,
@@ -70,6 +72,7 @@ const HomePage = ({ loaderData }: Route.ComponentProps) => {
       <FeaturedProjects projects={projects} count={2} />
       <LatestPosts posts={posts} />
       <AboutPreview />
+      <Footer />
     </>
   );
 };

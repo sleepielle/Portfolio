@@ -24,7 +24,8 @@ export async function loader({
     title: item.title,
     description: item.description,
     image: item.image?.url || "/images/no-image.png",
-    url: item.url,
+    liveSite: item.liveSite,
+    github: item.github,
     date: new Date(item.date),
     category: item.category,
     featured: item.featured,
@@ -63,7 +64,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
 
   return (
     <section className="bg-primary text-primary min-h-screen py-8">
-      <div className="container mx-auto px-4">
+      <div className=" mx-auto px-4">
         <h2 className="text-3xl font-bold text-primary mb-8 text-center">
           Projects
         </h2>
@@ -88,7 +89,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
         </div>
 
         <AnimatePresence mode="wait">
-          <motion.div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {currentProjects.map((project) => (
               <motion.div key={project.id} layout>
                 <ProjectCard key={project.id} project={project} />

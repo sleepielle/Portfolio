@@ -6,7 +6,8 @@ export type Projects = {
   title: string;
   description: string;
   image: string;
-  url?: string;
+  liveSite: string;
+  github: string;
   date: Date;
   category: string;
   featured: boolean;
@@ -20,6 +21,7 @@ export type PostMeta = {
   date: string;
   body: string;
   image: string;
+  className?: string;
 };
 
 export type Post = {

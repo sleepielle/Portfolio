@@ -4,13 +4,13 @@
       "id": 1,
       "documentId": "project-1",
       "title": "E-Commerce Platform",
-      "description": "A full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping cart, and payment integration.",
+      "description": "A Fullstack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping, etc.",
       "image": {
         "url": "/images/project-1.webp"
       },
-      "url": "https://github.com/yourusername/ecommerce-platform",
-      "date": "2024-01-15",
-      "category": "Full-Stack",
+      "live-site": "https://github.com/yourusername/mobile-app",
+      "github" :  "https://github.com/yourusername/mobile-app",      "date": "2024-01-15",
+      "category": "Fullstack",
       "featured": true
     },
     {
@@ -21,8 +21,8 @@
       "image": {
         "url": "/images/project-2.png"
       },
-      "url": "https://github.com/yourusername/task-manager",
-      "date": "2024-02-20",
+      "live-site": "https://github.com/yourusername/mobile-app",
+      "github" :  "https://github.com/yourusername/mobile-app",      "date": "2024-02-20",
       "category": "Frontend",
       "featured": true
     },
@@ -34,8 +34,8 @@
       "image": {
         "url": "/images/project-3.png"
       },
-      "url": "https://github.com/yourusername/weather-dashboard",
-      "date": "2024-03-10",
+      "live-site": "https://github.com/yourusername/mobile-app",
+      "github" :  "https://github.com/yourusername/mobile-app",      "date": "2024-03-10",
       "category": "Frontend",
       "featured": false
     },
@@ -47,9 +47,9 @@
       "image": {
         "url": "/images/project-4.png"
       },
-      "url": "https://github.com/yourusername/blog-cms",
-      "date": "2024-04-05",
-      "category": "Full-Stack",
+      "live-site": "https://github.com/yourusername/mobile-app",
+      "github" :  "https://github.com/yourusername/mobile-app",      "date": "2024-04-05",
+      "category": "Fullstack",
       "featured": false
     },
     {
@@ -60,7 +60,8 @@
       "image": {
         "url": "/images/project-5.png"
       },
-      "url": "https://github.com/yourusername/portfolio",
+      "live-site": "https://github.com/yourusername/mobile-app",
+      "github" :  "https://github.com/yourusername/mobile-app",
       "date": "2024-05-12",
       "category": "Frontend",
       "featured": false
@@ -73,7 +74,8 @@
       "image": {
         "url": "/images/project-6.png"
       },
-      "url": "https://github.com/yourusername/api-gateway",
+      "live-site": "https://github.com/yourusername/mobile-app",
+      "github" :  "https://github.com/yourusername/mobile-app",
       "date": "2024-06-18",
       "category": "Backend",
       "featured": false
@@ -86,7 +88,8 @@
       "image": {
         "url": "/images/project-7.png"
       },
-      "url": "https://github.com/yourusername/mobile-app",
+      "live-site": "https://github.com/yourusername/mobile-app",
+      "github" :  "https://github.com/yourusername/mobile-app",
       "date": "2024-07-25",
       "category": "Mobile",
       "featured": false

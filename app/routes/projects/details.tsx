@@ -2,27 +2,25 @@ import type { Route } from "./+types/details";
 import type { Projects } from "~/types";
 import { Link } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
-import type { StrapiResponse } from "~/types";
-import type { StrapiProject } from "~/types";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
-  const { id } = params;
+  // Use the request URL to construct absolute URLs for fetch
+  const url = new URL(request.url);
+  const baseUrl = `${url.protocol}//${url.host}`;
 
-  const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/projects?filters[documentId][$eq]=${id}&populate=*`
-  );
-  if (!res.ok) throw new Response("Project not found", { status: 404 });
+  // Load projects from local JSON file using absolute URL
+  const projectsResponse = await fetch(`${baseUrl}/projects.json`);
+  const projectsData = await projectsResponse.json();
 
-  const json: StrapiResponse<StrapiProject> = await res.json();
-
-  const item = json.data[0];
+  const item = projectsData.data[0];
   const project: Projects = {
     id: item.id,
     documentId: item.documentId,
     title: item.title,
     description: item.description,
     image: item.image?.url ? `${item.image.url}` : "/images/no-image.png",
-    url: item.url,
+    liveSite: item.liveSite,
+    github: item.github,
     date: item.date,
     category: item.category,
     featured: item.featured,
@@ -63,7 +61,7 @@ const ProjectDetailsPage = ({ loaderData }: Route.ComponentProps) => {
         <p className="text-gray-200 mb-6">{project.description}</p>
 
         <a
-          href={project.url}
+          href={project.liveSite}
           target="_blank"
           className="inline-block text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded transition"
         >
