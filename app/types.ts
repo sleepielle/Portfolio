@@ -1,5 +1,7 @@
 // This defines the structure of the project data and enables type checking
 
+import type { IconProps } from "@radix-ui/react-icons/dist/types";
+
 export type Projects = {
   id: string;
   documentId: string;
@@ -32,4 +34,12 @@ export type Post = {
   excerpt: string;
   date: string;
   image: string;
+};
+
+export type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
+
+export type BentoPosts = PostMeta & {
+  icon: IconType;
+  colSpan: string;
+  rowSpan?: string;
 };

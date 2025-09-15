@@ -8,11 +8,20 @@ export async function loader({ request, params }: Route.LoaderArgs) {
   const url = new URL(request.url);
   const baseUrl = `${url.protocol}//${url.host}`;
 
+  // get the path segments (removes empty ones)
+  const segments = url.pathname.split("/").filter(Boolean);
+  console.log("segmenets " + segments);
+  // for example, if URL = http://localhost:3000/projects/2
+  // segments = ["projects", "2"]
+  // you can take the last segment as index
+  const index = parseInt(segments[segments.length - 1], 10);
+  console.log("index " + index);
   // Load projects from local JSON file using absolute URL
   const projectsResponse = await fetch(`${baseUrl}/projects.json`);
   const projectsData = await projectsResponse.json();
 
-  const item = projectsData.data[0];
+  // Use segment index instead of [0]
+  const item = projectsData.data[index - 1];
   const project: Projects = {
     id: item.id,
     documentId: item.documentId,
@@ -25,6 +34,10 @@ export async function loader({ request, params }: Route.LoaderArgs) {
     category: item.category,
     featured: item.featured,
   };
+
+  console.log(project.id);
+  console.log(project.title);
+
   return { project };
 }
 

@@ -137,13 +137,6 @@ body {
     color 0.3s ease;
 }
 
-/* Navbar theming */
-.navbar {
-  background-color: var(--color-navbar);
-  border-color: var(--color-navbar-border);
-  box-shadow: var(--shadow-md);
-}
-
 /* Card theming */
 .card {
   background-color: var(--color-card);

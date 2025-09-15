@@ -12,16 +12,8 @@ const Navbar = () => {
     /** using NavLink is what allows us to use active classnames. If I used a Link tag, I couldnt have used the isActive function */
   }
   return (
-    <nav className="navbar border-b sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <NavLink
-          to="/"
-          className="flex items-center gap-2 text-lg font-bold text-accent"
-        >
-          <FaLaptopCode className="text-accent text-xl" />
-          <span>Portfolio</span>
-        </NavLink>
-
+    <nav className=" border-b sticky top-3 z-50 mx-auto  backdrop-blur-md bg-white/30 text-center rounded-full w-fit px-8 ">
+      <div className="py-4 flex items-center justify-center">
         {/*Desktop nav*/}
         <div className="hidden md:flex items-center gap-6">
           <div className="space-x-4 text-sm text-secondary">
@@ -37,18 +29,20 @@ const Navbar = () => {
             >
               Projects
             </NavLink>
+
+            <NavLink
+              to={"/experience"}
+              className={({ isActive }) => (isActive ? active : base)}
+            >
+              Experience
+            </NavLink>
             <NavLink
               to={"/blog"}
               className={({ isActive }) => (isActive ? active : base)}
             >
               Blog
             </NavLink>
-            <NavLink
-              to={"/about"}
-              className={({ isActive }) => (isActive ? active : base)}
-            >
-              About
-            </NavLink>
+
             <NavLink
               to={"/contact"}
               className={({ isActive }) => (isActive ? active : base)}
@@ -73,7 +67,7 @@ const Navbar = () => {
 
       {/*Mobile Nav*/}
       {menuOpen && (
-        <div className="md:hidden bg-secondary border-t border-theme px-6 py-4 space-y-2 space-x-4 text-center">
+        <div className="backdrop-blur-md bg-white/30  md:hidden rounded-full border-t border-theme px-6 py-4 space-y-2 space-x-4 text-center">
           {" "}
           <NavLink
             to={"/"}
@@ -90,18 +84,17 @@ const Navbar = () => {
             Projects
           </NavLink>
           <NavLink
+            to={"/experience"}
+            className={({ isActive }) => (isActive ? active : base)}
+          >
+            Experience
+          </NavLink>
+          <NavLink
             to={"/blog"}
             className={({ isActive }) => (isActive ? active : base)}
             onClick={() => setMenuOpen(false)}
           >
             Blog
-          </NavLink>
-          <NavLink
-            to={"/about"}
-            className={({ isActive }) => (isActive ? active : base)}
-            onClick={() => setMenuOpen(false)}
-          >
-            About
           </NavLink>
           <NavLink
             to={"/contact"}

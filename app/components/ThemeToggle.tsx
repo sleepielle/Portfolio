@@ -19,7 +19,7 @@ const ThemeToggle = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white transition-colors"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-500 text-white hover:text-white transition-colors"
         title="Toggle theme"
         aria-label="Toggle theme"
       >
@@ -49,7 +49,7 @@ const ThemeToggle = () => {
           />
 
           {/* Dropdown */}
-          <div className="absolute right-0 top-full mt-2 w-32 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-20">
+          <div className="absolute right-0 top-full mt-2 w-32 bg-white/70 border border-blue-500 rounded-lg shadow-lg z-20">
             {themes.map(({ value, label, icon: Icon }) => (
               <button
                 key={value}
