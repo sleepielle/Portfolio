@@ -40,13 +40,10 @@ export default function Hero() {
             <h1 className="text-5xl font-semibold tracking-tight text-balance text-primary text-shadow-gray-500 text-shadow-2xs  sm:text-7xl">
               Passionate about software quality and elegant solutions
             </h1>
-            <p className="mt-8 text-lg font-medium text-pretty text-gray-600 sm:text-xl/8">
-              I’m Mercedes Paz, a Software Engineer focused on crafting
-              responsive, accessible, and user-friendly web applications.{" "}
-              <span className="font-semibold">
-                I take priority on the user, while still maintaining software
-                quality.
-              </span>
+            <p className="mt-8 text-lg  text-pretty text-gray-600 sm:text-xl/8">
+              I'm Mercedes Paz, a Software Engineer specialized on building
+              scalable, user-friendly applications with a focus on code quality
+              and structured documentation for long-term maintainability.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link to={"/projects"}>
