@@ -25,7 +25,7 @@ export async function loader({
 const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 3;
+  const postsPerPage = 5;
 
   const { posts } = loaderData;
 
@@ -43,9 +43,9 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   const currentPosts = filteredPosts.slice(indexOfFirst, indexOfLast);
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 px-6 py-6 bg-gray-900">
-      <h2 className="text-3xl font-bold text-white mb-8 text-center">
-        👩‍💻 Blog Page
+    <div className=" mx-auto mt-10 px-6 py-6 ">
+      <h2 className="text-3xl font-semibold text-primary mb-8 text-center tracking-tighter">
+        All Posts
       </h2>
 
       <PostFilter
@@ -56,7 +56,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
         }}
       ></PostFilter>
 
-      <div className="space-y-8">
+      <div className=" grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
         {currentPosts.length === 0 ? (
           <p className="text-gray-400 text-center">No posts found</p>
         ) : (

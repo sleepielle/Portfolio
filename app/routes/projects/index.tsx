@@ -65,7 +65,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
   return (
     <section className="bg-primary text-primary min-h-screen py-8">
       <div className=" mx-auto px-4">
-        <h2 className="text-3xl font-bold text-primary mb-8 text-center">
+        <h2 className="text-3xl font-semibold text-primary mb-8 text-center tracking-tighter">
           Projects
         </h2>
 
