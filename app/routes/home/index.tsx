@@ -72,7 +72,6 @@ const HomePage = ({ loaderData }: Route.ComponentProps) => {
       <FeaturedProjects projects={projects} count={2} />
       <LatestPosts posts={posts} />
       <AboutPreview />
-      <Footer />
     </>
   );
 };

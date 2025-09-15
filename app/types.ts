@@ -36,7 +36,7 @@ export type Post = {
   image: string;
 };
 
-export type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
+export type IconType = React.ElementType<IconProps>;
 
 export type BentoPosts = PostMeta & {
   icon: IconType;

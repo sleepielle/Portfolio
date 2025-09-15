@@ -79,8 +79,8 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
               }}
               className={`px-3 py-1 rounded text-sm cursor-pointer transition-colors ${
                 selectedCategory === category
-                  ? "bg-accent text-white"
-                  : "bg-tertiary text-secondary hover:bg-secondary"
+                  ? "bg-tertiary text-primary font-semibold"
+                  : "bg-[#339df9] text-white hover:bg-[#394ffb]"
               }`}
             >
               {category}

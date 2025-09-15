@@ -1,23 +1,29 @@
-interface EyebrowProps {
+import { Link } from "react-router";
+
+type EyebrowProps = {
   eyebrowText: string;
   title: string;
   description: string;
   className: string | null;
-}
+  route: string;
+};
 
 const Eyebrow = (props: EyebrowProps) => {
-  const { eyebrowText, title, description, className } = props;
+  const { eyebrowText, title, description, className, route } = props;
   return (
     <div
-      className={`flex justify-center items-center flex-col gap-2 ${className}`}
+      className={`flex justify-center items-center flex-col gap-4 ${className}`}
     >
-      <div className="border border-bg-secondary rounded-2xl px-2 ">
-        ⋆˚࿔ {eyebrowText} 𝜗𝜚˚⋆
-      </div>
       <h2 className="text-center text-primary text-4xl tracking-tighter">
         {title}
-      </h2>
-      <p className="text-secondary">{description}</p>
+      </h2>{" "}
+      <Link
+        to={"/" + route}
+        className="border border-bg-secondary rounded-2xl px-2 hover:bg-[#34a3f9] hover:text-white"
+      >
+        ⋆˚࿔ {eyebrowText} 𝜗𝜚˚⋆
+      </Link>
+      <p className="text-gray-500 text-center max-w-[45ch]">{description}</p>
     </div>
   );
 };
