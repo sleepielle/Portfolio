@@ -5,6 +5,7 @@ import type { Projects, PostMeta } from "~/types";
 import AboutPreview from "~/components/AboutPreview";
 import LatestPosts from "~/components/LatestPosts";
 import Footer from "~/components/Footer";
+import ExperiencePreview from "~/components/ExperiencePreview";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -70,6 +71,7 @@ const HomePage = ({ loaderData }: Route.ComponentProps) => {
   return (
     <>
       <FeaturedProjects projects={projects} count={2} />
+      <ExperiencePreview />
       <LatestPosts posts={posts} />
       <AboutPreview />
     </>

@@ -32,8 +32,8 @@ export default function Hero() {
 
         <div className="mx-auto max-w-2xl py-20 mb-10 ">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1  font-semibold ring-gray-900/10 hover:ring-gray-900/20">
-              Mercedes Paz 🌸 Software Engineer
+            <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1   ring-gray-900/10 hover:ring-gray-900/20">
+              💻 Software Engineer | 🌎 Based in Honduras | 🎨 Creative at heart
             </div>
           </div>
           <div className="text-center">
@@ -42,8 +42,11 @@ export default function Hero() {
             </h1>
             <p className="mt-8 text-lg font-medium text-pretty text-gray-600 sm:text-xl/8">
               I’m Mercedes Paz, a Software Engineer focused on crafting
-              responsive, accessible, and user-friendly web applications. I
-              bring ideas to life with code, detail, and dedication.
+              responsive, accessible, and user-friendly web applications.{" "}
+              <span className="font-semibold">
+                I take priority on the user, while still maintaining software
+                quality.
+              </span>
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link to={"/projects"}>
