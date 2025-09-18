@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Route } from "./+types/index";
-import type { PostMeta, StrapiResponse, StrapiPost } from "~/types";
+import type { PostMeta } from "~/types";
 import PostCard from "~/components/PostCard";
 import Pagination from "~/components/Pagination";
 import PostFilter from "~/components/PostFilter";
@@ -56,13 +56,13 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
         }}
       ></PostFilter>
 
-      <div className=" grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
+      {/**    <div className=" grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
         {currentPosts.length === 0 ? (
           <p className="text-gray-400 text-center">No posts found</p>
         ) : (
           currentPosts.map((post) => <PostCard post={post} key={post.slug} />)
         )}
-      </div>
+      </div> */}
 
       {totalPages > 1 && (
         <Pagination
