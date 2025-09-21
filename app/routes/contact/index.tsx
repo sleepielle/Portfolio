@@ -3,15 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 import {
   Mail,
-  Phone,
   User,
   Send,
   CheckCircle2,
   Loader2,
   MessageSquareText,
-  Shield,
 } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react";
 import { RainbowButton } from "components/magicui/rainbow-button";
 
 const FORMSPREE_FORM_ID = "mdkdvayw"; // ← replace with your Formspree form ID

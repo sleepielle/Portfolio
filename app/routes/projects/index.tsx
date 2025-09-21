@@ -38,7 +38,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
   // Extract projects from the loader data with proper TypeScript typing
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 10;
+  const projectsPerPage = 6;
 
   const { projects } = loaderData as { projects: Projects[] };
 

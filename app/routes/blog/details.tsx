@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import type { Route } from "./+types/details";
-import type { PostMeta, StrapiResponse, StrapiPost } from "~/types";
+import type { PostMeta } from "~/types";
 import { Link } from "react-router";
 
 export async function loader({ request, params }: Route.LoaderArgs) {

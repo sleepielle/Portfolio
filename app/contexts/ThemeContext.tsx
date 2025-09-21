@@ -12,31 +12,24 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    // Check localStorage first, then default to 'system'
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("theme");
-      if (saved === "light" || saved === "dark" || saved === "system") {
-        return saved;
-      }
-    }
-    return "system";
-  });
+  const [theme, setTheme] = useState<Theme>("system");
+  const [actualTheme, setActualTheme] = useState<"light" | "dark">("light");
+  const [isHydrated, setIsHydrated] = useState(false);
 
-  const [actualTheme, setActualTheme] = useState<"light" | "dark">(() => {
-    // Initialize actualTheme based on system preference if theme is 'system'
-    if (typeof window !== "undefined") {
-      if (theme === "system") {
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-      }
-      return theme === "dark" ? "dark" : "light";
+  // Hydration effect - runs only on client
+  useEffect(() => {
+    setIsHydrated(true);
+    
+    // Initialize theme from localStorage after hydration
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark" || saved === "system") {
+      setTheme(saved);
     }
-    return "light";
-  });
+  }, []);
 
   useEffect(() => {
+    if (!isHydrated) return;
+
     const updateActualTheme = () => {
       if (theme === "system") {
         const systemPrefersDark = window.matchMedia(
@@ -58,7 +51,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       mediaQuery.addEventListener("change", handleChange);
       return () => mediaQuery.removeEventListener("change", handleChange);
     }
-  }, [theme]);
+  }, [theme, isHydrated]);
 
   useEffect(() => {
     // Apply theme to document
@@ -82,11 +75,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [actualTheme]);
 
   useEffect(() => {
-    // Save theme preference to localStorage
-    if (typeof window !== "undefined") {
+    // Save theme preference to localStorage (only after hydration)
+    if (isHydrated) {
       localStorage.setItem("theme", theme);
     }
-  }, [theme]);
+  }, [theme, isHydrated]);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, actualTheme }}>

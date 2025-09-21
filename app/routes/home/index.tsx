@@ -58,6 +58,7 @@ export async function loader({
       excerpt: item.excerpt,
       body: "", // posts-meta.json doesn't contain body content
       image: item.image || "/images/no-image.png",
+      tags: item.tags,
       date: item.date,
     }));
 

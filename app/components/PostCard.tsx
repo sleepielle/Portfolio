@@ -11,6 +11,8 @@ import {
 import { MagicCard } from "components/magicui/magic-card";
 
 const PostCard = ({ post }: { post: BentoPosts }) => {
+  const tags: string[] = post.tags;
+
   return (
     <div className={`${post.colSpan}`}>
       <Link
@@ -26,6 +28,9 @@ const PostCard = ({ post }: { post: BentoPosts }) => {
           <p className="text-sm text-gray-400 mb-2">
             {new Date(post.date).toDateString()}
           </p>
+          {tags.map((t) => (
+            <p key={t}>{t}</p>
+          ))}
           <p className="text-gray-400 mb-4">{post.excerpt}</p>
           <Link
             to={`/blog/${post.slug}`}

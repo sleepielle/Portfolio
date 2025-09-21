@@ -23,6 +23,7 @@ export type PostMeta = {
   date: string;
   body: string;
   image: string;
+  tags: string[];
   className?: string;
 };
 
@@ -39,7 +40,7 @@ export type Post = {
 export type IconType = React.ElementType<IconProps>;
 
 export type BentoPosts = PostMeta & {
-  icon: IconType;
-  colSpan: string;
+  icon?: IconType;
+  colSpan?: string;
   rowSpan?: string;
 };

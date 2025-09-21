@@ -25,7 +25,7 @@ export async function loader({
 const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 5;
+  const postsPerPage = 6;
 
   const { posts } = loaderData;
 
@@ -42,6 +42,12 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   const indexOfFirst = indexOfLast - postsPerPage;
   const currentPosts = filteredPosts.slice(indexOfFirst, indexOfLast);
 
+  //removing duplicate tags
+  const tags: string[] = [
+    "All",
+    ...new Set(currentPosts.flatMap((p) => p.tags)),
+  ];
+
   return (
     <div className=" mx-auto mt-10 px-6 py-6 ">
       <h2 className="text-3xl font-semibold text-primary mb-8 text-center tracking-tighter">
@@ -56,13 +62,18 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
         }}
       ></PostFilter>
 
-      {/**    <div className=" grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
+      {tags.map((p) => (
+        <div className="flex justify-between items-center gap-2">
+          <p>{p}</p>
+        </div>
+      ))}
+      <div className=" grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
         {currentPosts.length === 0 ? (
           <p className="text-gray-400 text-center">No posts found</p>
         ) : (
           currentPosts.map((post) => <PostCard post={post} key={post.slug} />)
         )}
-      </div> */}
+      </div>
 
       {totalPages > 1 && (
         <Pagination
