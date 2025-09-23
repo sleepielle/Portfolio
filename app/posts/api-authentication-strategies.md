@@ -1,4 +1,4 @@
-
+## Contents Item 1
 
 API authentication ensures that only authorized users or systems can access your endpoints. One of the most common methods is using **API keys**, which are simple tokens passed in headers or query parameters. While easy to implement, API keys lack fine-grained access control and are best suited for internal or low-security use cases.
 
@@ -27,3 +27,25 @@ Other strategies include **session-based authentication** (more common in tradit
 
 //Se van encadenando varias animaciones: primero se establece la opacidad, luego se mueve a una posición y finalmente se genera un pequeño "bote" (la propiedad y varía entre 0, 16 y vuelve a 0).
 ```
+
+
+## OAuth 2.0 and Beyond555
+
+For more complex applications, especially those involving third-party integrations or delegated access, **OAuth 2.0** is the standard. It allows users to authorize apps without sharing passwords, using access tokens and refresh tokens to maintain sessions. Services like Google, GitHub, and Facebook use OAuth for login and API access.
+
+Other strategies include **session-based authentication** (more common in traditional web apps) and **HTTP Basic Auth**, which is rarely used due to its simplicity and lack of security over non-HTTPS connections. Choosing the right method depends on your app's architecture, level of sensitivity, and user experience goals.
+
+
+
+## OAuth 2.0 and Beyond444
+
+For more complex applications, especially those involving third-party integrations or delegated access, **OAuth 2.0** is the standard. It allows users to authorize apps without sharing passwords, using access tokens and refresh tokens to maintain sessions. Services like Google, GitHub, and Facebook use OAuth for login and API access.
+
+Other strategies include **session-based authentication** (more common in traditional web apps) and **HTTP Basic Auth**, which is rarely used due to its simplicity and lack of security over non-HTTPS connections. Choosing the right method depends on your app's architecture, level of sensitivity, and user experience goals.
+
+
+## OAuth 2.0 and Beyond33
+
+For more complex applications, especially those involving third-party integrations or delegated access, **OAuth 2.0** is the standard. It allows users to authorize apps without sharing passwords, using access tokens and refresh tokens to maintain sessions. Services like Google, GitHub, and Facebook use OAuth for login and API access.
+
+Other strategies include **session-based authentication** (more common in traditional web apps) and **HTTP Basic Auth**, which is rarely used due to its simplicity and lack of security over non-HTTPS connections. Choosing the right method depends on your app's architecture, level of sensitivity, and user experience goals.
