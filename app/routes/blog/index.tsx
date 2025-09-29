@@ -5,6 +5,7 @@ import PostCard from "~/components/PostCard";
 import Pagination from "~/components/Pagination";
 import PostFilter from "~/components/PostFilter";
 import { SocialsDock } from "~/components/SocialsDock";
+import { DigitalGarden } from "~/components/DigitalGarden";
 
 export async function loader({
   request,
@@ -52,7 +53,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   return (
     <div className=" mx-auto mt-10 px-6 py-6 ">
       <SocialsDock />
-      <h2 className="text-3xl font-semibold text-primary mb-8 text-center tracking-tighter">
+      <h2 className="text-4xl text-primary mb-8 text-center tracking-tighter">
         All Posts
       </h2>
 
@@ -77,6 +78,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
         )}
       </div>
 
+      <DigitalGarden />
       {totalPages > 1 && (
         <Pagination
           totalPages={totalPages}

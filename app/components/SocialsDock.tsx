@@ -4,8 +4,8 @@ import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react";
 import { Link } from "react-router";
 import React from "react";
 
-import { buttonVariants } from "../components/ui/button";
-import { Separator } from "../components/ui/separator";
+import { buttonVariants } from "./ui/button";
+import { Separator } from "./ui/separator";
 
 import {
   Tooltip,
@@ -40,33 +40,37 @@ const Icons = {
   ),
 };
 
-const DATA = {
-  navbar: [
-    { href: "#", icon: HomeIcon, label: "Home" },
-    { href: "#", icon: PencilIcon, label: "Blog" },
-  ],
-  contact: {
-    social: {
-      GitHub: {
-        name: "GitHub",
-        url: "#",
-        icon: Icons.github,
-      },
-      LinkedIn: {
-        name: "LinkedIn",
-        url: "#",
-        icon: Icons.linkedin,
-      },
-      email: {
-        name: "Send Email",
-        url: "#",
-        icon: Icons.email,
+export function SocialsDock({ noEmail }: { noEmail?: boolean }) {
+  const DATA = {
+    navbar: [
+      { href: "#", icon: HomeIcon, label: "Home" },
+      { href: "#", icon: PencilIcon, label: "Blog" },
+    ],
+    contact: {
+      social: {
+        GitHub: {
+          name: "GitHub",
+          url: "#",
+          icon: Icons.github,
+        },
+        LinkedIn: {
+          name: "LinkedIn",
+          url: "#",
+          icon: Icons.linkedin,
+        },
+        ...(noEmail
+          ? {}
+          : {
+              Email: {
+                name: "Send Email",
+                url: "#",
+                icon: Icons.email,
+              },
+            }),
       },
     },
-  },
-};
+  };
 
-export function SocialsDock() {
   return (
     <>
       <div className="relative "></div>

@@ -20,9 +20,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
+
+import { BorderBeam } from "~/components/ui/border-beam";
 import { cn } from "~/lib/utils";
 import { Dock, DockIcon } from "~/components/ui/dock";
 import { Link } from "react-router";
+import { FAQ } from "~/components/FAQ";
+import AboutPreview from "~/components/AboutPreview";
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
 const FORMSPREE_FORM_ID = "mdkdvayw"; // ← replace with your Formspree form ID
@@ -75,8 +79,10 @@ const fadeUp: Variants = {
 };
 
 const fieldBase =
-  "group relative w-full rounded-2xl border border-zinc-800/60 bg-white/60 backdrop-blur-md px-4 pt-5 pb-3 text-zinc-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] outline-none transition focus-within:border-zinc-700 focus-within:shadow-[0_0_0_3px_rgba(63,63,70,0.35)]";
+  "group relative w-full rounded-2xl border border-zinc-800/20 bg-white/60 backdrop-blur-md px-4 pt-5 pb-3 text-zinc-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] outline-none transition focus-within:border-zinc-300 focus-within:shadow-[0_0_0_3px_rgba(63,63,70,0.35)]";
 
+const iconClasses =
+  "pointer-events-none absolute left-4 flex items-center gap-2 text-zinc-400";
 export default function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [ok, setOk] = useState(false);
@@ -94,23 +100,23 @@ export default function ContactForm() {
     const newErrors: Record<string, string> = {};
 
     if (!values.name.trim()) {
-      newErrors.name = "El nombre es requerido";
+      newErrors.name = "Name is required";
     }
 
     if (!values.email.trim()) {
-      newErrors.email = "El correo es requerido";
+      newErrors.email = "E-mail is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
-      newErrors.email = "El formato del correo no es válido";
+      newErrors.email = "Invalid e-mail format";
     }
 
     if (!values.subject.trim()) {
-      newErrors.subject = "El asunto es requerido";
+      newErrors.subject = "Subject is required";
     }
 
     if (!values.message.trim()) {
-      newErrors.message = "El mensaje es requerido";
+      newErrors.message = "Message is required";
     } else if (values.message.trim().length < 10) {
-      newErrors.message = "El mensaje debe tener al menos 10 caracteres";
+      newErrors.message = "The message must have at least 10 characters";
     }
 
     return newErrors;
@@ -205,31 +211,35 @@ export default function ContactForm() {
         <span className="absolute left-4 top-1.5 text-xs text-gray-500/70">
           {label}
         </span>
-        <div className="pointer-events-none absolute left-4 bottom-3 flex items-center gap-2 text-zinc-500">
-          {icon}
-        </div>
+
         {element === "input" ? (
-          <input
-            id={id}
-            name={name}
-            type={type}
-            placeholder={placeholder}
-            value={values[name as keyof typeof values] || ""}
-            onChange={(e) => setValues({ ...values, [name]: e.target.value })}
-            className="peer mt-4 w-full bg-transparent pl-9 pr-2 text-sm placeholder-zinc-500 focus:outline-none"
-            required
-          />
+          <>
+            {" "}
+            <div className={`${iconClasses} bottom-3`}>{icon}</div>
+            <input
+              id={id}
+              name={name}
+              type={type}
+              placeholder={placeholder}
+              value={values[name as keyof typeof values] || ""}
+              onChange={(e) => setValues({ ...values, [name]: e.target.value })}
+              className="peer mt-4 w-full bg-transparent pl-9 pr-2 text-sm placeholder-zinc-400 focus:outline-none"
+            />
+          </>
         ) : (
-          <textarea
-            id={id}
-            name={name}
-            rows={rows ?? 6}
-            placeholder={placeholder}
-            value={values[name as keyof typeof values] || ""}
-            onChange={(e) => setValues({ ...values, [name]: e.target.value })}
-            className="peer mt-4 w-full resize-y bg-transparent pl-9 pr-2 text-sm placeholder-zinc-500 focus:outline-none"
-            required
-          />
+          <>
+            {" "}
+            <div className={`${iconClasses} top-10`}>{icon}</div>{" "}
+            <textarea
+              id={id}
+              name={name}
+              rows={rows ?? 6}
+              placeholder={placeholder}
+              value={values[name as keyof typeof values] || ""}
+              onChange={(e) => setValues({ ...values, [name]: e.target.value })}
+              className="peer mt-4 w-full resize-y bg-transparent pl-9 pr-2 text-sm placeholder-zinc-400 focus:outline-none"
+            />
+          </>
         )}
       </div>
       <AnimatePresence>
@@ -249,48 +259,22 @@ export default function ContactForm() {
 
   return (
     <div className="min-h-screen w-full  py-14 px-4">
+      <SocialsDock noEmail />
+
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="mx-auto max-w-3xl"
       >
-        <div className="mb-8 flex items-start justify-between ">
+        <div className="mb-8 flex  flex-col justify-center items-center text-center ">
           <div>
-            <h1 className="text-3xl  tracking-tighter text-blue-00 font-semibold">
+            <h1 className="text-4xl  tracking-tighter text-blue-500 ">
               Contact Me
             </h1>
             <p className="mt-1 text-sm text-gray-500">
-              Cuéntame brevemente sobre tu proyecto y te responderé pronto.
+              Reach out and I'll happily answer within 1-2 business days.
             </p>
-          </div>
-
-          <div className=" sm:flex sm:flex-col items-start justify-start mt-0">
-            <TooltipProvider>
-              <Dock direction="middle">
-                {Object.entries(DATA.contact.social).map(([name, social]) => (
-                  <DockIcon key={name}>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Link
-                          to={social.url}
-                          aria-label={social.name}
-                          className={cn(
-                            buttonVariants({ variant: "ghost", size: "icon" }),
-                            "size-12 rounded-full "
-                          )}
-                        >
-                          <social.icon className="size-4" />
-                        </Link>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>{name}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </DockIcon>
-                ))}{" "}
-              </Dock>
-            </TooltipProvider>
           </div>
         </div>
         {/**     <motion.div
@@ -313,9 +297,9 @@ export default function ContactForm() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.06 } },
           }}
-          className="rounded-3xl border border-zinc-800/60 bg-blue-100 p-5  backdrop-blur-xl md:p-8"
+          className=""
         >
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
             {field(1, {
               id: "name",
               name: "name",
@@ -327,26 +311,29 @@ export default function ContactForm() {
               id: "email",
               name: "email",
               label: "E-mail",
-              icon: <Mail className="h-4 w-4" />,
+              icon: <Mail className="h-4 w-4 " />,
               type: "email",
               placeholder: "youremail@domain.com",
-            })}
-            {field(3, {
-              id: "subject",
-              name: "subject",
-              label: "Subject",
-              icon: <MessageSquareText className="h-4 w-full" />,
-              placeholder: "Ej. Sitio web para mi empresa",
             })}
           </div>
 
           <div className="mt-4">
-            {field(5, {
+            {field(3, {
+              id: "subject",
+              name: "subject",
+              label: "Subject",
+              icon: <MessageSquareText className="h-4 w-4" />,
+              placeholder: "Write e-mail's subject here...",
+            })}
+          </div>
+
+          <div className="mt-4">
+            {field(4, {
               id: "message",
               name: "message",
               element: "textarea",
               label: "Message",
-              icon: <MessageSquareText className="h-4 w-4" />,
+              icon: <MessageSquareText className="h-4 w-4 " />,
               placeholder: "Write your message here...",
               rows: 7,
             })}
@@ -367,7 +354,7 @@ export default function ContactForm() {
           </div>
 
           <motion.div className="mt-6 flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-400">
               By contacting me, you accept receiving a follow up e-mail to
               continue the conversation.
             </p>
@@ -387,8 +374,8 @@ export default function ContactForm() {
               )}
             </RainbowButton>
           </motion.div>
+          <BorderBeam />
         </motion.form>
-
         <AnimatePresence>
           {ok && (
             <motion.div
@@ -403,43 +390,7 @@ export default function ContactForm() {
           )}
         </AnimatePresence>
 
-        <div className="flex flex-col justify-center items-center mt-8">
-          <div className="flex justify-center items-center flex-col gap-4">
-            <h2 className="text-center text-primary text-4xl tracking-tighter">
-              About Me
-            </h2>
-
-            <p className="text-gray-500 text-center max-w-[45ch]">
-              I'm passionate about software quality while still maintaining
-              connections with the users and clients.
-            </p>
-          </div>
-          <img
-            src="/images/profile.jpeg"
-            alt="profile"
-            className="w-40 h-40 rounded-full object-cover border-2 border-[#e4ff3b] shadow-xl mt-4"
-          />
-
-          <ul className="flex flex-wrap gap-4 text-sm text-gray-300">
-            {[
-              "React",
-              "Next.js",
-              "Vue",
-              "Tailwind CSS",
-              "Node.js",
-              "Laravel",
-              "Prisma",
-              "MongoDB",
-              "PostgreSQL",
-              "Appwrite",
-              "Docker",
-            ].map((tech) => (
-              <li key={tech} className="bg-gray-700 px-3 py-1 rounded-md">
-                {tech}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <AboutPreview />
       </motion.div>
     </div>
   );
