@@ -34,52 +34,54 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className=" border-b sticky top-3 z-50 mx-auto  backdrop-blur-md bg-white/30 text-center rounded-full w-fit px-8 ">
-      <div className="py-4 flex items-center justify-center">
-        {/*Desktop nav*/}
-        <div className="hidden md:flex items-center gap-6">
-          <div className="space-x-4 text-sm text-secondary">
+    <>
+      <nav className=" border-b sticky top-3 z-100 mx-auto  backdrop-blur-md bg-white/30 text-center px-8 w-fit left-[85%] sm:left-0 rounded-md md:rounded-full ">
+        <div className="py-4 flex sm:items-center sm:justify-center items-end justify-end ">
+          {/*Desktop nav*/}
+          <div className="hidden md:flex items-center gap-6">
+            <div className="space-x-4 text-sm text-secondary">
+              {navbarItems.map((item) => (
+                <NavLink
+                  to={item.route}
+                  className={({ isActive }) =>
+                    `${isActive ? active : base}  ${hover}`
+                  }
+                >
+                  {item.title}
+                </NavLink>
+              ))}
+            </div>
+            <ThemeToggle />
+          </div>
+
+          <div className="md:hidden flex items-center gap-4">
+            <ThemeToggle />
+            <button
+              className="text-accent text-xl cursor-pointer"
+              onClick={() => setMenuOpen(!menuOpen)}
+              title="Menu"
+            >
+              {menuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
+        </div>
+
+        {/*Mobile Nav*/}
+        {menuOpen && (
+          <div className="backdrop-blur-md bg-white/30  md:hidden rounded-md border-t border-theme px-6 py-4 space-y-2 space-x-4 text-center flex flex-col">
             {navbarItems.map((item) => (
               <NavLink
                 to={item.route}
-                className={({ isActive }) =>
-                  `${isActive ? active : base}  ${hover}`
-                }
+                className={({ isActive }) => (isActive ? active : base)}
+                onClick={() => setMenuOpen(false)}
               >
                 {item.title}
               </NavLink>
             ))}
           </div>
-          <ThemeToggle />
-        </div>
-
-        <div className="md:hidden flex items-center gap-4">
-          <ThemeToggle />
-          <button
-            className="text-accent text-xl cursor-pointer"
-            onClick={() => setMenuOpen(!menuOpen)}
-            title="Menu"
-          >
-            {menuOpen ? <FaTimes /> : <FaBars />}
-          </button>
-        </div>
-      </div>
-
-      {/*Mobile Nav*/}
-      {menuOpen && (
-        <div className="backdrop-blur-md bg-white/30  md:hidden rounded-full border-t border-theme px-6 py-4 space-y-2 space-x-4 text-center">
-          {navbarItems.map((item) => (
-            <NavLink
-              to={item.route}
-              className={({ isActive }) => (isActive ? active : base)}
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.title}
-            </NavLink>
-          ))}
-        </div>
-      )}
-    </nav>
+        )}
+      </nav>
+    </>
   );
 };
 

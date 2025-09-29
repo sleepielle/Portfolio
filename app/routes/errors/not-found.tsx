@@ -1,9 +1,11 @@
 import { NavLink } from "react-router";
 import { RainbowButton } from "../../../components/magicui/rainbow-button";
+import { SocialsDock } from "~/components/SocialsDock";
 
 const NotFoundPage = () => {
   return (
-    <section className="max-w-5xl mx-auto px-6 py-16">
+    <section className="max-w-5xl mx-auto px-6 py-22">
+      <SocialsDock />
       <div className="flex justify-center items-center flex-col gap-2">
         <svg
           className="font-bold text-6xl w-full h-full mx-auto"

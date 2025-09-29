@@ -4,6 +4,7 @@ import type { Route } from "./+types/index";
 import type { Projects } from "~/types";
 import Pagination from "~/components/Pagination";
 import { AnimatePresence, motion } from "framer-motion";
+import { SocialsDock } from "~/components/SocialsDock";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -63,11 +64,12 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
   const currentProjects = filteredProjects.slice(indexOfFirst, indexOfLast);
 
   return (
-    <section className="bg-primary text-primary min-h-screen py-8">
+    <section className="bg-primary text-primary min-h-screen py-20  ">
       <div className=" mx-auto px-4">
         <h2 className="text-3xl font-semibold text-primary mb-8 text-center tracking-tighter">
           Projects
         </h2>
+        <SocialsDock />
 
         <div className="flex flex-wrap gap-2 mb-8">
           {categories.map((category) => (

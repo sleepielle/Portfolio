@@ -8,6 +8,7 @@ import remarkGfm from "remark-gfm";
 import { getToc } from "./toc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { SocialsDock } from "~/components/SocialsDock";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
   const { slug } = params;
@@ -43,6 +44,7 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12 bg-gray-900">
+      <SocialsDock />
       <img
         src={postMeta.image}
         className="w-full h-48 object-cover rounded mb-4"

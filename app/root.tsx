@@ -11,6 +11,8 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import Navbar from "./components/Navbar";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import Footer from "./components/Footer";
+import { SocialsDock } from "./components/SocialsDock";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -47,6 +49,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <main>{children}</main>
           <ScrollRestoration />
           <Scripts />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
