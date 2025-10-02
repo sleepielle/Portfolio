@@ -12,7 +12,7 @@ const ProjectCard = (props: ProjectCardProps) => {
   const { project, className } = props;
 
   return (
-    <MagicCard className="card rounded-lg overflow-hidden transition hover:shadow-md h-[25rem] sm:h-max sm:gap-5 ">
+    <MagicCard className="card rounded-lg overflow-hidden transition hover:shadow-md sm:h-[27rem] h-max sm:gap-5 ">
       <img
         src={project.image}
         alt={project.title}
@@ -20,10 +20,12 @@ const ProjectCard = (props: ProjectCardProps) => {
       />
       <div className="flex flex-col m-5 gap-3 ">
         <div className="flex justify-between items-center md:mb-3 flex-col-reverse ">
-          <h3 className="text-xl font-semibold text-accent mb-1">
+          <h3 className="text-xl font-semibold mb-1 text-gray-500">
             {project.title}
           </h3>
-          <span className="text-sm px-5 py-1">{project.category}</span>
+          <span className="text-sm px-5 py-1 text-gray-400">
+            {project.category}
+          </span>
         </div>
 
         <p className="text-sm text-gray-500  h-fit md:h-20 text-center mb-5 sm:mb-0 ">

@@ -4,9 +4,7 @@ import FeaturedProjects from "~/components/FeaturedProjects";
 import type { Projects, PostMeta } from "~/types";
 import AboutPreview from "~/components/AboutPreview";
 import LatestPosts from "~/components/LatestPosts";
-import Footer from "~/components/Footer";
 import ExperiencePreview from "~/components/ExperiencePreview";
-import { SocialsDock } from "~/components/SocialsDock";
 
 export function meta({}: Route.MetaArgs) {
   return [

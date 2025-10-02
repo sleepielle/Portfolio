@@ -204,6 +204,61 @@ body {
 .bg-accent:hover {
   background-color: var(--color-accent-hover);
 }
+/* NOW */
+.bg-now-pastel {
+  background-color: #fff1d6;
+}
+.border-now-strong {
+  border-color: #ffb112;
+}
+.bg-now-strong {
+  background-color: #ffb112;
+}
+.text-now-color {
+  color: #ffb112;
+}
+
+/* NOTES */
+.bg-notes-pastel {
+  background-color: #e8f9df;
+}
+.border-notes-strong {
+  border-color: #71dd37;
+}
+.bg-notes-strong {
+  background-color: #71dd37;
+}
+.text-notes-color {
+  color: #71dd37;
+}
+
+/* SNIPPETS */
+.bg-snippets-pastel {
+  background-color: #d6f5fc;
+}
+.border-snippets-strong {
+  border-color: #1ecaee;
+}
+.bg-snippets-strong {
+  background-color: #1ecaee;
+}
+.text-snippets-color {
+  color: #1ecaee;
+}
+
+/* RESEARCH */
+.bg-research-pastel {
+  background-color: #e7e7ff;
+}
+.border-research-strong {
+  border-color: #696cff;
+}
+.bg-research-strong {
+  background-color: #696cff;
+}
+.text-research-color {
+  color: #696cff;
+}
 
 /* Smooth transitions for theme changes */
 * {

@@ -74,18 +74,27 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
         <div className="flex flex-wrap gap-2 mb-8">
           {categories.map((category) => (
             <button
+              className={`h-8 flex items-center px-1 pl-3 rounded-lg cursor-pointer border text-sm transition-colors border-border  justify-center ${
+                selectedCategory === category
+                  ? "bg-[#339df9] font-semibold text-primary"
+                  : "hover:border hover:border-blue-500 "
+              }`}
               key={category}
               onClick={() => {
                 setSelectedCategory(category);
                 setCurrentPage(1);
               }}
-              className={`px-3 py-1 rounded text-sm cursor-pointer transition-colors ${
-                selectedCategory === category
-                  ? "bg-tertiary text-primary font-semibold"
-                  : "bg-[#339df9] text-white hover:bg-[#394ffb]"
-              }`}
             >
-              {category}
+              <span
+                className={` ${selectedCategory === category && "text-white"}`}
+              >
+                {category}
+              </span>
+              <span
+                className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border  ${selectedCategory && "text-blue bg-white font-bold"}`}
+              >
+                5
+              </span>
             </button>
           ))}
         </div>

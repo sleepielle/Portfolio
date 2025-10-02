@@ -374,7 +374,6 @@ export default function ContactForm() {
               )}
             </RainbowButton>
           </motion.div>
-          <BorderBeam />
         </motion.form>
         <AnimatePresence>
           {ok && (

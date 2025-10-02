@@ -13,6 +13,7 @@ import {
 } from "@radix-ui/react-icons";
 import { RainbowButton } from "components/magicui/rainbow-button";
 import { Link } from "react-router";
+import FeaturedPosts from "./FeaturedPosts";
 
 const ICONS: IconType[] = [
   FileTextIcon,
@@ -54,7 +55,7 @@ const LatestPosts = ({ posts }: { posts: PostMeta[] }) => {
 
       <div className="grid [grid-template-columns:repeat(3),minmax(0,1fr))] grid-flow-dense gap-4 ">
         {postsWithUI.map((post) => (
-          <PostCard post={post} />
+          <FeaturedPosts post={post} />
         ))}
       </div>
     </div>

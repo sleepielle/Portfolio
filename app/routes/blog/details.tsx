@@ -43,7 +43,7 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
   const toc = getToc(markdown);
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-12 bg-gray-900">
+    <div className="w-full mx-auto px-6 py-12 bg-gray-900">
       <SocialsDock />
       <img
         src={postMeta.image}

@@ -2,6 +2,7 @@ import type { Route } from "../+types/root";
 import type { Projects } from "~/types";
 import ProjectCard from "./ProjectCard";
 import Eyebrow from "./Eyebrow";
+import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
 type FeaturedProjectsProps = {
   projects: Projects[];
   count: number;
@@ -25,7 +26,7 @@ const FeaturedProjects = ({ projects, count = 4 }: FeaturedProjectsProps) => {
           <ProjectCard
             key={project.id}
             project={project}
-            className="before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(90deg,var(--color-1),var(--color-5),var(--color-3),var(--color-4),var(--color-2))] before:[filter:blur(0.75rem)] dark:bg-[linear-gradient(#0a0a0a,#0a0a0a),linear-gradient(#0a0a0a_50%,rgba(255,255,255,0.6)_80%,rgba(0,0,0,0)),linear-gradient(90deg,var(--color-1),var(--color-5),var(--color-3),var(--color-4),var(--color-2))]"
+            className={`${GRADIENT_BUTTON_CLASSNAME}`}
           />
         ))}
       </div>

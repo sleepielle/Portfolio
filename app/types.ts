@@ -23,7 +23,7 @@ export type PostMeta = {
   date: string;
   body: string;
   image: string;
-  tags: string[];
+  tags: string;
   className?: string;
 };
 

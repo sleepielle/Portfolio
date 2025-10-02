@@ -14,8 +14,6 @@ export default function Hero() {
 
   return (
     <div>
-      <header className="absolute inset-x-0 top-0 z-50"></header>
-
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div
           aria-hidden="true"
