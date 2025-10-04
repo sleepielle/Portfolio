@@ -13,6 +13,7 @@ interface MagicCardProps {
   gradientOpacity?: number;
   gradientFrom?: string;
   gradientTo?: string;
+  border?: string;
 }
 
 export function MagicCard({
@@ -23,6 +24,7 @@ export function MagicCard({
   gradientOpacity = 0.1,
   gradientFrom = "#afd8fc",
   gradientTo = "#ffffff",
+  border = "#ffffff",
 }: MagicCardProps) {
   const mouseX = useMotionValue(-gradientSize);
   const mouseY = useMotionValue(-gradientSize);
@@ -78,23 +80,29 @@ export function MagicCard({
       <motion.div
         className="pointer-events-none absolute inset-0 rounded-[inherit] bg-border duration-300 group-hover:opacity-100"
         style={{
-          background: useMotionTemplate`
-          radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
+          background: useMotionTemplate` radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
           ${gradientFrom}, 
           ${gradientTo}, 
           var(--border) 100%
-          )
-          `,
+          ) `,
         }}
       />
-      <div className="absolute inset-px rounded-[inherit] bg-background" />
+      <div
+        className="absolute inset-px rounded-[inherit] bg-background "
+        style={{
+          borderColor: `${border}`,
+          borderWidth: 1,
+        }}
+      />
       <motion.div
-        className="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100 "
         style={{
           background: useMotionTemplate`
             radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px, ${gradientColor}, transparent 100%)
           `,
           opacity: gradientOpacity,
+          border: `#d6f5fc`,
+          borderWidth: 3,
         }}
       />
       <div className="relative">{children}</div>

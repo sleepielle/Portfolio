@@ -1,6 +1,6 @@
 import type { BentoPosts, PostMeta } from "~/types";
 import { Link } from "react-router";
-
+import { POSTS_TAG_GRADIENTS } from "~/lib/constants";
 import {
   BellIcon,
   CalendarIcon,
@@ -15,26 +15,17 @@ import { RainbowButton } from "components/magicui/rainbow-button";
 import clsx from "clsx";
 
 const PostCard = ({ post }: { post: BentoPosts }) => {
-  const TAG_GRADIENTS: Record<
-    string,
-    { from: string; to: string; color: string }
-  > = {
-    Now: { from: "#fff1d6", to: "#ffffff", color: "#ffb112" },
-    Notes: { from: "#e8f9df", to: "#ffffff", color: "#71dd37" },
-    Snippets: { from: "#d6f5fc", to: "#ffffff", color: "#1ecaee" },
-    Research: { from: "#e7e7ff", to: "#ffffff", color: "#696cff" },
-  };
-
   return (
     <div
       className={`${post.colSpan} sm:h-[27rem] h-max w-[32rem] sm:w-[22rem]`}
     >
       <Link to={`/blog/${post.slug}`} className="block">
         <MagicCard
-          className="rounded-lg shadow-md"
-          gradientFrom={TAG_GRADIENTS[post.tags]?.from ?? "#ffffff"}
-          gradientTo={TAG_GRADIENTS[post.tags]?.to ?? "#ffffff"}
-          gradientColor={TAG_GRADIENTS[post.tags]?.color ?? "#000000"}
+          className={`rounded-lg shadow-xs border-[${POSTS_TAG_GRADIENTS[post.tags]?.from ?? "#ffffff"}]`}
+          gradientFrom={POSTS_TAG_GRADIENTS[post.tags]?.from ?? "#ffffff"}
+          gradientTo={POSTS_TAG_GRADIENTS[post.tags]?.to ?? "#ffffff"}
+          gradientColor={POSTS_TAG_GRADIENTS[post.tags]?.color ?? "#000000"}
+          border={POSTS_TAG_GRADIENTS[post.tags]?.color ?? "#ffffff"}
         >
           <img
             src={post.image}

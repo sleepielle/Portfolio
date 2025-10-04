@@ -17,7 +17,7 @@ export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ projects: Projects[] }> {
   // Load projects from local JSON file
-  const projectsData = await import("~/data/projects.json");
+  const projectsData = await import("../../../public/data/projects.json");
 
   const projects = projectsData.data.map((item: any) => ({
     id: item.id.toString(),

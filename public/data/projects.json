@@ -77,7 +77,7 @@
       "live-site": "https://github.com/yourusername/mobile-app",
       "github" :  "https://github.com/yourusername/mobile-app",
       "date": "2024-06-18",
-      "category": "Backend",
+      "category": "Fullstack",
       "featured": false
     },
     {
@@ -91,7 +91,7 @@
       "live-site": "https://github.com/yourusername/mobile-app",
       "github" :  "https://github.com/yourusername/mobile-app",
       "date": "2024-07-25",
-      "category": "Mobile",
+      "category": "Frontend",
       "featured": false
     }
   ]
