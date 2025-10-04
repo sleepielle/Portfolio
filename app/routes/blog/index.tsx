@@ -11,7 +11,7 @@ import clsx from "clsx";
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ posts: PostMeta[] }> {
-  const url = new URL("/posts-meta.json", request.url);
+  const url = new URL("data/posts-meta.json", request.url);
   const res = await fetch(url.href);
 
   if (!res.ok) throw new Error("Failed to fetch data");

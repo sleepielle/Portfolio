@@ -4,7 +4,7 @@ import { SocialsDock } from "~/components/SocialsDock";
 
 const NotFoundPage = () => {
   return (
-    <section className="max-w-5xl mx-auto px-6 py-22">
+    <section className="max-w-5xl h-screen mx-auto px-6 flex items-center justify-center">
       <SocialsDock />
       <div className="flex justify-center items-center flex-col gap-2">
         <svg
@@ -13,7 +13,7 @@ const NotFoundPage = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <text
-            className="text-[15rem]  [text-anchor:middle] [dominant-baseline:middle] stroke-text"
+            className="text-[13rem]  [text-anchor:middle] [dominant-baseline:middle] stroke-text"
             x="50%"
             y="50%"
           >
@@ -21,10 +21,8 @@ const NotFoundPage = () => {
           </text>
         </svg>
         <div className="flex justify-center items-center flex-col gap-2">
-          <p className="text-[#3a4efb] font-semibold text-2xl">
-            Page Not Found
-          </p>
-          <p className="text-center text-xl ">
+          <p className="text-blue-500 font-semibold text-xl">Page Not Found</p>
+          <p className="text-center text-lg text-gray-400 ">
             The page you're looking for doesn&apos;t exist or has been moved.
           </p>
           <NavLink to="/">

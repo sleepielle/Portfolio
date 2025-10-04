@@ -22,11 +22,11 @@ export async function loader({
   const baseUrl = `${url.protocol}//${url.host}`;
 
   // Load projects from local JSON file using absolute URL
-  const projectsResponse = await fetch(`${baseUrl}/projects.json`);
+  const projectsResponse = await fetch(`${baseUrl}/data/projects.json`);
   const projectsData = await projectsResponse.json();
 
   // Load posts from local JSON file using absolute URL
-  const postsResponse = await fetch(`${baseUrl}/posts-meta.json`);
+  const postsResponse = await fetch(`${baseUrl}/data/posts-meta.json`);
   const postsData = await postsResponse.json();
 
   // Process projects data to match the expected Projects type

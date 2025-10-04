@@ -1,6 +1,6 @@
 import type { BentoPosts, PostMeta } from "~/types";
 import { Link } from "react-router";
-import { POSTS_TAG_GRADIENTS } from "~/lib/constants";
+import { POSTS_CARD_GRADIENTS } from "~/lib/constants";
 import {
   BellIcon,
   CalendarIcon,
@@ -20,11 +20,11 @@ const FeaturedPosts = ({ post }: { post: BentoPosts }) => {
     <div className={`${post.colSpan} sm:h-[27rem] h-max`}>
       <Link to={`/blog/${post.slug}`} className="  ">
         <MagicCard
-          className={`rounded-lg p-6 shadow-xs border-[${POSTS_TAG_GRADIENTS[post.tags]?.from ?? "#ffffff"}]`}
-          gradientFrom={POSTS_TAG_GRADIENTS[post.tags]?.from ?? "#ffffff"}
-          gradientTo={POSTS_TAG_GRADIENTS[post.tags]?.to ?? "#ffffff"}
-          gradientColor={POSTS_TAG_GRADIENTS[post.tags]?.color ?? "#000000"}
-          border={POSTS_TAG_GRADIENTS[post.tags]?.color ?? "#ffffff"}
+          className={`rounded-lg p-6 shadow-xs border-[${POSTS_CARD_GRADIENTS[post.tags]?.from ?? "#ffffff"}]`}
+          gradientFrom={POSTS_CARD_GRADIENTS[post.tags]?.from ?? "#ffffff"}
+          gradientTo={POSTS_CARD_GRADIENTS[post.tags]?.to ?? "#ffffff"}
+          gradientColor={POSTS_CARD_GRADIENTS[post.tags]?.color ?? "#000000"}
+          border={POSTS_CARD_GRADIENTS[post.tags]?.color ?? "#ffffff"}
         >
           <img
             src={post.image}
