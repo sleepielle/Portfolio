@@ -44,7 +44,7 @@ const LatestPosts = ({ posts }: { posts: PostMeta[] }) => {
   }));
 
   return (
-    <div className="">
+    <div className="py-20">
       <Eyebrow
         title="Latest Posts"
         description="From debugging to design systems, here are my latest posts showing tutorials, notes and reflections as a software engineer."

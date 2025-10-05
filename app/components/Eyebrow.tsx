@@ -12,7 +12,7 @@ const Eyebrow = (props: EyebrowProps) => {
   const { eyebrowText, title, description, className, route } = props;
   return (
     <div
-      className={`flex justify-center items-center flex-col gap-4 ${className}`}
+      className={`flex justify-center items-center flex-col gap-4 z-50 ${className}`}
     >
       <h2 className="text-center text-primary text-4xl tracking-tighter">
         {title}

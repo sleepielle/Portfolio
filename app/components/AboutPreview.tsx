@@ -5,7 +5,7 @@ import { DigitalGarden } from "./DigitalGarden";
 
 const AboutPreview = () => {
   return (
-    <div className="flex flex-col justify-center items-center mt-32">
+    <div className="flex flex-col justify-center items-center py-20">
       <div className="flex justify-center items-center flex-col gap-4">
         <h2 className="text-center text-primary text-4xl tracking-tighter">
           About Me

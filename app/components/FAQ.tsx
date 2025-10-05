@@ -7,7 +7,7 @@ import {
 
 export function FAQ() {
   return (
-    <Accordion type="multiple" className="w-full mt-10 mx-5">
+    <Accordion type="multiple" className="w-[50rem] mt-10 mx-5">
       <AccordionItem value="item-1">
         <AccordionTrigger className="text-gray-500">
           Product Information

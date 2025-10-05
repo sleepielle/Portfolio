@@ -12,7 +12,7 @@ const FeaturedProjects = ({ projects, count = 4 }: FeaturedProjectsProps) => {
   if (projects.length === 0) return null;
   console.log(projects);
   return (
-    <section className="pb-15 pt-10 -z-100">
+    <section className=" py-20 ">
       <Eyebrow
         title="Featured Projects"
         eyebrowText="See all my projects"

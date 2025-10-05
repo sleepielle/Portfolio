@@ -17,7 +17,7 @@ import clsx from "clsx";
 const PostCard = ({ post }: { post: BentoPosts }) => {
   return (
     <div
-      className={`${post.colSpan} sm:h-[27rem] h-max w-[32rem] sm:w-[22rem]`}
+      className={`${post.colSpan} sm:h-[29rem] h-max w-[32rem] sm:w-[22rem]`}
     >
       <Link to={`/blog/${post.slug}`} className="block">
         <MagicCard
@@ -25,20 +25,46 @@ const PostCard = ({ post }: { post: BentoPosts }) => {
           gradientFrom={POSTS_CARD_GRADIENTS[post.tags]?.from ?? "#ffffff"}
           gradientTo={POSTS_CARD_GRADIENTS[post.tags]?.to ?? "#ffffff"}
           gradientColor={POSTS_CARD_GRADIENTS[post.tags]?.color ?? "#000000"}
-          border={POSTS_CARD_GRADIENTS[post.tags]?.color ?? "#ffffff"}
+          //  border={POSTS_CARD_GRADIENTS[post.tags]?.color ?? "#ffffff"}
         >
+          {" "}
           <img
             src={post.image}
-            className="w-full h-48 object-cover rounded mb-4 transition-transform duration-300 group-hover:scale-105 ease-out "
+            className="w-full h-48 object-cover rounded mb-4  "
           />
+          <span
+            className={clsx(
+              "flex items-center px-2 rounded-md cursor-pointer border text-sm transition-colors ml-5 mb-3 w-fit",
+              // selected styling (use a named color from tailwind config)
+              post.tags && "bg-selected text-primary font-semibold",
+              // notes styling (literal classes so Tailwind includes them)
+              post.tags.toString() === "Notes" &&
+                "text-notes-color  border-notes-strong bg-notes-pastel ",
+
+              post.tags.toString() === "Now" &&
+                "text-now-color  border-now-strong bg-now-pastel ",
+
+              post.tags.toString() === "Research" &&
+                "text-research-color  border-research-strong bg-research-pastel ",
+
+              post.tags.toString() === "Snippets" &&
+                "text-snippets-color  border-snippets-strong bg-snippets-pastel "
+            )}
+          >
+            {post.tags}
+          </span>
           <div className="px-6 pb-6 flex-col gap-2">
-            <span className="text-sm text-gray-400 my-2">
-              {new Date(post.date).toDateString()}
-            </span>
-            <h3 className="text-xl font-semibold text-gray-500 max-w-[25ch] group-hover:underline">
+            <h3 className="text-xl font-semibold text-gray-600 max-w-[25ch] group-hover:underline">
               {post.title}
-            </h3>{" "}
-            <p className="text-gray-400 mb-4">{post.excerpt}</p>
+            </h3>
+            <p className="text-gray-500 ">{post.excerpt}</p>
+            <p className="text-sm text-gray-400 my-2 mb-4">
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
             <RainbowButton variant="outline">Read More →</RainbowButton>
           </div>
         </MagicCard>

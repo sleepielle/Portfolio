@@ -28,10 +28,10 @@ const Pagination: React.FC<PaginationProps> = ({
       {Array.from({ length: totalPages }, (_, index) => (
         <button
           key={index + 1}
-          className={`px-3 py-1 cursor-pointer rounded transition-colors ${
+          className={`px-3 py-1 cursor-pointer rounded-lg transition-colors border ${
             currentPage === index + 1
-              ? "bg-accent text-white"
-              : "bg-tertiary text-secondary hover:bg-secondary"
+              ? "bg-[#339df9] font-semibold text-white"
+              : "hover:border hover:border-blue-500"
           }`}
           onClick={() => onPageChange(index + 1)}
         >

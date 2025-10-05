@@ -31,7 +31,7 @@ const experiences = [
 
 export default function ExperiencePreview() {
   return (
-    <section className="py-16">
+    <section className="py-28">
       <Eyebrow
         title="Experience"
         eyebrowText="View more details"

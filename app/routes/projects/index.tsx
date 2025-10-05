@@ -1,10 +1,11 @@
 import { useState } from "react";
 import ProjectCard from "~/components/ProjectCard";
 import type { Route } from "./+types/index";
-import type { Projects } from "~/types";
+import type { Projects, TagCounts } from "~/types";
 import Pagination from "~/components/Pagination";
 import { AnimatePresence, motion } from "framer-motion";
 import { SocialsDock } from "~/components/SocialsDock";
+import clsx from "clsx";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -63,6 +64,12 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
   const indexOfFirst = indexOfLast - projectsPerPage;
   const currentProjects = filteredProjects.slice(indexOfFirst, indexOfLast);
 
+  const projectsPerTag: TagCounts = {
+    All: projects.length,
+    Frontend: projects.filter((proj) => proj.category === "Frontend").length,
+    Fullstack: projects.filter((proj) => proj.category === "Fullstack").length,
+  };
+
   return (
     <section className="bg-primary text-primary min-h-screen py-20  ">
       <div className=" mx-auto px-4">
@@ -74,10 +81,8 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
         <div className="flex flex-wrap gap-2 mb-8">
           {categories.map((category) => (
             <button
-              className={`h-8 flex items-center px-1 pl-3 rounded-lg cursor-pointer border text-sm transition-colors border-border  justify-center ${
-                selectedCategory === category
-                  ? "bg-[#339df9] font-semibold text-primary"
-                  : "hover:border hover:border-blue-500 "
+              className={`rounded-lg ${
+                selectedCategory === category ? "font-semibold" : ""
               }`}
               key={category}
               onClick={() => {
@@ -86,14 +91,23 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
               }}
             >
               <span
-                className={` ${selectedCategory === category && "text-white"}`}
+                className={clsx(
+                  `h-8 flex items-center px-1 pl-3 rounded-lg cursor-pointer border text-sm transition-colors hover:border-2 `,
+                  category === "All" &&
+                    "text-primary hover:border-2 hover:border-blue-500  ",
+
+                  category === "Frontend" &&
+                    "text-research-color border-research-strong bg-research-pastel hover:border-2  ",
+                  category === "Fullstack" &&
+                    "text-notes-color border-notes-strong bg-notes-pastel hover:border-2  "
+                )}
               >
                 {category}
-              </span>
-              <span
-                className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border  ${selectedCategory && "text-blue bg-white font-bold"}`}
-              >
-                5
+                <span
+                  className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border  ${selectedCategory && "text-blue bg-white font-bold"}`}
+                >
+                  {projectsPerTag[category]}
+                </span>
               </span>
             </button>
           ))}

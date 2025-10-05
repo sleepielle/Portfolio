@@ -202,7 +202,7 @@ export default function ContactForm() {
   );
 
   return (
-    <div className=" w-full py-14 px-4">
+    <div className=" w-full py-14 mb-20">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

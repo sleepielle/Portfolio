@@ -45,3 +45,6 @@ export type BentoPosts = PostMeta & {
   colSpan?: string;
   rowSpan?: string;
 };
+
+//Any object whose keys are strings and values are numbers
+export type TagCounts = Record<string, number>;

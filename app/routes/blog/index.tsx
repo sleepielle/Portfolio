@@ -1,6 +1,8 @@
-import { useState } from "react";
+"use client";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import type { Route } from "./+types/index";
-import type { PostMeta } from "~/types";
+import type { PostMeta, TagCounts } from "~/types";
 import PostCard from "~/components/PostCard";
 import Pagination from "~/components/Pagination";
 import PostFilter from "~/components/PostFilter";
@@ -28,7 +30,7 @@ export async function loader({
 const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedTag, setSelectedTag] = useState("");
+  const [selectedTag, setSelectedTag] = useState("All");
 
   const postsPerPage = 6;
 
@@ -42,21 +44,42 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
     );
   });
 
+  console.log(filteredPosts);
+  const filteredTags =
+    selectedTag === "All"
+      ? filteredPosts
+      : filteredPosts.filter((post) => post.tags.toString() === selectedTag);
+
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;
-  const currentPosts = filteredPosts.slice(indexOfFirst, indexOfLast);
+  const currentPosts = filteredTags.slice(indexOfFirst, indexOfLast);
+
+  // Get # of posts per tag
+
+  // Calculate counts for ALL posts (not filtered/paginated)
+  const numberPostsPerTag: TagCounts = {
+    All: posts.length,
+    Notes: posts.filter((post) => post.tags === "Notes").length,
+    Snippets: posts.filter((post) => post.tags === "Snippets").length,
+    Now: posts.filter((post) => post.tags === "Now").length,
+    Research: posts.filter((post) => post.tags === "Research").length,
+  };
 
   //removing duplicate tags
-  const tags: string[] = [
-    "All",
-    ...new Set(currentPosts.flatMap((p) => p.tags)),
-  ];
+  const tags: string[] = ["All", ...new Set(posts.flatMap((p) => p.tags))];
+
+  useEffect(() => {
+    return () => {
+      if (searchQuery.length > 0) {
+        setSelectedTag("All");
+      }
+    };
+  }, [searchQuery]);
 
   return (
-    <div className=" max-w-7xl mx-auto w-full mt-20 ">
+    <div className=" max-w-7xl mx-auto w-full mt-20 h-screen ">
       <SocialsDock />
-
       <h2 className="text-4xl text-primary  text-center tracking-tighter ">
         Blog
       </h2>
@@ -65,27 +88,23 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
         paper breakdowns and summaries, what I'm currently learning, among
         others. Take a look around :)
       </p>
-
       <div className="flex flex-wrap gap-2  justify-between items-center">
         <div className="flex justify-between items-center gap-1">
-          {tags.map((tag) => (
+          {tags.map((tag, i) => (
             <button
               className={clsx(
-                "h-8 flex items-center px-1 pl-3 rounded-lg cursor-pointer border text-sm transition-colors",
-                // selected styling (use a named color from tailwind config)
+                "h-8 flex items-center px-1 pl-3 rounded-lg cursor-pointer border text-sm transition-colors hover:border-2  ",
                 selectedTag === tag && "bg-selected text-primary font-semibold",
-                // notes styling (literal classes so Tailwind includes them)
+                tag === "All" &&
+                  "text-primary hover:border-2 hover:border-blue-500  ",
                 tag === "Notes" &&
-                  "text-notes-color  border-notes-strong bg-notes-pastel ",
-
+                  "text-notes-color border-notes-strong bg-notes-pastel hover:border-2  ",
                 tag === "Now" &&
-                  "text-now-color  border-now-strong bg-now-pastel ",
-
+                  "text-now-color border-now-strong bg-now-pastel hover:border-2  ",
                 tag === "Research" &&
-                  "text-research-color  border-research-strong bg-research-pastel ",
-
+                  "text-research-color border-research-strong bg-research-pastel hover:border-2  ",
                 tag === "Snippets" &&
-                  "text-snippets-color  border-snippets-strong bg-snippets-pastel "
+                  "text-snippets-color border-snippets-strong bg-snippets-pastel hover:border-2  "
               )}
               key={tag}
               onClick={() => {
@@ -93,13 +112,15 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
                 setCurrentPage(1);
               }}
             >
-              <span className={` ${selectedTag === tag && "text-white"}`}>
+              <span className={`${selectedTag === tag && "font-bold"}`}>
                 {tag}
               </span>
+
+              {/* Show only the count for this specific tag */}
               <span
-                className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border  ${selectedTag && "text-blue bg-white font-bold"}`}
+                className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border ${selectedTag === tag && "text-blue bg-white font-bold"}`}
               >
-                5
+                {numberPostsPerTag[tag]}
               </span>
             </button>
           ))}
@@ -113,14 +134,31 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
         ></PostFilter>
       </div>
 
-      <div> </div>
-      <div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3  justify-items-center grid-flow-row mt-8">
-        {currentPosts.length === 0 ? (
-          <p className="text-gray-400 text-center">No posts found</p>
-        ) : (
-          currentPosts.map((post) => <PostCard post={post} key={post.slug} />)
-        )}
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3  justify-items-center grid-flow-row mt-8">
+          {currentPosts.length === 0 ? (
+            <div className="col-span-full flex items-center justify-center min-h-[60vh]">
+              <div className="flex flex-col items-center text-center gap-3 max-w-md mx-auto">
+                <img
+                  src="/images/not-found-2.png"
+                  className="w-64 h-64 object-contain opacity-80"
+                />
+                <p className="text-xl font-semibold mt-5">Post doesn't exist</p>
+                <p className="text-md text-gray-500">
+                  Please check out all the available posts or search a valid
+                  post.
+                </p>
+              </div>
+            </div>
+          ) : (
+            currentPosts.map((post) => (
+              <motion.div key={post.slug} layout>
+                <PostCard post={post} key={post.slug} />
+              </motion.div>
+            ))
+          )}
+        </motion.div>
+      </AnimatePresence>
 
       {totalPages > 1 && (
         <Pagination
