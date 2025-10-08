@@ -7,8 +7,9 @@
     "date": "2025-03-01T00:00:00",
     "image": "/images/project-7.png",
     "tags": "Notes",
-    "className": "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3"
-
+    "className": "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+    "pdfRoute": "/public/pdf/git-cheat-sheet - Copy.pdf",
+    "devNotesLinks": ["link1","link2","link3"]
   },
   {
     "id": "2",
@@ -32,11 +33,12 @@
   },
   {
     "id": "4",
-    "slug": "writing-clean-Snippets",
+    "slug": "writing-clean-snippets",
     "title": "Writing Clean and Maintainable Snippets",
     "excerpt": "Best practices to improve Snippets readability, structure, and reusability.",
     "date": "2025-02-10T00:00:00",
-    "image": "/images/project-7.png",    "tags": "Now",
+    "image": "/images/project-7.png",
+    "tags": "Now",
     "className": "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4"
   },
   {

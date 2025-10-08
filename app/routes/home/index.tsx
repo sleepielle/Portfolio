@@ -60,6 +60,8 @@ export async function loader({
       image: item.image || "/images/no-image.png",
       tags: item.tags,
       date: item.date,
+      pdfRoute: item.pdfRoute,
+      devNotesLinks: item.devNotesLinks,
     }));
 
   return { projects, posts };

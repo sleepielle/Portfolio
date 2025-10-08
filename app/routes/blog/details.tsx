@@ -1,14 +1,40 @@
+"use client";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import oneDark from "react-syntax-highlighter/dist/cjs/styles/prism/one-dark";
 import type { Route } from "./+types/details";
 import type { PostMeta } from "~/types";
-import { Link } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import remarkGfm from "remark-gfm";
 import { getToc } from "./toc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { SocialsDock } from "~/components/SocialsDock";
+import { Button } from "~/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import { Viewer, Worker } from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
+
+// Import styles
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+import {
+  BookmarkIcon,
+  FileIcon,
+  ThumbnailIcon,
+} from "@react-pdf-viewer/default-layout";
+import ShareIcons from "~/components/ShareIcons";
+import clsx from "clsx";
+import { ShareDock } from "~/components/ShareDock";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "~/components/ui/sheet";
+import PostMarkdown from "~/components/PostMarkdown";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
   const { slug } = params;
@@ -38,119 +64,47 @@ type BlogPostDetailsPageProps = {
     markdown: string;
   };
 };
+
 const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
   const { postMeta, markdown } = loaderData;
   const toc = getToc(markdown);
+  const navigate = useNavigate();
+
+  console.log(postMeta.devNotesLinks);
+
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   return (
     <div className="w-full mx-auto px-6 py-12 ">
-      <SocialsDock />
-      <div>
-        <Link
-          to="/blog"
-          className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
-        >
-          ← Back To Posts
-        </Link>
-
-        {postMeta.tags}
+      <ShareDock postSlug={postMeta.slug} postTitle={postMeta.title} />
+      <div className="flex-col items-center gap-2 mb-5  top-20 z-15"></div>
+      <div className="relative w-full h-64 rounded overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-100 to-white/50 z-10 opacity-60"></div>
+        <img
+          src={postMeta.image}
+          className="w-full h-full object-cover"
+          alt=""
+        />
       </div>
 
-      <div className="mb-5">
-        <h1 className="text-5xl font-bold text-gray-600 mb-2">
-          {postMeta.title}
-        </h1>
-        <p className="text-gray-500 text-xl">{postMeta.excerpt}</p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto px-4 md:px-0 z-10 text-gray-500">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-auto px-4 md:px-0 z-10 text-gray-500 mt-10">
         <main className="md:col-span-2">
-          <img
-            src={postMeta.image}
-            className="w-full h-48 object-cover rounded mb-4"
-          />
-          <p className="text sm text-gray-400 mb-6">
-            {new Date(postMeta.date).toDateString()}
-          </p>
-          <ReactMarkdown
-            remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
-            rehypePlugins={[
-              rehypeSlug,
-              [rehypeAutolinkHeadings, { behavior: "append" }],
-            ]}
-            components={{
-              h1: (props) => (
-                <h1
-                  {...props}
-                  className="text-4xl font-extrabold tracking-tight text-gray-600 mt-8 mb-4"
-                />
-              ),
-              h2: (props) => (
-                <h2
-                  {...props}
-                  className="text-3xl font-bold text-gray-500 mt-10 mb-3"
-                />
-              ),
-              h3: (props) => (
-                <h3
-                  {...props}
-                  className="text-2xl font-semibold text-gray-500 mt-8 mb-2"
-                />
-              ),
-              p: (props) => <p {...props} className="text-gray-500" />,
-              a: (props) => (
-                <a
-                  {...props}
-                  className="text-blue-400 underline underline-offset-4 hover:text-blue-300"
-                />
-              ),
-              blockquote: (props) => (
-                <blockquote
-                  {...props}
-                  className="border-l-4 border-blue-500/60 pl-4 italic bg-blue-500/10 rounded"
-                />
-              ),
-              code({ inline, className, children, ...props }: any) {
-                const match = /language-(\w+)/.exec(className || "");
-                if (!inline && match) {
-                  return (
-                    <SyntaxHighlighter
-                      {...props}
-                      language={match[1]}
-                      style={oneDark}
-                      PreTag="div"
-                      customStyle={{
-                        margin: 0,
-                        borderRadius: "0.5rem",
-                        padding: "1rem",
-                      }}
-                    >
-                      {String(children).replace(/\n$/, "")}
-                    </SyntaxHighlighter>
-                  );
-                }
-                // inline code
-                return (
-                  <code
-                    {...props}
-                    className="bg-white/10 px-1.5 py-0.5 rounded font-mono text-[0.9em]"
-                  >
-                    {children}
-                  </code>
-                );
-              },
-              // images: make them responsive and rounded
-              img: (props) => (
-                <img {...props} className="rounded-lg mx-auto max-h-96" />
-              ),
-              table: (props) => (
-                <div className="overflow-x-auto">
-                  <table {...props} className="table-auto w-full" />
-                </div>
-              ),
-            }}
-          >
-            {markdown}
-          </ReactMarkdown>
+          <div className="mb-5">
+            <h1 className="text-4xl font-bold text-gray-600 mb-2 ">
+              {postMeta.title}
+            </h1>
+            <p className="text-gray-500 text-lg">{postMeta.excerpt}</p>
+            <div className="flex items-center">
+              {" "}
+              <p className=" text-gray-400 mt-1 ">
+                {postMeta.tags} {" ── .✦"}{" "}
+                {new Date(postMeta.date).toDateString()}
+              </p>
+            </div>
+          </div>
+          <hr />
+
+          <PostMarkdown markdown={markdown} pdfRoute={postMeta.pdfRoute} />
         </main>
 
         <aside className="md:block hidden md:col-span-1 bg-[#f9f9f9] border border-gray-200 rounded-lg p-5 sticky top-24 h-fit">
@@ -165,7 +119,7 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
             </div>
           </div>
 
-          <div className="mt-10 p-5 border border-gray-400 rounded-lg bg-white">
+          <div className="mt-10 p-5 border border-[#d1d5dc] rounded-lg bg-[#fefefe]">
             <nav>
               <p className="font-semibold pb-3 border-b-gray-300 text-sm">
                 On this page
@@ -178,13 +132,54 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
                       href={`#${id}`}
                       className="block text-slate-400 hover:font-semibold"
                     >
-                      {text}
+                      ─ ✦ {text}
                     </a>
                   </li>
                 ))}
               </ul>
             </nav>
           </div>
+
+          <hr className="my-5" />
+
+          {(postMeta.devNotesLinks?.length ?? 0) > 0 && (
+            <>
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline">Dev Notes</Button>
+                </SheetTrigger>
+
+                <SheetContent>
+                  <SheetHeader>
+                    <SheetTitle>Developer Notes</SheetTitle>
+                    <SheetDescription>
+                      {postMeta.devNotesLinks!.map((link, index) => (
+                        <a
+                          key={index}
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-blue-600 underline hover:text-blue-800 mb-2"
+                        >
+                          {link}
+                        </a>
+                      ))}
+                    </SheetDescription>
+                  </SheetHeader>
+                </SheetContent>
+              </Sheet>
+              <hr className="my-5" />
+            </>
+          )}
+
+          <Button
+            variant={"outline"}
+            className="border-[#d1d5dc] w-full"
+            onClick={(e) => navigate("/blog")}
+          >
+            <ArrowLeft className="text-gray-600" />
+            Back to Blog
+          </Button>
         </aside>
       </div>
     </div>

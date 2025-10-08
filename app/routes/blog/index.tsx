@@ -78,7 +78,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   }, [searchQuery]);
 
   return (
-    <div className=" max-w-7xl mx-auto w-full mt-20 h-screen ">
+    <div className=" max-w-7xl mx-auto w-full mt-20 h-full ">
       <SocialsDock />
       <h2 className="text-4xl text-primary  text-center tracking-tighter ">
         Blog

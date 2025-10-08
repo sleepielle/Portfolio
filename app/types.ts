@@ -25,6 +25,8 @@ export type PostMeta = {
   image: string;
   tags: string;
   className?: string;
+  pdfRoute?: string;
+  devNotesLinks?: string[];
 };
 
 export type Post = {
