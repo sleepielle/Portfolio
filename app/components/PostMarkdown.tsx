@@ -118,7 +118,7 @@ const PostMarkdown = ({
             >
               <Viewer
                 plugins={[defaultLayoutPluginInstance]}
-                fileUrl="/public\pdf\git-cheat-sheet - Copy.pdf"
+                fileUrl={pdfRoute.toString()}
               />
             </div>
           </Worker>

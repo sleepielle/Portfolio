@@ -8,7 +8,7 @@
     "image": "/images/project-7.png",
     "tags": "Notes",
     "className": "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
-    "pdfRoute": "/public/pdf/git-cheat-sheet - Copy.pdf",
+    "pdfRoute": "/pdf/git-cheat-sheet - Copy.pdf",
     "devNotesLinks": ["link1","link2","link3"]
   },
   {
