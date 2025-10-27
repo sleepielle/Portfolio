@@ -6,6 +6,7 @@ import AboutPreview from "~/components/AboutPreview";
 import LatestPosts from "~/components/LatestPosts";
 import ExperiencePreview from "~/components/ExperiencePreview";
 import ContactForm from "~/components/ContactForm";
+import CTASection from "~/components/CTA";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -78,7 +79,7 @@ const HomePage = ({ loaderData }: Route.ComponentProps) => {
       <ExperiencePreview />
       <LatestPosts posts={posts} />
       <AboutPreview />
-      <ContactForm />
+      <CTASection />
     </>
   );
 };
