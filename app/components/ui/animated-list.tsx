@@ -1,17 +1,15 @@
-"use client";
-
-import { cn } from "~/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import type { ComponentPropsWithoutRef } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import type { MotionProps } from "framer-motion";
+import { cn } from "~/lib/utils";
 
 export function AnimatedListItem({ children }: { children: React.ReactNode }) {
-  const animations = {
+  const animations: MotionProps = {
     initial: { scale: 0, opacity: 0 },
     animate: { scale: 1, opacity: 1, originY: 0 },
     exit: { scale: 0, opacity: 0 },
-    transition: { type: "spring", stiffness: 350, damping: 40 } as const,
+    transition: { type: "spring", stiffness: 350, damping: 40 },
   };
 
   return (

@@ -7,8 +7,8 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-} from "motion/react";
-import type { MotionProps } from "motion/react";
+} from "framer-motion";
+import type { MotionProps } from "framer-motion";
 import React, { useRef } from "react";
 import type { PropsWithChildren } from "react";
 

@@ -1,7 +1,21 @@
 import { motion } from "framer-motion";
-import { Briefcase, Database, FileText, GitBranch } from "lucide-react";
+import {
+  Briefcase,
+  Database,
+  File,
+  FileText,
+  GitBranch,
+  Search,
+  Settings,
+} from "lucide-react";
 import Eyebrow from "./Eyebrow";
 import { MagicCard } from "components/magicui/magic-card";
+import ExperienceGrid from "./ExperienceGrid";
+import { SkillsPreview } from "./SkillsPreview";
+import { RainbowButton } from "components/magicui/rainbow-button";
+import { AnimatedBeamDemo } from "./AnimatedBeam";
+import { OrbitingCircles } from "./ui/orbiting-circles";
+import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
 
 const experiences = [
   {
@@ -31,39 +45,108 @@ const experiences = [
 
 export default function ExperiencePreview() {
   return (
-    <section className="py-28">
+    <section className="relative z-10 pt-44 pb-16">
       <Eyebrow
-        title="Experience"
+        title="Beyond the Code"
         eyebrowText="View more details"
         description="I focus on delivering full-stack solutions, bridging business-critical systems with modern development practices. "
         className="mt-5 mb-10"
-        route="experience"
       />
-      <div className="mx-auto flex flex-col gap-8">
-        {experiences.map((exp, idx) => (
-          <div
-            key={idx}
-            className="card rounded-lg  transition  h-[25rem] sm:h-max sm:gap-5 p-5 border-2 border-[#eefc91] "
-          >
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-xl font-semibold text-blue-400">
-                {exp.role}
-              </h3>
-              <span className="text-sm text-gray-500">{exp.date}</span>
-            </div>
-            <p className="text-gray-400 mb-6">{exp.company}</p>
+      <div className="flex flex-col justify-center items-start gap-10 sm:flex-row ">
+        <div className=" flex gap-6 flex-col items-center justify-center sm:justify-start sm:items-start sm:w-lg mx-auto ">
+          <h2 className="text-gray-500 text-2xl text-center sm:text-start max-w-[30ch]">
+            Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+            consectetur, adipisci velitasdf
+          </h2>
+          <p className="text-gray-400 text-center sm:text-start max-w-[30ch] sm:max-w-2xl">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Pellentesque nec tortor ac ante ultrices pellentesque.
+          </p>
 
-            <ul className="space-y-3">
-              {exp.highlights.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <div className="mt-1">{item.icon}</div>
-                  <p className="text-gray-500">{item.text}</p>
-                </li>
-              ))}
-            </ul>
+          <p className="text-gray-400 text-center sm:text-start max-w-[30ch] sm:max-w-2xl">
+            Morbi gravida sem vel ex convallis, id hendrerit massa pretium.
+            Praesent non leo nec elit tincidunt eleifend vel et massa.
+          </p>
+
+          <div className="flex gap-2 justify-center items-center sm:items-start">
+            <RainbowButton
+              variant={"outline"}
+              className={`${GRADIENT_BUTTON_CLASSNAME}`}
+            >
+              View Experience
+            </RainbowButton>
+            <RainbowButton variant={"outline"}>View Projects</RainbowButton>
           </div>
-        ))}
-      </div>
+        </div>
+        <div className=" sm:w-md w-full mx-auto">
+          <div className="h-fit w-full relative">
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                backgroundImage: `
+        linear-gradient(to right, #8993a8 1px, transparent 1px),
+        linear-gradient(to bottom, #8993a8 1px, transparent 1px)
+      `,
+                backgroundSize: "20px 20px",
+                backgroundPosition: "0 0, 0 0",
+                maskImage: `
+       repeating-linear-gradient(
+              to right,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            repeating-linear-gradient(
+              to bottom,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+          radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
+      `,
+                WebkitMaskImage: `
+ repeating-linear-gradient(
+              to right,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            repeating-linear-gradient(
+              to bottom,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+          radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
+      `,
+                maskComposite: "intersect",
+                WebkitMaskComposite: "source-in",
+              }}
+            />
+            <AnimatedBeamDemo />
+          </div>
+        </div>
+      </div>{" "}
+      {/* <div className="flex gap-16">
+            <div className="flex gap-2 items-center ">
+              <div className="border-2 rounded-2xl p-3 w-fit">🌸</div>
+              <div className="flex flex-col ">
+                <p className="text-gray-600">Title</p>
+                <p className="text-gray-500 text-sm">Description</p>
+              </div>
+            </div>
+            <div className="flex gap-2 items-center ">
+              <div className="border-2 rounded-2xl p-3 w-fit">🌸</div>
+              <div className="flex flex-col ">
+                <p className="text-gray-600">Title</p>
+                <p className="text-gray-500 text-sm">Description</p>
+              </div>
+            </div>
+          </div> */}
     </section>
   );
 }

@@ -32,7 +32,7 @@
     "heroicons": "^2.2.0",
     "isbot": "^5.1.27",
     "lucide-react": "^0.544.0",
-    "motion": "^12.23.22",
+    "motion": "^12.23.24",
     "pdfjs-dist": "^3.4.120",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -45,10 +45,13 @@
     "remark-directive": "^4.0.0",
     "remark-gfm": "^4.0.1",
     "remark-toc": "^9.0.0",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@react-router/dev": "^7.7.1",
+    "@svgr/rollup": "^8.1.0",
+    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.4",
     "@types/node": "^20",

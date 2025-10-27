@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionTemplate, useMotionValue } from "motion/react";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import React, { useCallback, useEffect } from "react";
 
 import { cn } from "../../app/lib/utils";
@@ -19,7 +19,7 @@ interface MagicCardProps {
 export function MagicCard({
   children,
   className,
-  gradientSize = 200,
+  gradientSize = 150,
   gradientColor = "#afd8fc",
   gradientOpacity = 0.1,
   gradientFrom = "#afd8fc",
@@ -89,10 +89,10 @@ export function MagicCard({
       />
       <div
         className="absolute inset-px rounded-[inherit] bg-background "
-        style={{
-          borderColor: `${border}`,
-          borderWidth: 1,
-        }}
+        // style={{
+        //   borderColor: `${border}`,
+        //   borderWidth: 0.5,
+        // }}
       />
       <motion.div
         className="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100 "

@@ -2,7 +2,11 @@
 import { defineConfig } from "tailwindcss";
 
 export default defineConfig({
-  content: ["./src/**/*.{js,ts,jsx,tsx,html}"], // adjust to your project structure
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,html}",
+    "./components/**/*.{js,ts,jsx,tsx,html}",
+  ],
+  plugins: [animate],
   theme: {
     extend: {
       colors: {

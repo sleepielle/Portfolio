@@ -2,6 +2,10 @@
 
 import type { IconProps } from "@radix-ui/react-icons/dist/types";
 
+type ProjectResult = {
+  title: string;
+};
+
 export type Projects = {
   id: string;
   documentId: string;
@@ -13,6 +17,7 @@ export type Projects = {
   date: Date;
   category: string;
   featured: boolean;
+  results?: ProjectResult[];
 };
 
 export type PostMeta = {
@@ -50,3 +55,8 @@ export type BentoPosts = PostMeta & {
 
 //Any object whose keys are strings and values are numbers
 export type TagCounts = Record<string, number>;
+
+export type ProjectCardProps = {
+  project: Projects;
+  className?: string;
+};

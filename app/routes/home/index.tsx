@@ -43,6 +43,7 @@ export async function loader({
       date: new Date(item.date),
       category: item.category,
       featured: item.featured,
+      results: item.results,
     }));
 
   // Process posts data to match the expected PostMeta type

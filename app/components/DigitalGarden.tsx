@@ -3,13 +3,12 @@ import { HeroVideoDialog } from "./ui/hero-video-dialog";
 
 export function DigitalGarden() {
   return (
-    <section className="mt-5  border-t-gray-400 pt-5">
+    <section className="relative z-10 mt-5  border-t-gray-400 pt-5">
       <Eyebrow
         eyebrowText="Check it out!"
         title="Digital Garden"
         description=""
         className={""}
-        route=""
       />
       <div className="relative">
         <HeroVideoDialog

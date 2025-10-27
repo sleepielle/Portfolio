@@ -7,7 +7,6 @@ const ContactPage = () => {
     <div>
       <SocialsDock noEmail />
       <ContactForm />
-      <AboutPreview />
     </div>
   );
 };

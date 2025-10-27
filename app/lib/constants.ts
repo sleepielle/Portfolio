@@ -28,3 +28,5 @@ export const POSTS_TAG_GRADIENTS: Record<
   Snippets: { from: "#d6f5fc", to: "#ffffff", color: "#1ecaee" },
   Research: { from: "#e7e7ff", to: "#ffffff", color: "#696cff" },
 };
+
+export const CATEGORIES = ["Snippets", "Now", "Research", "Notes"];
