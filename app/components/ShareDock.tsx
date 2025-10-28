@@ -72,18 +72,18 @@ export function ShareDock({
       social: {
         LinkedIn: {
           name: "LinkedIn",
-          url: `https://www.linkedin.com/shareArticle?mini=true&amp;url=https://mercedesgpaz.vercel.app/blog/${postSlug}/show-your-work/&amp;text=${postTitle} | Mercedes Paz`,
+          url: `https://www.linkedin.com/shareArticle?mini=true&amp;url=https://mercedesgpaz.vercel.app/blog/${postSlug}/&amp;text=${postTitle} | Mercedes Paz`,
           icon: Icons.linkedin,
         },
 
         Twitter: {
           name: "Twitter",
-          url: `https://twitter.com/intent/tweet?url=https://mercedesgpaz.vercel.app/blog/${postSlug}/show-your-work/&amp;text=${postTitle} | Mercedes Paz`,
+          url: `https://twitter.com/intent/tweet?url=https://mercedesgpaz.vercel.app/blog/${postSlug}/&amp;text=${postTitle} | Mercedes Paz`,
           icon: Icons.twitter,
         },
         Facebook: {
           name: "Facebook",
-          url: `https://www.facebook.com/sharer/sharer.php?u=https://mercedesgpaz.vercel.app/blog/${postSlug}/show-your-work/&amp;text=${postTitle} | Mercedes Paz`,
+          url: `https://www.facebook.com/sharer/sharer.php?u=https://mercedesgpaz.vercel.app/blog/${postSlug}/&amp;text=${postTitle} | Mercedes Paz`,
           icon: Icons.facebook,
         },
       },

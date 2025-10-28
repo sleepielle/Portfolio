@@ -18,7 +18,6 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 
 // Import styles
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
-import ShareIcons from "~/components/ShareIcons";
 import clsx from "clsx";
 import { ShareDock } from "~/components/ShareDock";
 import {
