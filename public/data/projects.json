@@ -6,9 +6,7 @@
       "slug": "ecommerce-platform",
       "title": "E-Commerce Platform",
       "description": "A Fullstack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping, etc.",
-      "image": {
-        "url": "/images/project-1.webp"
-      },
+      "image":  "/images/project-1.webp",
       "live-site": "https://github.com/yourusername/mobile-app",
       "github" :  "https://github.com/yourusername/mobile-app",      "date": "2024-01-15",
       "category": "Fullstack",
@@ -25,9 +23,7 @@
       "title": "Task Management App",
       "slug": "task-management-app",
       "description": "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      "image": {
-        "url": "/images/project-2.png"
-      },
+      "image": "/images/project-2.png",
       "live-site": "https://github.com/yourusername/mobile-app",
       "github" :  "https://github.com/yourusername/mobile-app",      "date": "2024-02-20",
       "category": "Frontend",
@@ -43,9 +39,7 @@
       "title": "Weather Dashboard",
       "slug": "weather-dashboard",
       "description": "A weather application that displays current weather conditions and forecasts using OpenWeatherMap API with beautiful visualizations.",
-      "image": {
-        "url": "/images/project-3.png"
-      },
+      "image": "/images/project-3.png",
       "live-site": "https://github.com/yourusername/mobile-app",
       "github" :  "https://github.com/yourusername/mobile-app",      "date": "2024-03-10",
       "category": "Frontend",
@@ -57,9 +51,7 @@
       "title": "Blog CMS",
       "slug": "blog-cms",
       "description": "A content management system for blogs with markdown support, user roles, and SEO optimization features.",
-      "image": {
-        "url": "/images/project-4.png"
-      },
+      "image":"/images/project-4.png",
       "live-site": "https://github.com/yourusername/mobile-app",
       "github" :  "https://github.com/yourusername/mobile-app",      "date": "2024-04-05",
       "category": "Fullstack",

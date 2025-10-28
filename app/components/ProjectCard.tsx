@@ -42,7 +42,7 @@ const ProjectCard = (props: ProjectCardProps) => {
               Live Site
             </RainbowButton>
           </Link>
-          <Link to={`/projects/${project.id}`}>
+          <Link to={`/projects/${project.slug}`}>
             <RainbowButton
               variant={"outline"}
               className={`flex-2  ${className}`}

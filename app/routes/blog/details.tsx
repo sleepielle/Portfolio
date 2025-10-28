@@ -18,14 +18,6 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 // Import styles
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import { ShareDock } from "~/components/ShareDock";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "~/components/ui/sheet";
 import PostMarkdown from "~/components/PostMarkdown";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
@@ -134,7 +126,7 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
 
             <hr className="my-5" />
 
-            {(postMeta.devNotesLinks?.length ?? 0) > 0 && (
+            {/* {(postMeta.devNotesLinks?.length ?? 0) > 0 && (
               <>
                 <Sheet>
                   <SheetTrigger asChild>
@@ -162,7 +154,7 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
                 </Sheet>
                 <hr className="my-5" />
               </>
-            )}
+            )} */}
 
             <Button
               variant={"outline"}
