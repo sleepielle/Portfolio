@@ -16,9 +16,7 @@ import clsx from "clsx";
 
 const PostCard = ({ post }: { post: BentoPosts }) => {
   return (
-    <div
-      className={`${post.colSpan} sm:h-[29rem] h-max w-[32rem] sm:w-[22rem]`}
-    >
+    <div className={`${post.colSpan} sm:h-[29rem] h-max  sm:w-[22rem]`}>
       <Link to={`/blog/${post.slug}`} className="block">
         <MagicCard
           className={`rounded-lg shadow-xs border-[${POSTS_CARD_GRADIENTS[post.tags]?.from ?? "#ffffff"}]`}

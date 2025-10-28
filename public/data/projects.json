@@ -3,6 +3,7 @@
     {
       "id": 1,
       "documentId": "project-1",
+      "slug": "ecommerce-platform",
       "title": "E-Commerce Platform",
       "description": "A Fullstack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping, etc.",
       "image": {
@@ -22,6 +23,7 @@
       "id": 2,
       "documentId": "project-2",
       "title": "Task Management App",
+      "slug": "task-management-app",
       "description": "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
       "image": {
         "url": "/images/project-2.png"
@@ -39,6 +41,7 @@
       "id": 3,
       "documentId": "project-3",
       "title": "Weather Dashboard",
+      "slug": "weather-dashboard",
       "description": "A weather application that displays current weather conditions and forecasts using OpenWeatherMap API with beautiful visualizations.",
       "image": {
         "url": "/images/project-3.png"
@@ -52,6 +55,7 @@
       "id": 4,
       "documentId": "project-4",
       "title": "Blog CMS",
+      "slug": "blog-cms",
       "description": "A content management system for blogs with markdown support, user roles, and SEO optimization features.",
       "image": {
         "url": "/images/project-4.png"
@@ -59,48 +63,6 @@
       "live-site": "https://github.com/yourusername/mobile-app",
       "github" :  "https://github.com/yourusername/mobile-app",      "date": "2024-04-05",
       "category": "Fullstack",
-      "featured": false
-    },
-    {
-      "id": 5,
-      "documentId": "project-5",
-      "title": "Portfolio Website",
-      "description": "A responsive portfolio website built with modern web technologies showcasing projects and skills.",
-      "image": {
-        "url": "/images/project-5.png"
-      },
-      "live-site": "https://github.com/yourusername/mobile-app",
-      "github" :  "https://github.com/yourusername/mobile-app",
-      "date": "2024-05-12",
-      "category": "Frontend",
-      "featured": false
-    },
-    {
-      "id": 6,
-      "documentId": "project-6",
-      "title": "API Gateway",
-      "description": "A microservices API gateway with authentication, rate limiting, and request routing capabilities.",
-      "image": {
-        "url": "/images/project-6.png"
-      },
-      "live-site": "https://github.com/yourusername/mobile-app",
-      "github" :  "https://github.com/yourusername/mobile-app",
-      "date": "2024-06-18",
-      "category": "Fullstack",
-      "featured": false
-    },
-    {
-      "id": 7,
-      "documentId": "project-7",
-      "title": "Mobile App",
-      "description": "A cross-platform mobile application built with React Native for iOS and Android platforms.",
-      "image": {
-        "url": "/images/project-7.png"
-      },
-      "live-site": "https://github.com/yourusername/mobile-app",
-      "github" :  "https://github.com/yourusername/mobile-app",
-      "date": "2024-07-25",
-      "category": "Frontend",
       "featured": false
     }
   ]

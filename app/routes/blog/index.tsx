@@ -9,6 +9,8 @@ import PostFilter from "~/components/PostFilter";
 import { SocialsDock } from "~/components/SocialsDock";
 import { DigitalGarden } from "~/components/DigitalGarden";
 import clsx from "clsx";
+import { Ellipsis, HamburgerIcon, TextAlignJustify, XIcon } from "lucide-react";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 export async function loader({
   request,
@@ -31,6 +33,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTag, setSelectedTag] = useState("All");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const postsPerPage = 6;
 
@@ -77,8 +80,13 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
     };
   }, [searchQuery]);
 
+  const handleOpenMenu = () => {
+    setSearchQuery("");
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <div className=" max-w-7xl mx-auto w-full mt-20 h-full ">
+    <div className=" max-w-7xl w-full mt-20 min-h-screen ">
       <SocialsDock />
       <h2 className="text-4xl text-primary  text-center tracking-tighter ">
         Blog
@@ -89,7 +97,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
         others. Take a look around :)
       </p>
       <div className="flex flex-wrap gap-2  justify-between items-center">
-        <div className="flex justify-between items-center gap-1">
+        <div className="hidden sm:flex sm:justify-between sm:items-center sm:gap-1">
           {tags.map((tag, i) => (
             <button
               className={clsx(
@@ -125,13 +133,100 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
             </button>
           ))}
         </div>
-        <PostFilter
-          searchQuery={searchQuery}
-          onSearchChange={(query) => {
-            setSearchQuery(query);
-            setCurrentPage(1);
-          }}
-        ></PostFilter>
+
+        <div className="flex justify-between items-center  w-full sm:w-fit gap-10">
+          <button onClick={handleOpenMenu}>
+            <div className="font-bold text-2xl  flex items-center h-8 p-4 rounded-lg cursor-pointer   transition-colors hover:border-2 sm:hidden shadow-xs border">
+              {!menuOpen ? (
+                <Ellipsis className="font-bold text-2xl text-gray-400 " />
+              ) : (
+                <XIcon className="" />
+              )}
+            </div>
+          </button>
+
+          {/* Mobile Dropdown  */}
+          {menuOpen && (
+            <div className="flex-col sm:hidden absolute top-[22rem] bg-white/70 z-10 w-[10rem] p-5 rounded-2xl border shadow-md gap-16 backdrop-blur-3xl ">
+              {tags.map((tag, i) => (
+                <button
+                  key={tag}
+                  className={clsx(
+                    "h-8 flex items-center px-1 pl-3 rounded-lg cursor-pointer border text-sm transition-colors hover:border-2 gap-6 my-2 ",
+                    selectedTag === tag &&
+                      "bg-selected text-primary font-semibold",
+                    tag === "All" &&
+                      "text-primary hover:border-2 hover:border-blue-500",
+                    tag === "Notes" &&
+                      "text-notes-color border-notes-strong bg-notes-pastel hover:border-2",
+                    tag === "Now" &&
+                      "text-now-color border-now-strong bg-now-pastel hover:border-2",
+                    tag === "Research" &&
+                      "text-research-color border-research-strong bg-research-pastel hover:border-2",
+                    tag === "Snippets" &&
+                      "text-snippets-color border-snippets-strong bg-snippets-pastel hover:border-2"
+                  )}
+                  onClick={() => {
+                    setSelectedTag(tag);
+                    setCurrentPage(1);
+                    setMenuOpen(!menuOpen);
+                  }}
+                >
+                  <span className={selectedTag === tag ? "font-bold" : ""}>
+                    {tag}
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Tablet and Desktop Nav */}
+          <div className="hidden  justify-between items-center gap-1">
+            {tags.map((tag, i) => (
+              <button
+                className={clsx(
+                  "h-8 flex items-center px-1 pl-3 rounded-lg cursor-pointer border text-sm transition-colors hover:border-2  ",
+                  selectedTag === tag &&
+                    "bg-selected text-primary font-semibold",
+                  tag === "All" &&
+                    "text-primary hover:border-2 hover:border-blue-500  ",
+                  tag === "Notes" &&
+                    "text-notes-color border-notes-strong bg-notes-pastel hover:border-2  ",
+                  tag === "Now" &&
+                    "text-now-color border-now-strong bg-now-pastel hover:border-2  ",
+                  tag === "Research" &&
+                    "text-research-color border-research-strong bg-research-pastel hover:border-2  ",
+                  tag === "Snippets" &&
+                    "text-snippets-color border-snippets-strong bg-snippets-pastel hover:border-2  "
+                )}
+                key={tag}
+                onClick={() => {
+                  setSelectedTag(tag);
+                  setCurrentPage(1);
+                }}
+              >
+                <span className={`${selectedTag === tag && "font-bold"}`}>
+                  {tag}
+                </span>
+
+                {/* Show only the count for this specific tag */}
+                <span
+                  className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border ${selectedTag === tag && "text-blue bg-white font-bold"}`}
+                >
+                  {numberPostsPerTag[tag]}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          <PostFilter
+            searchQuery={searchQuery}
+            onSearchChange={(query) => {
+              setSearchQuery(query);
+              setCurrentPage(1);
+            }}
+          ></PostFilter>
+        </div>
       </div>
 
       <AnimatePresence mode="wait">

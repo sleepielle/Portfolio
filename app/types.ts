@@ -10,6 +10,7 @@ export type Projects = {
   id: string;
   documentId: string;
   title: string;
+  slug: string;
   description: string;
   image: string;
   liveSite: string;
@@ -59,4 +60,18 @@ export type TagCounts = Record<string, number>;
 export type ProjectCardProps = {
   project: Projects;
   className?: string;
+};
+
+export type BlogPostDetailsPageProps = {
+  loaderData: {
+    postMeta: PostMeta;
+    markdown: string;
+  };
+};
+
+export type ProjectDetailsPageProps = {
+  loaderData: {
+    project: Projects;
+    markdown: string;
+  };
 };

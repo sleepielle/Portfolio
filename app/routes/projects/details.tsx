@@ -1,23 +1,25 @@
 import type { Route } from "./+types/details";
-import type { Projects } from "~/types";
+import type { ProjectDetailsPageProps, Projects } from "~/types";
 import { Link } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
+import PostMarkdown from "~/components/PostMarkdown";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
   // Use the request URL to construct absolute URLs for fetch
   const url = new URL(request.url);
   const baseUrl = `${url.protocol}//${url.host}`;
 
-  // get the path segments (removes empty ones)
+  console.log(baseUrl);
   const segments = url.pathname.split("/").filter(Boolean);
   console.log("segmenets " + segments);
   // for example, if URL = http://localhost:3000/projects/2
   // segments = ["projects", "2"]
   // you can take the last segment as index
+
   const index = parseInt(segments[segments.length - 1], 10);
   console.log("index " + index);
   // Load projects from local JSON file using absolute URL
-  const projectsResponse = await fetch(`${baseUrl}/projects.json`);
+  const projectsResponse = await fetch(`${baseUrl}/data/projects.json`);
   const projectsData = await projectsResponse.json();
 
   // Use segment index instead of [0]
@@ -26,6 +28,7 @@ export async function loader({ request, params }: Route.LoaderArgs) {
     id: item.id,
     documentId: item.documentId,
     title: item.title,
+    slug: item.slug,
     description: item.description,
     image: item.image?.url ? `${item.image.url}` : "/images/no-image.png",
     liveSite: item.liveSite,
@@ -33,19 +36,20 @@ export async function loader({ request, params }: Route.LoaderArgs) {
     date: item.date,
     category: item.category,
     featured: item.featured,
+    results: item.results,
   };
 
-  console.log(project.id);
-  console.log(project.title);
+  const markdown = await import(`../../projects/${project.slug}.md?raw`);
 
-  return { project };
+  console.log(markdown);
+  return { project, markdown: markdown.default };
 }
 
-const ProjectDetailsPage = ({ loaderData }: Route.ComponentProps) => {
-  const { project } = loaderData;
+const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
+  const { project, markdown } = loaderData;
 
   return (
-    <>
+    <div className="min-h-screen ">
       <Link
         to={"/projects"}
         className="flex items-center text-blue-400 hover:text-blue-500 mb-6 transition"
@@ -67,11 +71,11 @@ const ProjectDetailsPage = ({ loaderData }: Route.ComponentProps) => {
           {project.title}
         </h1>
 
-        <p className="text-gray-300 text-sm mb-4">
+        <p className="text-gray-500 text-sm mb-4">
           {new Date(project.date).toLocaleDateString()} • {project.category}
         </p>
 
-        <p className="text-gray-200 mb-6">{project.description}</p>
+        <p className="text-gray-500 mb-6">{project.description}</p>
 
         <a
           href={project.liveSite}
@@ -80,8 +84,9 @@ const ProjectDetailsPage = ({ loaderData }: Route.ComponentProps) => {
         >
           View Live Site →
         </a>
+        <PostMarkdown markdown={markdown} />
       </div>
-    </>
+    </div>
   );
 };
 

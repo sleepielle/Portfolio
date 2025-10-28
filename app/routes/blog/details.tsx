@@ -3,9 +3,8 @@ import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import oneDark from "react-syntax-highlighter/dist/cjs/styles/prism/one-dark";
 import type { Route } from "./+types/details";
-import type { PostMeta } from "~/types";
+import type { BlogPostDetailsPageProps, PostMeta } from "~/types";
 import { useNavigate } from "react-router";
-import remarkGfm from "remark-gfm";
 import { getToc } from "./toc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -18,7 +17,6 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 
 // Import styles
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
-import clsx from "clsx";
 import { ShareDock } from "~/components/ShareDock";
 import {
   Sheet,
@@ -52,12 +50,6 @@ export async function loader({ request, params }: Route.LoaderArgs) {
     markdown: markdown.default,
   };
 }
-type BlogPostDetailsPageProps = {
-  loaderData: {
-    postMeta: PostMeta;
-    markdown: string;
-  };
-};
 
 const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
   const { postMeta, markdown } = loaderData;
@@ -66,117 +58,124 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
 
   console.log(postMeta.devNotesLinks);
 
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
-
+  // const defaultLayoutPluginInstance = defaultLayoutPlugin();
+  console.log(postMeta.image);
   return (
-    <div className="w-full mx-auto px-6 py-12 ">
-      <ShareDock postSlug={postMeta.slug} postTitle={postMeta.title} />
-      <div className="flex-col items-center gap-2 mb-5  top-20 z-15"></div>
-      <div className="relative w-full h-64 rounded overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-100 to-white/50 z-10 opacity-60"></div>
-        <img
-          src={postMeta.image}
-          className="w-full h-full object-cover"
-          alt=""
-        />
-      </div>
+    <>
+      <title>{postMeta.title}</title>
+      <meta name="description" content={postMeta.excerpt} />
+      <meta property="og:title" content={postMeta.title} />
+      <meta property="og:description" content={postMeta.excerpt} />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-auto px-4 md:px-0 z-10 text-gray-500 mt-10">
-        <main className="md:col-span-2">
-          <div className="mb-5">
-            <h1 className="text-4xl font-bold text-gray-600 mb-2 ">
-              {postMeta.title}
-            </h1>
-            <p className="text-gray-500 text-lg">{postMeta.excerpt}</p>
-            <div className="flex items-center">
-              {" "}
-              <p className=" text-gray-400 mt-1 ">
-                {postMeta.tags} {" ── .✦"}{" "}
-                {new Date(postMeta.date).toDateString()}
-              </p>
+      <div className="w-full mx-auto px-6 py-12 ">
+        <ShareDock postSlug={postMeta.slug} postTitle={postMeta.title} />
+        <div className="flex-col items-center gap-2 mb-5  top-20 z-15"></div>
+        <div className="relative w-full h-64 rounded overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-100 to-white/50 z-10 opacity-60"></div>
+          <img
+            src={postMeta.image}
+            className="w-full h-full object-cover"
+            alt=""
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-auto px-4 md:px-0 z-10 text-gray-500 mt-10">
+          <main className="md:col-span-2">
+            <div className="mb-5">
+              <h1 className="text-4xl font-bold text-gray-600 mb-2 ">
+                {postMeta.title}
+              </h1>
+              <p className="text-gray-500 text-lg">{postMeta.excerpt}</p>
+              <div className="flex items-center">
+                {" "}
+                <p className=" text-gray-400 mt-1 ">
+                  {postMeta.tags} {" ── .✦"}{" "}
+                  {new Date(postMeta.date).toDateString()}
+                </p>
+              </div>
             </div>
-          </div>
-          <hr />
+            <hr />
 
-          <PostMarkdown markdown={markdown} pdfRoute={postMeta.pdfRoute} />
-        </main>
+            <PostMarkdown markdown={markdown} pdfRoute={postMeta.pdfRoute} />
+          </main>
 
-        <aside className="md:block hidden md:col-span-1 bg-[#f9f9f9] border border-gray-200 rounded-lg p-5 sticky top-24 h-fit">
-          <div className=" flex justify-start items-center gap-3">
-            <img
-              className="rounded-full w-10 h-10"
-              src="../../../images/profile.jpeg"
-            />
-            <div className=" flex flex-col justify-start items-start">
-              <p className="font-semibold text-sm">Mercedes Paz</p>
-              <span className="text-xs">Computer Systems Engineer</span>
+          <aside className="md:block hidden md:col-span-1 bg-[#f9f9f9] border border-gray-200 rounded-lg p-5 sticky top-24 h-fit">
+            <div className=" flex justify-start items-center gap-3">
+              <img
+                className="rounded-full w-10 h-10"
+                src="../../../images/profile.jpeg"
+              />
+              <div className=" flex flex-col justify-start items-start">
+                <p className="font-semibold text-sm">Mercedes Paz</p>
+                <span className="text-xs">Computer Systems Engineer</span>
+              </div>
             </div>
-          </div>
 
-          <div className="mt-10 p-5 border border-[#d1d5dc] rounded-lg bg-[#fefefe]">
-            <nav>
-              <p className="font-semibold pb-3 border-b-gray-300 text-sm">
-                On this page
-              </p>
+            <div className="mt-10 p-5 border border-[#d1d5dc] rounded-lg bg-[#fefefe]">
+              <nav>
+                <p className="font-semibold pb-3 border-b-gray-300 text-sm">
+                  On this page
+                </p>
 
-              <ul className="space-y-1 text-sm">
-                {toc.map(({ id, text, depth }) => (
-                  <li key={id} className={depth > 2 ? "pl-4" : ""}>
-                    <a
-                      href={`#${id}`}
-                      className="block text-slate-400 hover:font-semibold"
-                    >
-                      ─ ✦ {text}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
+                <ul className="space-y-1 text-sm">
+                  {toc.map(({ id, text, depth }) => (
+                    <li key={id} className={depth > 2 ? "pl-4" : ""}>
+                      <a
+                        href={`#${id}`}
+                        className="block text-slate-400 hover:font-semibold"
+                      >
+                        ─ ✦ {text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
 
-          <hr className="my-5" />
+            <hr className="my-5" />
 
-          {(postMeta.devNotesLinks?.length ?? 0) > 0 && (
-            <>
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="outline">Dev Notes</Button>
-                </SheetTrigger>
+            {(postMeta.devNotesLinks?.length ?? 0) > 0 && (
+              <>
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <Button variant="outline">Dev Notes</Button>
+                  </SheetTrigger>
 
-                <SheetContent>
-                  <SheetHeader>
-                    <SheetTitle>Developer Notes</SheetTitle>
-                    <SheetDescription>
-                      {postMeta.devNotesLinks!.map((link, index) => (
-                        <a
-                          key={index}
-                          href={link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block text-blue-600 underline hover:text-blue-800 mb-2"
-                        >
-                          {link}
-                        </a>
-                      ))}
-                    </SheetDescription>
-                  </SheetHeader>
-                </SheetContent>
-              </Sheet>
-              <hr className="my-5" />
-            </>
-          )}
+                  <SheetContent>
+                    <SheetHeader>
+                      <SheetTitle>Developer Notes</SheetTitle>
+                      <SheetDescription>
+                        {postMeta.devNotesLinks!.map((link, index) => (
+                          <a
+                            key={index}
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block text-blue-600 underline hover:text-blue-800 mb-2"
+                          >
+                            {link}
+                          </a>
+                        ))}
+                      </SheetDescription>
+                    </SheetHeader>
+                  </SheetContent>
+                </Sheet>
+                <hr className="my-5" />
+              </>
+            )}
 
-          <Button
-            variant={"outline"}
-            className="border-[#d1d5dc] w-full"
-            onClick={(e) => navigate("/blog")}
-          >
-            <ArrowLeft className="text-gray-600" />
-            Back to Blog
-          </Button>
-        </aside>
+            <Button
+              variant={"outline"}
+              className="border-[#d1d5dc] w-full"
+              onClick={(e) => navigate("/blog")}
+            >
+              <ArrowLeft className="text-gray-600" />
+              Back to Blog
+            </Button>
+          </aside>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

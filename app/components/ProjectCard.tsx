@@ -13,16 +13,7 @@ const ProjectCard = (props: ProjectCardProps) => {
   const { project, className } = props;
 
   return (
-    <MagicCard
-      className="rounded-lg overflow-hidden transition hover:shadow-md sm:h-[27rem] h-max sm:gap-5 "
-      gradientFrom={
-        PROJECTS_CARD_GRADIENTS[project.category]?.from ?? "#ffffff"
-      }
-      gradientTo={PROJECTS_CARD_GRADIENTS[project.category]?.to ?? "#ffffff"}
-      gradientColor={
-        PROJECTS_CARD_GRADIENTS[project.category]?.color ?? "#000000"
-      }
-    >
+    <MagicCard className="rounded-lg overflow-hidden transition hover:shadow-md sm:h-[27rem] h-max sm:gap-5 ">
       <img
         src={project.image}
         alt={project.title}

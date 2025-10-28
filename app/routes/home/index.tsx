@@ -37,6 +37,7 @@ export async function loader({
       id: item.id.toString(),
       documentId: item.documentId,
       title: item.title,
+      slug: item.slug,
       description: item.description,
       image: item.image?.url || "/images/no-image.png",
       liveSite: item.liveSite,

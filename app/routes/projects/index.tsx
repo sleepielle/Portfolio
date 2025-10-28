@@ -24,6 +24,7 @@ export async function loader({
     id: item.id.toString(),
     documentId: item.documentId,
     title: item.title,
+    slug: item.slug,
     description: item.description,
     image: item.image?.url || "/images/no-image.png",
     liveSite: item.liveSite,
@@ -114,7 +115,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
         </div>
 
         <AnimatePresence mode="wait">
-          <motion.div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <motion.div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {currentProjects.map((project) => (
               <motion.div key={project.id} layout>
                 <ProjectCard key={project.id} project={project} />

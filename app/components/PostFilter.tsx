@@ -8,7 +8,7 @@ type PostFilterProps = {
 
 const PostFilter = ({ searchQuery, onSearchChange }: PostFilterProps) => {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 w-full sm:w-fit">
       <input
         type="text"
         placeholder="Search posts ..."
@@ -22,7 +22,7 @@ const PostFilter = ({ searchQuery, onSearchChange }: PostFilterProps) => {
           className="border-[#d1d5dc]"
           onClick={(e) => onSearchChange("")}
         >
-          <X className="text-gray-600" />
+          <X className="text-gray-500" />
         </Button>
       )}
     </div>

@@ -1,12 +1,10 @@
 "use client";
 
-import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react";
+import { CalendarIcon, MailIcon } from "lucide-react";
 import { Link } from "react-router";
 import React from "react";
 
 import { buttonVariants } from "./ui/button";
-import { Separator } from "./ui/separator";
-
 import {
   Tooltip,
   TooltipContent,
@@ -71,18 +69,20 @@ export function ShareDock({
     contact: {
       social: {
         LinkedIn: {
-          name: "LinkedIn",
-          url: `https://www.linkedin.com/shareArticle?mini=true&amp;url=https://mercedesgpaz.vercel.app/blog/${postSlug}/&amp;text=${postTitle} | Mercedes Paz`,
+          name: "Share on LinkedIn",
+          url: `https://www.linkedin.com/feed/?linkOrigin=LI_BADGE&shareActive=true&shareUrl=${encodeURIComponent(
+            `https://mercedesgpaz.vercel.app/blog/${postSlug}`
+          )}&text=${encodeURIComponent(postTitle)}  | Mercedes Paz`,
           icon: Icons.linkedin,
         },
 
         Twitter: {
-          name: "Twitter",
-          url: `https://twitter.com/intent/tweet?url=https://mercedesgpaz.vercel.app/blog/${postSlug}/&amp;text=${postTitle} | Mercedes Paz`,
+          name: "Share on X",
+          url: `https://x.com/intent/tweet?url=https://mercedesgpaz.vercel.app/blog/${postSlug}/&amp;text=${postTitle} | Mercedes Paz`,
           icon: Icons.twitter,
         },
         Facebook: {
-          name: "Facebook",
+          name: "Share on Facebook",
           url: `https://www.facebook.com/sharer/sharer.php?u=https://mercedesgpaz.vercel.app/blog/${postSlug}/&amp;text=${postTitle} | Mercedes Paz`,
           icon: Icons.facebook,
         },
@@ -112,7 +112,7 @@ export function ShareDock({
                     </Link>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>{name}</p>
+                    <p>Share on {name}</p>
                   </TooltipContent>
                 </Tooltip>
               </DockIcon>

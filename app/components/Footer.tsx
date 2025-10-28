@@ -3,14 +3,14 @@ import { Link } from "react-router";
 const Footer = () => {
   return (
     <footer className=" h-24 bg-gradient-to-b from-[#fdfdfd] to-blue-50 w-full">
-      <div className="flex justify-between items-center gap-5 pt-3 -top-5  border-t-2 border-t-gray-100 m-5 text-blue-400 max-w-5xl mx-auto">
+      <div className="flex justify-between items-center gap-5 pt-3 -top-5  border-t-2 border-t-gray-100 m-5 text-blue-300 sm:max-w-5xl mx-auto max-w-lg">
         <div>Mercedes Paz</div>
         <div className="flex justify-center items-center gap-5 ">
           <Link
             to={"https://github.com/sleepielle"}
             className="flex justify-between items-center hover:font-semibold"
           >
-            GitHub{" "}
+            GitHub
             <svg
               width="15"
               height="15"

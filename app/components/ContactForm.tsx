@@ -202,14 +202,14 @@ export default function ContactForm() {
   );
 
   return (
-    <div className=" w-full py-14 mb-20">
+    <div className=" flex items-center justify-center w-full min-h-[80vh] my-auto ">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="mx-auto max-w-3xl"
       >
-        <div className="mb-8 flex  flex-col justify-center items-center text-center ">
+        <div className="mb-8 flex flex-col justify-center h-fit items-center text-center mx-auto ">
           <div>
             <h1 className="text-4xl  tracking-tighter text-blue-500 ">
               Contact Me

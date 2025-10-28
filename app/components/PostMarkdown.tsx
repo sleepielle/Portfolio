@@ -65,6 +65,8 @@ const PostMarkdown = ({
               className="border-l-4 border-blue-500/60 pl-4 italic bg-blue-500/10 rounded"
             />
           ),
+          ul: (props) => <ul {...props} className="text-gray-500" />,
+          li: (props) => <li {...props} className="text-gray-500" />,
           code({ inline, className, children, ...props }: any) {
             const match = /language-(\w+)/.exec(className || "");
             if (!inline && match) {
@@ -100,7 +102,7 @@ const PostMarkdown = ({
           ),
           table: (props) => (
             <div className="overflow-x-auto">
-              <table {...props} className="table-auto w-full" />
+              <table {...props} className="table-auto w-full text-gray-500" />
             </div>
           ),
         }}
