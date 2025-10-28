@@ -13,7 +13,7 @@ import { Button } from "./ui/button";
 import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
 import { RainbowButton } from "components/magicui/rainbow-button";
 import clsx from "clsx";
-import { PencilLine, PenTool } from "lucide-react";
+import { PencilLine } from "lucide-react";
 
 const FeaturedPosts = ({ post }: { post: BentoPosts }) => {
   const tags: string = post.tags;

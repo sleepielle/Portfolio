@@ -1,13 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  Briefcase,
-  Database,
-  File,
-  FileText,
-  GitBranch,
-  Search,
-  Settings,
-} from "lucide-react";
+import { Briefcase, Database, FileText, GitBranch } from "lucide-react";
 import Eyebrow from "./Eyebrow";
 import { MagicCard } from "components/magicui/magic-card";
 import ExperienceGrid from "./ExperienceGrid";

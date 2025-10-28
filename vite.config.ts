@@ -13,4 +13,23 @@ export default defineConfig({
     tsconfigPaths(),
     devtoolsJson(),
   ],
+  build: {
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        sourcemap: false,
+      },
+      onwarn(warning, warn) {
+        // Suppress sourcemap warnings
+        if (warning.message?.includes("sourcemap for reporting an error")) {
+          return;
+        }
+        warn(warning);
+      },
+    },
+  },
+  esbuild: {
+    sourcemap: false,
+  },
+  logLevel: "warn",
 });

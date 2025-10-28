@@ -3,19 +3,9 @@
 import { MagicCard } from "components/magicui/magic-card";
 import { RainbowButton } from "components/magicui/rainbow-button";
 import { motion } from "framer-motion";
-import { File } from "lucide-react";
 import { Link } from "react-router";
 import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
-import {
-  Code,
-  Cpu,
-  Terminal,
-  Database,
-  Layout,
-  Cloud,
-  Github,
-  Globe,
-} from "lucide-react";
+import { Code, Cpu, Database, Layout, Cloud, Github } from "lucide-react";
 
 const icons = [
   { Icon: Code, x: "-55%", y: "-10%" },

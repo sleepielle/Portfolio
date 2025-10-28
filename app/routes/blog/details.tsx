@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import oneDark from "react-syntax-highlighter/dist/cjs/styles/prism/one-dark";
 import type { Route } from "./+types/details";
 import type { PostMeta } from "~/types";
-import { Link, Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import remarkGfm from "remark-gfm";
 import { getToc } from "./toc";
 import rehypeSlug from "rehype-slug";
@@ -18,11 +18,6 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 
 // Import styles
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
-import {
-  BookmarkIcon,
-  FileIcon,
-  ThumbnailIcon,
-} from "@react-pdf-viewer/default-layout";
 import ShareIcons from "~/components/ShareIcons";
 import clsx from "clsx";
 import { ShareDock } from "~/components/ShareDock";
