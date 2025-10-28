@@ -25,7 +25,7 @@ const ShareIcons = ({
           </svg>
         </a>
         <a
-          href={`https://www.facebook.com/sharer/sharer.php?u=https://mercedesgpaz.vercel.app/blog/${postSlug}/show-your-work/&amp;text=${postTitle}`}
+          href={`https://www.facebook.com/sharer/sharer.php?u=https://mercedesgpaz.vercel.app/blog/${postSlug}/&amp;text=${postTitle}`}
           target="_blank"
         >
           <svg
@@ -40,7 +40,7 @@ const ShareIcons = ({
           </svg>
         </a>
         <a
-          href={`https://www.linkedin.com/shareArticle?mini=true&amp;url=https://mercedesgpaz.vercel.app/blog/${postSlug}/show-your-work/&amp;text=${postTitle}`}
+          href={`https://www.linkedin.com/shareArticle?mini=true&amp;url=https://mercedesgpaz.vercel.app/blog/${postSlug}/&amp;text=${postTitle}`}
           target="_blank"
         >
           <svg
