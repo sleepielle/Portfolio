@@ -37,10 +37,12 @@ export async function loader({ request, params }: Route.LoaderArgs) {
   };
 
   const markdown = await import(
-    `../../markdown/projects/${project.slug}.md?raw`
+    `../../../public/markdown/projects/${project.slug}.md?raw`
   );
 
-  //      const markdown = await import(`./projects/
+  // const markdown = await import(
+  //   `../../markdown/projects/${project.slug}.md?raw`
+  // );
 
   console.log(markdown);
   return { project, markdown: markdown.default };
