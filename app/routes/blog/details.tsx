@@ -35,7 +35,7 @@ export async function loader({ request, params }: Route.LoaderArgs) {
   if (!postMeta) throw new Response("Not Found", { status: 404 });
 
   // Dynamically import raw markdown
-  const markdown = await import(`../../posts/${slug}.md?raw`);
+  const markdown = await import(`/markdown/posts/${slug}.md?raw`);
 
   return {
     postMeta,
@@ -52,46 +52,155 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
 
   // const defaultLayoutPluginInstance = defaultLayoutPlugin();
   console.log(postMeta.image);
+
+  const style: React.CSSProperties = {
+    height: "100vh",
+    width: "100%",
+    background: `
+      radial-gradient(circle at 20% 40%, rgba(255,180,200,0.55), transparent 60%),
+      radial-gradient(circle at 80% 30%, rgba(180,220,255,0.55), transparent 60%),
+      radial-gradient(circle at 50% 70%, rgba(200,255,220,0.50), transparent 65%),
+      rgba(255,255,255,0.35)
+    `,
+    backdropFilter: "blur(40px) saturate(180%)",
+    WebkitBackdropFilter: "blur(40px) saturate(180%)",
+    position: "relative",
+  };
+
+  const container: React.CSSProperties = {
+    position: "relative",
+    minHeight: "380px",
+    width: "100%",
+    borderRadius: "18px",
+    overflow: "hidden",
+  };
+
+  const rainbowLayer: React.CSSProperties = {
+    position: "absolute",
+    inset: 0,
+    // combine a soft linear rainbow + a couple of radial "color clouds"
+    backgroundImage: `
+      linear-gradient(90deg,
+        rgba(255, 90, 90, 0.55) 0%,
+        rgba(255, 160, 90, 0.45) 12%,
+        rgba(180, 230, 120, 0.42) 28%,
+        rgba(110, 225, 240, 0.4) 48%,
+        rgba(125, 120, 255, 0.45) 68%,
+        rgba(235, 110, 240, 0.5) 86%,
+        rgba(255, 90, 90, 0.55) 100%
+      ),
+      radial-gradient(circle at 15% 30%, rgba(255,205,205,0.35), transparent 35%),
+      radial-gradient(circle at 80% 20%, rgba(205,220,255,0.32), transparent 40%)
+    `,
+    transform: "scale(1.06)", // hide blurred edges
+    filter: "blur(34px) saturate(140%)",
+    willChange: "transform, filter",
+    opacity: 1,
+  };
+
+  const frostedWash: React.CSSProperties = {
+    position: "absolute",
+    inset: 0,
+    background:
+      "linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04))",
+    backdropFilter: "blur(8px) saturate(120%)",
+    WebkitBackdropFilter: "blur(8px) saturate(120%)",
+  };
+
+  const vignette: React.CSSProperties = {
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    background:
+      "radial-gradient(1200px 400px at 50% 110%, rgba(0,0,0,0.06), transparent 30%)," +
+      "linear-gradient(0deg, rgba(0,0,0,0.03), transparent 40%)",
+  };
+
+  const content: React.CSSProperties = {
+    position: "relative",
+    zIndex: 3,
+    padding: "44px",
+    color: "white",
+    textShadow: "0 6px 18px rgba(10,10,10,0.45)",
+    maxWidth: "920px",
+  };
+
+  const eyebrow: React.CSSProperties = {
+    display: "inline-block",
+    background: "rgba(255,255,255,0.12)",
+    padding: "6px 10px",
+    borderRadius: "999px",
+    fontSize: "13px",
+    marginBottom: "18px",
+    color: "rgba(255,255,255,0.95)",
+    backdropFilter: "blur(6px)",
+  };
+
   return (
-    <>
+    <div className="">
       <title>{postMeta.title}</title>
-      <meta name="description" content={postMeta.excerpt} />
+      <meta name="description" content={postMeta.longExcerpt} />
       <meta property="og:title" content={postMeta.title} />
-      <meta property="og:description" content={postMeta.excerpt} />
+      <meta property="og:description" content={postMeta.longExcerpt} />
 
-      <div className="w-full mx-auto px-6 py-12 ">
+      <div className="px-6 pt-15 h-116 ">
         <ShareDock postSlug={postMeta.slug} postTitle={postMeta.title} />
-        <div className="flex-col items-center gap-2 mb-5  top-20 z-15"></div>
-        <div className="relative w-full h-64 rounded overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-100 to-white/50 z-10 opacity-60"></div>
-          <img
-            src={postMeta.image}
-            className="w-full h-full object-cover"
-            alt=""
-          />
+
+        {/* BACKGROUND (absolute, behind content) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden max-w-6xl rounded-2xl mx-5 h-128 top-24 ">
+          {/* subtle neutral base — very translucent so colors show through */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/12 to-gray-100/8" />
+
+          {/* large blurred colorful "clouds" — higher alpha + large blur */}
+          <div className="absolute -inset-[8%] opacity">
+            <div className="absolute top-[6%] left-[8%] w-[40%] aspect-square rounded-full bg-gradient-to-r from-amber-500/70 to-yellow-200/70 blur-[64px]" />
+            <div className="absolute top-[56%] left-[62%] w-[30%] aspect-square rounded-full bg-gradient-to-r from-green-400/70 to-blue-500/70 blur-[56px]" />
+            <div className="absolute top-[36%] left-[28%] w-[24%] aspect-square rounded-full bg-gradient-to-r from-purple-400/70 to-pink-500/70 blur-[52px]" />
+          </div>
+
+          {/* horizontal rainbow band (blend mode helps it read on light backgrounds) */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div
+              className="w-full h-full mix-blend-overlay"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(255,90,90,0.28), rgba(255,160,90,0.22), rgba(180,230,120,0.24), rgba(110,225,240,0.24), rgba(125,120,255,0.26), rgba(235,110,240,0.28))",
+              }}
+            />
+          </div>
+
+          {/* tiny frosted layer to keep it glassy, but very low opacity */}
+          <div className="absolute inset-0 backdrop-blur-[3px] bg-white/4" />
+          <div className="absolute inset-0 pointer-events-none z-[1] bg-gradient-to-t from-black/20 via-black/5 to-transparent"></div>
         </div>
+        {/* black overlay gradient (bottom → top) */}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-auto px-4 md:px-0 z-10 text-gray-500 mt-10">
-          <main className="md:col-span-2">
-            <div className="mb-5">
-              <h1 className="text-4xl font-bold text-gray-600 mb-2 ">
-                {postMeta.title}
-              </h1>
-              <p className="text-gray-500 text-lg">{postMeta.excerpt}</p>
-              <div className="flex items-center">
-                {" "}
-                <p className=" text-gray-400 mt-1 ">
-                  {postMeta.tags} {" ── .✦"}{" "}
-                  {new Date(postMeta.date).toDateString()}
-                </p>
-              </div>
+        {/* CONTENT (relative, above background) */}
+        <div className="relative z-10 flex flex-col justify-center h-full">
+          <div className="max-w-5xl mx-auto px-4 md:px-0">
+            <div className="inline-block bg-white/10 backdrop-blur-sm text-white dark:text-white rounded-full px-3 py-1 text-sm mb-4 border-1 border-white/70">
+              {postMeta.tags} {" ── .✦"}{" "}
+              {new Date(postMeta.date).toDateString()}
             </div>
-            <hr />
 
+            <h1 className="text-4xl md:text-5xl font-bold text-white dark:text-white leading-tight mb-3 max-w-2xl">
+              {postMeta.title}
+            </h1>
+
+            <p className="text-lg text-white/80 dark:text-gray-200 max-w-2xl">
+              {postMeta.longExcerpt}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-6xl z-10 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-auto px-4 md:px-0 z-10 text-gray-500 mt-10 max-w-6xl">
+          <main className="md:col-span-2 mt-10">
             <PostMarkdown markdown={markdown} pdfRoute={postMeta.pdfRoute} />
           </main>
 
-          <aside className="md:block hidden md:col-span-1 bg-[#f9f9f9] border border-gray-200 rounded-lg p-5 sticky top-24 h-fit">
+          <aside className="md:block hidden md:col-span-1 bg-[#f9f9f9]    p-5 sticky top-24 h-fit mt-10">
             <div className=" flex justify-start items-center gap-3">
               <img
                 className="rounded-full w-10 h-10"
@@ -167,7 +276,7 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
           </aside>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -14,12 +14,12 @@ const PostFilter = ({ searchQuery, onSearchChange }: PostFilterProps) => {
         placeholder="Search posts ..."
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
-        className="w-full px-4 py-1 rounded-lg  text-gray-500 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 shadow-xs"
+        className="w-full px-4 py-1 rounded-full  text-gray-500 border border-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 shadow-xs"
       />
       {searchQuery && (
         <Button
           variant={"outline"}
-          className="border-[#d1d5dc]"
+          className="shadow-none border-none"
           onClick={(e) => onSearchChange("")}
         >
           <X className="text-gray-500" />

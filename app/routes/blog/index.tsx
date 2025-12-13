@@ -7,10 +7,8 @@ import PostCard from "~/components/PostCard";
 import Pagination from "~/components/Pagination";
 import PostFilter from "~/components/PostFilter";
 import { SocialsDock } from "~/components/SocialsDock";
-import { DigitalGarden } from "~/components/DigitalGarden";
 import clsx from "clsx";
-import { Ellipsis, HamburgerIcon, TextAlignJustify, XIcon } from "lucide-react";
-import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { Ellipsis, XIcon } from "lucide-react";
 
 export async function loader({
   request,
@@ -43,7 +41,8 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
     const query = searchQuery.toLowerCase();
     return (
       post.title.toLowerCase().includes(query) ||
-      post.excerpt.toLowerCase().includes(query)
+      post.longExcerpt.toLowerCase().includes(query) ||
+      post.shortExcerpt.toLowerCase().includes(query)
     );
   });
 
@@ -101,7 +100,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
           {tags.map((tag, i) => (
             <button
               className={clsx(
-                "h-8 flex items-center px-1 pl-3 rounded-lg cursor-pointer border text-sm transition-colors hover:border-2  ",
+                "h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2  ",
                 selectedTag === tag && "bg-selected text-primary font-semibold",
                 tag === "All" &&
                   "text-primary hover:border-2 hover:border-blue-500  ",
@@ -126,7 +125,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
 
               {/* Show only the count for this specific tag */}
               <span
-                className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border ${selectedTag === tag && "text-blue bg-white font-bold"}`}
+                className={`ml-2 text-xs  h-6 min-w-6 font-medium flex items-center justify-center ${selectedTag === tag && "text-blue  font-bold"}`}
               >
                 {numberPostsPerTag[tag]}
               </span>
@@ -152,7 +151,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
                 <button
                   key={tag}
                   className={clsx(
-                    "h-8 flex items-center px-1 pl-3 rounded-lg cursor-pointer border text-sm transition-colors hover:border-2 gap-6 my-2 ",
+                    "h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2 gap-6 my-2 ",
                     selectedTag === tag &&
                       "bg-selected text-primary font-semibold",
                     tag === "All" &&
@@ -185,7 +184,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
             {tags.map((tag, i) => (
               <button
                 className={clsx(
-                  "h-8 flex items-center px-1 pl-3 rounded-lg cursor-pointer border text-sm transition-colors hover:border-2  ",
+                  "h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2  ",
                   selectedTag === tag &&
                     "bg-selected text-primary font-semibold",
                   tag === "All" &&
@@ -211,7 +210,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
 
                 {/* Show only the count for this specific tag */}
                 <span
-                  className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border ${selectedTag === tag && "text-blue bg-white font-bold"}`}
+                  className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border ${selectedTag === tag && "text-blue  font-bold"}`}
                 >
                   {numberPostsPerTag[tag]}
                 </span>

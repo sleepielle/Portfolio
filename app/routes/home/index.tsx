@@ -58,9 +58,10 @@ export async function loader({
       id: item.id,
       title: item.title,
       slug: item.slug,
-      excerpt: item.excerpt,
+      shortExcerpt: item.shortExcerpt,
+      longExcerpt: item.longExcerpt,
       body: "", // posts-meta.json doesn't contain body content
-      image: item.image || "/images/no-image.png",
+      image: item.image ?? "/images/no-image.png",
       tags: item.tags,
       date: item.date,
       pdfRoute: item.pdfRoute,

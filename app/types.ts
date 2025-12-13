@@ -24,7 +24,8 @@ export type Projects = {
 export type PostMeta = {
   id: string;
   slug: string;
-  excerpt: string;
+  shortExcerpt: string;
+  longExcerpt: string;
   title: string;
   date: string;
   body: string;

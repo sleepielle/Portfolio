@@ -20,7 +20,7 @@ const ProjectCard = (props: ProjectCardProps) => {
         className="w-full h-42 object-cover "
       />
       <div className="flex flex-col m-5 gap-3 ">
-        <div className="flex justify-between items-center md:mb-3 flex-col-reverse ">
+        <div className="flex justify-between items-center  flex-col-reverse ">
           <h3 className="text-xl font-semibold mb-1 text-gray-600">
             {project.title}
           </h3>
@@ -29,7 +29,7 @@ const ProjectCard = (props: ProjectCardProps) => {
           </span>
         </div>
 
-        <p className="text-sm text-gray-500  h-fit md:h-20 text-center mb-5 sm:mb-0 ">
+        <p className="text-sm text-gray-500  h-fit md:h-20 text-center mb-3 ">
           {project.description}
         </p>
 
@@ -37,7 +37,7 @@ const ProjectCard = (props: ProjectCardProps) => {
           <Link to={project.liveSite}>
             <RainbowButton
               variant={"outline"}
-              className={`flex-1  ${className}`}
+              className={`flex-1 hover: ${className}`}
             >
               Live Site
             </RainbowButton>

@@ -13,24 +13,27 @@ import { Button } from "./ui/button";
 import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
 import { RainbowButton } from "components/magicui/rainbow-button";
 import clsx from "clsx";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 const PostCard = ({ post }: { post: BentoPosts }) => {
   return (
-    <div className={`${post.colSpan} sm:h-[29rem] h-max  sm:w-[22rem]`}>
+    <div className={`${post.colSpan} sm:h-[25rem] h-max  sm:w-[22rem] `}>
       <Link to={`/blog/${post.slug}`} className="block">
-        <MagicCard
-          className={`rounded-lg shadow-xs border-[${POSTS_CARD_GRADIENTS[post.tags]?.from ?? "#ffffff"}]`}
-          gradientFrom={POSTS_CARD_GRADIENTS[post.tags]?.from ?? "#ffffff"}
-          gradientTo={POSTS_CARD_GRADIENTS[post.tags]?.to ?? "#ffffff"}
-          gradientColor={POSTS_CARD_GRADIENTS[post.tags]?.color ?? "#000000"}
-          //  border={POSTS_CARD_GRADIENTS[post.tags]?.color ?? "#ffffff"}
-        >
-          {" "}
-          <img
-            src={post.image}
-            className="w-full h-48 object-cover rounded mb-4  "
-          />
-          <span
+        <Tooltip>
+          <TooltipContent>
+            <p>Click to read more</p>
+          </TooltipContent>
+          <TooltipTrigger className="cursor-pointer">
+            <MagicCard
+              className={`rounded-lg align-start justify-start hover:translate-y-1 hover:shadow-sm  border-[${POSTS_CARD_GRADIENTS[post.tags]?.from ?? "#339df9"}]`}
+
+              //  border={POSTS_CARD_GRADIENTS[post.tags]?.color ?? "#ffffff"}
+            >
+              <img
+                src={post.image}
+                className="w-full h-48 object-cover rounded mb-4  "
+              />
+              {/* <span
             className={clsx(
               "flex items-center px-2 rounded-md cursor-pointer border text-sm transition-colors ml-5 mb-3 w-fit",
               // selected styling (use a named color from tailwind config)
@@ -50,22 +53,28 @@ const PostCard = ({ post }: { post: BentoPosts }) => {
             )}
           >
             {post.tags}
-          </span>
-          <div className="px-6 pb-6 flex-col gap-2">
-            <h3 className="text-xl font-semibold text-gray-600 max-w-[25ch] group-hover:underline">
-              {post.title}
-            </h3>
-            <p className="text-gray-500 ">{post.excerpt}</p>
-            <p className="text-sm text-gray-400 my-2 mb-4">
-              {new Date(post.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </p>
-            <RainbowButton variant="outline">Read More →</RainbowButton>
-          </div>
-        </MagicCard>
+          </span> */}
+              <div className="px-6 flex-col gap-2 pt-2 pb-4 ">
+                <div className="text-start mt-2">
+                  <h3 className="text-xl font-semibold text-gray-600 max-w-[25ch] group-hover:underline my-3">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-500 mb-3">{post.shortExcerpt}</p>
+                </div>
+
+                <div className="text-sm text-gray-400 my-2 ">
+                  <p className="text-start">
+                    {new Date(post.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                </div>
+              </div>
+            </MagicCard>
+          </TooltipTrigger>
+        </Tooltip>
       </Link>
     </div>
   );

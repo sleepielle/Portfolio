@@ -17,6 +17,9 @@
 | 💫 Animation | Framer Motion 11 | Section transitions & microinteractions |
 | 💻 Language | TypeScript | Type safety and cleaner DX |
 | ✒️ CI/CD | Vercel | Modern continuous integration&deployment management |
+
+
+
 ---
 
 ## ✨ Key Highlights
@@ -28,6 +31,8 @@
 |  **Visual Refinements** | Adjusted spacing, timing, and contrast for better aesthetic balance |
 |  **Responsive Layouts** | Carefully adapted design to multiple breakpoints by using TailwindCSS |
 |  **Accessibility Considerations** | Semantic structure and contrast-aware styling |
+
+
 
 ---
 
@@ -111,7 +116,7 @@ Then open 👉 http://localhost:3000
 
 ---
 
-## 🌸 Let's Connect!
+ 🌸 Let's Connect!
 
 ![Banner](./src/assets/images/banner.png)
 Let's connect on [LinkedIn](https://www.linkedin.com/in/mercedesgpaz/) — or drop a ⭐ if you liked this project!

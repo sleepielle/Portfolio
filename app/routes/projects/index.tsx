@@ -26,7 +26,7 @@ export async function loader({
     title: item.title,
     slug: item.slug,
     description: item.description,
-    image: item.image?.url || "/images/no-image.png",
+    image: item.image ?? "/images/no-image.png",
     liveSite: item.liveSite,
     github: item.github,
     date: new Date(item.date),
@@ -72,17 +72,22 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
   };
 
   return (
-    <section className="bg-primary text-primary min-h-screen py-20  ">
+    <section className="bg-primary text-primary min-h-screen mt-20">
       <div className=" mx-auto px-4">
         <h2 className="text-4xl text-primary mb-8 text-center tracking-tighter">
           Projects
         </h2>
+        <p className="text-center text-sm text-gray-400 mb-8 mt-2 max-w-[50ch] mx-auto">
+          This is my knowledge lab 🧪 — a mix of code notes, industry research
+          paper breakdowns and summaries, what I'm currently learning, among
+          others.
+        </p>
         <SocialsDock />
 
         <div className="flex flex-wrap gap-2 mb-8">
           {categories.map((category) => (
             <button
-              className={`rounded-lg ${
+              className={` rounded-full  ${
                 selectedCategory === category ? "font-semibold" : ""
               }`}
               key={category}
@@ -93,7 +98,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
             >
               <span
                 className={clsx(
-                  `h-8 flex items-center px-1 pl-3 rounded-lg cursor-pointer border text-sm transition-colors hover:border-2 `,
+                  `h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2 `,
                   category === "All" &&
                     "text-primary hover:border-2 hover:border-blue-500  ",
 
@@ -105,7 +110,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
               >
                 {category}
                 <span
-                  className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border  ${selectedCategory && "text-blue bg-white font-bold"}`}
+                  className={`ml-2 text-xs  h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border  ${selectedCategory && "text-blue font-bold"}`}
                 >
                   {projectsPerTag[category]}
                 </span>
