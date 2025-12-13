@@ -35,7 +35,10 @@ export async function loader({ request, params }: Route.LoaderArgs) {
   if (!postMeta) throw new Response("Not Found", { status: 404 });
 
   // Dynamically import raw markdown
-  const markdown = await import(`/markdown/posts/${slug}.md?raw`);
+
+  const markdown = await import(
+    `../../../public/markdown/posts/${slug}.md?raw`
+  );
 
   return {
     postMeta,
