@@ -12,12 +12,15 @@ import clsx from "clsx";
 export async function loader({ request, params }: Route.LoaderArgs) {
   // Use the request URL to construct absolute URLs for fetch
   const slug = params.slug;
+  console.log("SLUG", slug);
   const url = new URL("/data/projects.json", request.url);
   const res = await fetch(url.href);
 
+  console.log("RESPONSE ", res);
   if (!res.ok) throw new Error("Failed to fetch data");
 
   const data = await res.json();
+  console.log("DATA", data);
 
   if (!data?.data) throw new Error("Invalid JSON structure");
 
@@ -33,7 +36,7 @@ export async function loader({ request, params }: Route.LoaderArgs) {
         : "/images/no-image.png",
   };
 
-  const markdown = await import(`/markdown/projects/${project.slug}.md?raw`);
+  const markdown = await import(`markdown/projects/${project.slug}.md?raw`);
 
   console.log(markdown);
   return { project, markdown: markdown.default };
