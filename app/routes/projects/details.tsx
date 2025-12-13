@@ -36,7 +36,7 @@ export async function loader({ request, params }: Route.LoaderArgs) {
         : "/images/no-image.png",
   };
 
-  const markdown = await import(`markdown/projects/${project.slug}.md?raw`);
+  const markdown = await import(`/markdown/projects/${project.slug}.md?raw`);
 
   console.log(markdown);
   return { project, markdown: markdown.default };
