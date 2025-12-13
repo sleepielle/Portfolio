@@ -41,7 +41,8 @@ export type Post = {
   slug: string;
   title: string;
   body: string;
-  excerpt: string;
+  shortExcerpt: string;
+  longExcerpt: string;
   date: string;
   image: string;
 };
