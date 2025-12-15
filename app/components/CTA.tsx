@@ -24,22 +24,15 @@ export default function CTASection() {
       {/* Background glow */}
 
       <MagicCard
-        className="rounded-2xl shadow-xs hover:shadow-sm hover:translate-y-1"
+        className="rounded-2xl shadow-xs hover:shadow-sm hover:translate-y-1 border-gray-200 border-1"
         gradientOpacity={0}
       >
         <div className="relative min-h-[50vh] flex flex-col items-center justify-center px-6">
           <div
             className="absolute inset-0 z-0"
             style={{
-              backgroundImage: `
-        linear-gradient(to right, #e7e5e4 1px, transparent 1px),
-        linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
-      `,
-              backgroundSize: "32px 32px",
-              WebkitMaskImage:
-                "radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)",
-              maskImage:
-                "radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)",
+              background:
+                "radial-gradient(125% 125% at 20% 10%, #fff 40%, #9ec6fe 110%)",
             }}
           />
           <div className=" max-w-5xl mx-auto text-center px-6 relative z-10 ">
@@ -104,8 +97,6 @@ export default function CTASection() {
               >
                 Contact Me
               </RainbowButton>
-
-              <RainbowButton variant={"outline"}>View Projects</RainbowButton>
             </motion.div>
 
             {/*         

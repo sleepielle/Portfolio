@@ -85,7 +85,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   };
 
   return (
-    <div className=" max-w-7xl w-full mt-20 min-h-screen ">
+    <div className=" max-w-7xl w-full pt-20 min-h-screen ">
       <SocialsDock />
       <h2 className="text-4xl text-primary  text-center tracking-tighter ">
         Blog

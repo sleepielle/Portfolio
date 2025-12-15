@@ -4,7 +4,7 @@ import { SocialsDock } from "~/components/SocialsDock";
 
 const NotFoundPage = () => {
   return (
-    <section className="max-w-5xl h-screen mx-auto px-6 flex items-center justify-center">
+    <section className="max-w-5xl min-h-screen mx-auto px-6 flex items-center justify-center">
       <SocialsDock />
       <div className="flex justify-center items-center flex-col gap-2">
         <svg

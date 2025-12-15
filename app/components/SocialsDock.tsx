@@ -73,7 +73,7 @@ export function SocialsDock({ noEmail }: { noEmail?: boolean }) {
 
   return (
     <>
-      <div className="relative "></div>
+      <div className="absolute "></div>
       <div className=" hidden sm:flex sm:flex-col items-center justify-center absolute top-[94%] left-[91%]   ">
         <TooltipProvider>
           <Dock direction="bottom" className="fixed z-10 ">

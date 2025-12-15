@@ -202,7 +202,7 @@ export default function ContactForm() {
   );
 
   return (
-    <div className=" flex items-center justify-center w-full min-h-[80vh] my-auto ">
+    <div className=" flex items-center justify-center w-full min-h-[80vh]  ">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

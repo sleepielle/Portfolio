@@ -2,6 +2,8 @@ import { Link } from "react-router";
 import { useState } from "react";
 import { RainbowButton } from "components/magicui/rainbow-button";
 import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
+import { TextAnimate } from "./ui/text-animate";
+import { AnimatePresence, motion } from "framer-motion";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -12,6 +14,7 @@ const navigation = [
 
 export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [show, setShow] = useState(true);
 
   return (
     <div>
@@ -31,34 +34,65 @@ export default function Hero() {
 
         <div className="mx-auto max-w-2xl py-20 mb-10 ">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1   ring-gray-900/10 hover:ring-gray-900/20">
-              💻 Software Engineer | 🌎 Based in Honduras | 🎨 Creative at heart
-            </div>
+            <div className=""></div>
           </div>
+
+          <TextAnimate
+            animation="blurInUp"
+            startOnView
+            as={"p"}
+            className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 text-center   ring-gray-900/10 hover:ring-gray-900/20 w-fit mx-auto"
+          >
+            💻 Software Engineer | 🌎 Based in Honduras | 🎨 Creative at heart
+          </TextAnimate>
+
           <div className="text-center">
-            <h1 className="text-5xl font-semibold tracking-tight text-balance text-primary text-shadow-gray-500 text-shadow-2xs  sm:text-7xl">
+            <TextAnimate
+              animation="blurInUp"
+              startOnView
+              as={"h1"}
+              className="text-5xl font-semibold tracking-tight text-balance text-primary text-shadow-gray-500 text-shadow-2xs  sm:text-7xl no-"
+            >
               Passionate about software quality and elegant solutions
-            </h1>
-            <p className="mt-8 text-lg  text-pretty text-gray-600 sm:text-xl/8">
+            </TextAnimate>
+
+            <TextAnimate
+              animation="blurInUp"
+              startOnView
+              as={"p"}
+              className="mt-8 text-lg  text-pretty text-gray-600 sm:text-xl/8"
+            >
               I'm Mercedes Paz, a Software Engineer specialized on building
               scalable, user-friendly applications with a focus on code quality
               and structured documentation for long-term maintainability.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link to={"/projects"}>
-                <RainbowButton
-                  variant={"outline"}
-                  className={`font-semibold ${GRADIENT_BUTTON_CLASSNAME}`}
-                >
-                  View Projects
-                </RainbowButton>
-              </Link>
-              <Link to={"/contact"}>
-                <button className="text-sm font-semibold text-gray-500">
-                  Contact Me <span aria-hidden="true">📩</span>{" "}
-                </button>
-              </Link>
-            </div>
+            </TextAnimate>
+
+            <AnimatePresence>
+              <motion.div
+                key="cta"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                viewport={{ once: false, amount: 0.4 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="mt-10 flex items-center justify-center gap-x-6"
+              >
+                <Link to="/projects">
+                  <RainbowButton
+                    variant="outline"
+                    className={`font-semibold ${GRADIENT_BUTTON_CLASSNAME}`}
+                  >
+                    View Projects
+                  </RainbowButton>
+                </Link>
+
+                <Link to="/contact">
+                  <button className="text-sm font-semibold text-gray-500">
+                    Contact Me <span aria-hidden="true">📩</span>
+                  </button>
+                </Link>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
         {/* <div

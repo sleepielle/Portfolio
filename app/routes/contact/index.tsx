@@ -4,7 +4,7 @@ import { SocialsDock } from "~/components/SocialsDock";
 
 const ContactPage = () => {
   return (
-    <div>
+    <div className="min-h-screen ">
       <SocialsDock noEmail />
       <ContactForm />
     </div>
