@@ -12,14 +12,21 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 import rehypeRaw from "rehype-raw";
 // Import styles
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+import { cn } from "~/lib/utils";
 
 // Im
 const PostMarkdown = ({
   markdown,
   pdfRoute,
+  smallText,
+  mediumText,
+  largeText,
 }: {
   markdown: string;
   pdfRoute?: string;
+  smallText?: boolean;
+  mediumText?: boolean;
+  largeText?: boolean;
 }) => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
@@ -37,42 +44,92 @@ const PostMarkdown = ({
           h1: (props) => (
             <h1
               {...props}
-              className="text-4xl font-extrabold tracking-tight text-gray-600 mt-8 mb-4"
+              className={cn(
+                " font-extrabold tracking-tight text-gray-600 mt-8 mb-4",
+                smallText === true && "text-4xl",
+                mediumText === true && "text-5xl",
+                largeText === true && "text-6xl"
+              )}
             />
           ),
           h2: (props) => (
             <h2
               {...props}
-              className="text-3xl font-bold text-gray-500 mt-10 mb-3"
+              className={cn(
+                " font-bold text-gray-500 mt-10 mb-3",
+                smallText === true && "text-3xl",
+                mediumText === true && "text-4xl",
+                largeText === true && "text-5xl"
+              )}
             />
           ),
           h3: (props) => (
             <h3
               {...props}
-              className="text-2xl font-semibold text-gray-500 mt-8 mb-2"
+              className={cn(
+                "font-semibold text-gray-500 mt-8 mb-2",
+                smallText === true && "text-2xl",
+                mediumText === true && "text-3xl",
+                largeText === true && "text-4xl"
+              )}
             />
           ),
-          p: (props) => <p {...props} className="text-gray-500" />,
+          p: (props) => (
+            <p
+              {...props}
+              className={cn(
+                "text-gray-500",
+                smallText === true && "text-base",
+                mediumText === true && "text-lg",
+                largeText === true && "text-xl"
+              )}
+            />
+          ),
           a: (props) => (
             <a
               {...props}
-              className="text-blue-400 underline underline-offset-4 hover:text-blue-300"
+              className={cn(
+                "text-blue-400 underline underline-offset-4 hover:text-blue-300",
+                smallText === true && "text-base",
+                mediumText === true && "text-lg",
+                largeText === true && "text-xl"
+              )}
             />
           ),
           blockquote: (props) => (
             <blockquote
               {...props}
-              className="border-l-4 border-blue-500/60 pl-4 italic bg-blue-500/10 rounded"
+              className={cn(
+                "border-l-4 border-blue-500/60 pl-4 italic bg-blue-500/10 rounded",
+                smallText === true && "text-base",
+                mediumText === true && "text-lg",
+                largeText === true && "text-xl"
+              )}
             />
           ),
           br: () => <div className="h-8" />,
           ul: (props) => (
             <ul
               {...props}
-              className="list-disc list-outside pl-2 text-gray-500 my-4"
+              className={cn(
+                "list-disc list-inside pl-2 text-gray-500 my-4",
+                smallText === true && "text-base",
+                mediumText === true && "text-lg",
+                largeText === true && "text-xl"
+              )}
             />
           ),
-          li: (props) => <li {...props} className="text-gray-500" />,
+          li: (props) => (
+            <li
+              {...props}
+              className={cn(
+                "text-gray-500 list-disc list-inside pl-2",
+                smallText === true && "text-base",
+                mediumText === true && "text-lg",
+                largeText === true && "text-xl"
+              )}
+            />
+          ),
           code({ inline, className, children, ...props }: any) {
             const match = /language-(\w+)/.exec(className || "");
             if (!inline && match) {
@@ -96,7 +153,12 @@ const PostMarkdown = ({
             return (
               <code
                 {...props}
-                className="bg-white/10 px-1.5 py-0.5 rounded font-mono text-[0.9em]"
+                className={cn(
+                  "bg-white/10 px-1.5 py-0.5 rounded  ",
+                  smallText === true && "text-base",
+                  mediumText === true && "text-lg",
+                  largeText === true && "text-xl"
+                )}
               >
                 {children}
               </code>
@@ -110,7 +172,12 @@ const PostMarkdown = ({
             <div className="overflow-x-auto">
               <table
                 {...props}
-                className="table-auto w-full text-gray-500 text-left"
+                className={cn(
+                  "table-auto w-full text-gray-500 text-left",
+                  smallText === true && "text-base",
+                  mediumText === true && "text-lg",
+                  largeText === true && "text-xl"
+                )}
               />
             </div>
           ),

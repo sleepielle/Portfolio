@@ -139,7 +139,7 @@ export default function CTASection() {
             </div>
             <div>
               <img
-                src="../../public/images/general/contact-banner.png"
+                src="/images/general/contact-banner.png"
                 alt="banner"
                 className="rounded-xl"
               />

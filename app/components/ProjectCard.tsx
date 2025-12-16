@@ -16,7 +16,7 @@ const ProjectCard = (props: ProjectCardProps) => {
       <img
         src={project.image}
         alt={project.title}
-        className="w-full h-42 object-cover "
+        className="w-full h-42 object-cover  object-[70%_15%]"
       />
       {project.inProgress ? (
         <div className="h-6 w-full text-sm text-center bg-gradient-to-r from-yellow-200 via-[#bee5a4] via-[#c0e5a1]   via-[#56e2f7]  to-[#99dafe] text-white text-border border-amber-400 text-semibold ">
