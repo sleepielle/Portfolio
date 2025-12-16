@@ -2,8 +2,8 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className=" h-24 bg-gradient-to-b from-[#fdfdfd] to-blue-50 w-full">
-      <div className="flex justify-between items-center gap-5 pt-3 -top-5  border-t-2 border-t-gray-100 m-5 text-blue-300 sm:max-w-5xl mx-auto max-w-lg">
+    <footer className=" h-24 ">
+      <div className="flex justify-between items-center gap-5 p-5 -top-5  border-t  border-gray-100 border-1 rounded-xl m-5 text-blue-300 mx-auto  backdrop-blur-sm w-4xl sm:w-[69rem] bg-transparent">
         <div>Mercedes Paz</div>
         <div className="flex justify-center items-center gap-5 ">
           <Link

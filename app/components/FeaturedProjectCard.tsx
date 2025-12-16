@@ -1,9 +1,8 @@
-import { MagicCard } from "components/magicui/magic-card";
-import { RainbowButton } from "components/magicui/rainbow-button";
-import { Link } from "react-router";
-import type { ProjectCardProps, Projects } from "~/types";
+import { MagicCard } from "~/components/ui/magic-card";
+import type { Projects } from "~/types";
 import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
 import { ExternalLink } from "lucide-react";
+import { RainbowButton } from "./ui/rainbow-button";
 
 const FeaturedProjectCard = ({
   project,
@@ -14,6 +13,10 @@ const FeaturedProjectCard = ({
   className?: Projects;
   projectIndex: number;
 }) => {
+  {
+    console.log(project.image);
+  }
+
   return (
     <div
       className="sticky lg:sticky"
@@ -39,7 +42,6 @@ const FeaturedProjectCard = ({
                 {project.title}
               </h3>
               <p className=" mt-2 text-gray-400">{project.description}</p>
-
               <ul className="flex flex-col gap-4 mt-4 md:mt-5">
                 {project.results &&
                   project.results.map((result) => (
@@ -67,11 +69,11 @@ const FeaturedProjectCard = ({
               </div>
             </div>
 
-            <div className="relative w-full">
+            <div className="relative w-[45rem]  ">
               <img
-                src={project.image}
+                src={`../../public${project.featuredImage}`}
                 alt={project.title}
-                className="lg:absolute  mt-8 -mb-10  md:-mb-0 lg:mt-0 lg:h-[400px]  lg:max-w-none rounded-2xl border-blue-300 border-2 w-full"
+                className="lg:absolute  mt-8 -mb-10  md:-mb-0 lg:mt-0 lg:h-[400px]  lg:max-w-none rounded-2xl border-blue-300 border-2 w-full object-cover  object-[300%_70%] h-full"
               />
             </div>
           </div>

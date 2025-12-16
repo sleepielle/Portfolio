@@ -1,0 +1,15 @@
+[{
+    "id": "1",
+    "slug": "react-hooks-overview",
+    "title": "A Practical Guide to React Hooks: Overview",
+    "shortExcerpt": "Understand useState, useEffect, and custom hooks with real-world examples.",
+    "longExcerpt": "Understand useState, useEffect, and custom hooks with real-world examples.Understand useState, useEffect, and custom hooks with real-world examples.",
+    "date": "2025-03-01T00:00:00",
+    "image": "/images/project-1.png",
+    "tags": "Notes",
+    "className": "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+    "pdfRoute": "/pdf/git-cheat-sheet - Copy.pdf",
+    "devNotesLinks": ["link1","link2","link3"],
+    "availableToPublish":false
+
+  }]

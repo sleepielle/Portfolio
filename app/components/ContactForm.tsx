@@ -9,8 +9,7 @@ import {
   Loader2,
   MessageSquareText,
 } from "lucide-react";
-import { RainbowButton } from "components/magicui/rainbow-button";
-import { SocialsDock } from "~/components/SocialsDock";
+import { RainbowButton } from "./ui/rainbow-button";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 12 },
@@ -202,12 +201,12 @@ export default function ContactForm() {
   );
 
   return (
-    <div className=" flex items-center justify-center w-full min-h-[80vh]  ">
+    <div className=" flex items-center justify-center max-w-6xl py-10">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="mx-auto max-w-3xl"
+        className="mx-auto max-w-6xl"
       >
         <div className="mb-8 flex flex-col justify-center h-fit items-center text-center mx-auto ">
           <div>
@@ -228,21 +227,21 @@ export default function ContactForm() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.06 } },
           }}
-          className=""
+          className="w-[55rem]"
         >
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
             {field(1, {
               id: "name",
               name: "name",
               label: "Name",
-              icon: <User className="h-4 w-4" />,
+              icon: <User className="h-4 w-6" />,
               placeholder: "Your full name",
             })}
             {field(2, {
               id: "email",
               name: "email",
               label: "E-mail",
-              icon: <Mail className="h-4 w-4 " />,
+              icon: <Mail className="h-4 w-6 " />,
               type: "email",
               placeholder: "youremail@domain.com",
             })}
@@ -253,7 +252,7 @@ export default function ContactForm() {
               id: "subject",
               name: "subject",
               label: "Subject",
-              icon: <MessageSquareText className="h-4 w-4" />,
+              icon: <MessageSquareText className="h-4 w-6" />,
               placeholder: "Write e-mail's subject here...",
             })}
           </div>
@@ -264,7 +263,7 @@ export default function ContactForm() {
               name: "message",
               element: "textarea",
               label: "Message",
-              icon: <MessageSquareText className="h-4 w-4 " />,
+              icon: <MessageSquareText className="h-4 w-6 " />,
               placeholder: "Write your message here...",
               rows: 7,
             })}

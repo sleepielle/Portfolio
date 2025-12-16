@@ -11,7 +11,6 @@ import {
   GlobeIcon,
   InputIcon,
 } from "@radix-ui/react-icons";
-import { RainbowButton } from "components/magicui/rainbow-button";
 import { Link } from "react-router";
 import FeaturedPosts from "./FeaturedPosts";
 import { CATEGORIES } from "~/lib/constants";

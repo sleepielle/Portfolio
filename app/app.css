@@ -307,6 +307,7 @@ body {
   --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
   --animate-move-left: scroll-left 15s linear infinite;
   --animate-move-right: scroll-right 15s linear infinite;
+  --animate-move-y: move-y 15s ease-in-out infinite;
   --color-color-5: var(--color-5);
   --color-color-4: var(--color-4);
   --color-color-3: var(--color-3);
@@ -328,6 +329,26 @@ body {
       transform: translateX(-50%);
     }
   }
+
+  @keyframes scroll-right {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  @keyframes move-y {
+    0%,
+    100% {
+      transform: translateY(0%);
+    }
+    50% {
+      transform: translateY(-15%);
+    }
+  }
+
   --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
   @keyframes orbit {
     0% {

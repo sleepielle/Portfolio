@@ -1,18 +1,7 @@
 import type { BentoPosts, PostMeta } from "~/types";
 import { Link } from "react-router";
 import { POSTS_CARD_GRADIENTS } from "~/lib/constants";
-import {
-  BellIcon,
-  CalendarIcon,
-  FileTextIcon,
-  GlobeIcon,
-  InputIcon,
-} from "@radix-ui/react-icons";
-import { MagicCard } from "components/magicui/magic-card";
-import { Button } from "./ui/button";
-import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
-import { RainbowButton } from "components/magicui/rainbow-button";
-import clsx from "clsx";
+import { MagicCard } from "~/components/ui/magic-card";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 const PostCard = ({ post }: { post: BentoPosts }) => {

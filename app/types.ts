@@ -13,12 +13,14 @@ export type Projects = {
   slug: string;
   description: string;
   image: string;
+  featuredImage: string;
   liveSite: string;
   github: string;
   date: Date;
   category: string;
   featured: boolean;
   results?: ProjectResult[];
+  inProgress: boolean;
 };
 
 export type PostMeta = {
@@ -34,6 +36,7 @@ export type PostMeta = {
   className?: string;
   pdfRoute?: string;
   devNotesLinks?: string[];
+  availableToPublish: boolean;
 };
 
 export type Post = {

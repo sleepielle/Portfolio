@@ -1,9 +1,9 @@
 import { Link } from "react-router";
 import { useState } from "react";
-import { RainbowButton } from "components/magicui/rainbow-button";
 import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
 import { TextAnimate } from "./ui/text-animate";
 import { AnimatePresence, motion } from "framer-motion";
+import { RainbowButton } from "./ui/rainbow-button";
 
 const navigation = [
   { name: "Product", href: "#" },

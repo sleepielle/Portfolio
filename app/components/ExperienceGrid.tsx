@@ -1,4 +1,4 @@
-import { MagicCard } from "components/magicui/magic-card";
+import { MagicCard } from "~/components/ui/magic-card";
 
 const ExperienceGrid = () => {
   return (

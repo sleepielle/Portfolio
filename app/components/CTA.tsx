@@ -1,10 +1,6 @@
 "use client";
-
-import { MagicCard } from "components/magicui/magic-card";
-import { RainbowButton } from "components/magicui/rainbow-button";
-import { motion } from "framer-motion";
-import { Link } from "react-router";
-import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
+import { RainbowButton } from "./ui/rainbow-button";
+import { AnimatePresence, motion } from "framer-motion";
 import { Code, Cpu, Database, Layout, Cloud, Github } from "lucide-react";
 
 const icons = [
@@ -20,84 +16,76 @@ const icons = [
 
 export default function CTASection() {
   return (
-    <section className=" py-28 overflow-hidden h-fit">
+    <section className=" py-28 overflow-hidden h-fit border-none">
       {/* Background glow */}
 
-      <MagicCard
-        className="rounded-2xl shadow-xs hover:shadow-sm hover:translate-y-1 border-gray-200 border-1"
-        gradientOpacity={0}
-      >
-        <div className="relative min-h-[50vh] flex flex-col items-center justify-center px-6">
+      <AnimatePresence>
+        <motion.div
+          key="cta"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          viewport={{ once: false, amount: 0.4 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="group relative rounded-2xl bg-white border border-transparent 
+                transition-all duration-300 "
+        >
           <div
-            className="absolute inset-0 z-0"
-            style={{
-              background:
-                "radial-gradient(125% 125% at 20% 10%, #fff 40%, #9ec6fe 110%)",
-            }}
+            className="
+      pointer-events-none
+      absolute inset-0 rounded-2xl border-none
+      transition-opacity duration-500 ease-out
+    "
           />
-          <div className=" max-w-5xl mx-auto text-center px-6 relative z-10 ">
-            {/* Subtle entrance animation */}
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="text-3xl tracking-tighter text-blue-500"
-            >
-              Let’s Build Something Impactful
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-              className="text-gray-500 max-w-2xl mx-auto mb-10 mt-4"
-            >
-              Whether you need a scalable full-stack solution or a beautiful
-              frontend crafted with precision — let’s turn your vision into
-              reality.
-            </motion.p>
-
-            <div className="absolute inset-0 pointer-events-none">
-              {icons.map(({ Icon, x, y }, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 0 }}
-                  animate={{
-                    opacity: [0.4, 0.8, 0.4],
-                    y: [0, -15, 0],
-                  }}
-                  transition={{
-                    duration: 3 + Math.random() * 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute"
-                  style={{
-                    left: `calc(50% + ${x})`,
-                    top: `calc(50% + ${y})`,
-                  }}
-                >
-                  <div className="p-3 rounded-xl bg-white/60 backdrop-blur-md shadow-md border border-white/30">
-                    <Icon className="w-6 h-6 text-blue-500" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="flex flex-wrap justify-center gap-4"
-            >
-              <RainbowButton
-                variant={"outline"}
-                className={`${GRADIENT_BUTTON_CLASSNAME}`}
+          <div className="relative min-h-[50vh] flex flex-col items-center justify-center px-6 z-10">
+            {/* <div className=" border-none max-w-5xl mx-auto text-center px-6 relative z-10 ">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                viewport={{ once: true }}
+                className="text-3xl tracking-tighter text-blue-500"
               >
-                Contact Me
-              </RainbowButton>
-            </motion.div>
+                Let’s Build Something Impactful
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                className="text-gray-500 max-w-2xl mx-auto mb-10 mt-4"
+              >
+                Whether you need a scalable full-stack solution or a beautiful
+                frontend crafted with precision — let’s turn your vision into
+                reality.
+              </motion.p>
+
+              <div className="absolute inset-0 pointer-events-none">
+                {icons.map(({ Icon, x, y }, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 0 }}
+                    animate={{
+                      opacity: [0.4, 0.8, 0.4],
+                      y: [0, -15, 0],
+                    }}
+                    transition={{
+                      duration: 3 + Math.random() * 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute"
+                    style={{
+                      left: `calc(50% + ${x})`,
+                      top: `calc(50% + ${y})`,
+                    }}
+                  >
+                    <div className="p-3 rounded-xl bg-white/60 backdrop-blur-md  border border-white/30">
+                      <Icon className="w-6 h-6 text-blue-500" />
+                    </div>
+                  </motion.div>
+                ))}
+              </div> */}
 
             {/*         
         <div className="relative mt-20 flex justify-center">
@@ -126,9 +114,52 @@ export default function CTASection() {
             }}
           />
         </div> */}
+
+            <div className="text-center">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                viewport={{ once: true }}
+                className="text-3xl tracking-tighter text-blue-500"
+              >
+                Let’s Build Something Impactful
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                className="text-gray-500 max-w-2xl mx-auto mb-10 mt-4"
+              >
+                Whether you need a scalable full-stack solution or a beautiful
+                frontend crafted with precision — let’s turn your vision into
+                reality.
+              </motion.p>
+            </div>
+            <div>
+              <img
+                src="../../public/images/general/contact-banner.png"
+                alt="banner"
+                className="rounded-xl"
+              />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="flex flex-wrap justify-center gap-4 mt-5"
+              >
+                <RainbowButton
+                  variant={"outline"}
+                  className="hover:w-36 transition-all durantion-300 ease-in-out hover:text-blue-500"
+                >
+                  Contact Me
+                </RainbowButton>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </MagicCard>
+        </motion.div>
+      </AnimatePresence>
     </section>
   );
 }

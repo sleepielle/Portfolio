@@ -1,17 +1,6 @@
 import type { BentoPosts, PostMeta } from "~/types";
 import { Link } from "react-router";
-import { POSTS_CARD_GRADIENTS } from "~/lib/constants";
-import {
-  BellIcon,
-  CalendarIcon,
-  FileTextIcon,
-  GlobeIcon,
-  InputIcon,
-} from "@radix-ui/react-icons";
-import { MagicCard } from "components/magicui/magic-card";
-import { Button } from "./ui/button";
-import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
-import { RainbowButton } from "components/magicui/rainbow-button";
+import { MagicCard } from "~/components/ui/magic-card";
 import clsx from "clsx";
 import { PencilLine } from "lucide-react";
 
@@ -102,7 +91,7 @@ const FeaturedPosts = ({ post }: { post: BentoPosts }) => {
             <h3 className="text-xl  text-gray-600 group-hover:underline">
               {post.title}
             </h3>{" "}
-            <p className=" text-gray-500 my-2">{post.excerpt}</p>
+            <p className=" text-gray-500 my-2">{post.longExcerpt}</p>
             <p className=" text-gray-400  mb-4">
               {post.tags} ✦{" "}
               {new Date(post.date).toLocaleDateString("en-US", {

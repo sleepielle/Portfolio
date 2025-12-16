@@ -6,11 +6,10 @@ import remarkGfm from "remark-gfm";
 import { getToc } from "~/routes/blog/toc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-
 import { Viewer, Worker } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-
+import rehypeRaw from "rehype-raw";
 // Import styles
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 
@@ -30,6 +29,7 @@ const PostMarkdown = ({
       <ReactMarkdown
         remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
         rehypePlugins={[
+          rehypeRaw,
           rehypeSlug,
           [rehypeAutolinkHeadings, { behavior: "append" }],
         ]}
@@ -65,7 +65,13 @@ const PostMarkdown = ({
               className="border-l-4 border-blue-500/60 pl-4 italic bg-blue-500/10 rounded"
             />
           ),
-          ul: (props) => <ul {...props} className="text-gray-500" />,
+          br: () => <div className="h-8" />,
+          ul: (props) => (
+            <ul
+              {...props}
+              className="list-disc list-outside pl-2 text-gray-500 my-4"
+            />
+          ),
           li: (props) => <li {...props} className="text-gray-500" />,
           code({ inline, className, children, ...props }: any) {
             const match = /language-(\w+)/.exec(className || "");
@@ -102,7 +108,10 @@ const PostMarkdown = ({
           ),
           table: (props) => (
             <div className="overflow-x-auto">
-              <table {...props} className="table-auto w-full text-gray-500" />
+              <table
+                {...props}
+                className="table-auto w-full text-gray-500 text-left"
+              />
             </div>
           ),
         }}

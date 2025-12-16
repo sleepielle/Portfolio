@@ -6,46 +6,55 @@
       "slug": "ecommerce-platform",
       "title": "E-Commerce Platform",
       "description": "A Fullstack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping, etc.",
-      "image":  "/images/project-1.webp",
+      "image": "/images/projects/layers/landing.png",
+      "featuredImage":"/images/projects/onetask/featured.png",
       "live-site": "https://github.com/yourusername/mobile-app",
-      "github" :  "https://github.com/yourusername/mobile-app",          "date": "2025-02-30T00:00:00",
+      "github" :  "https://github.com/yourusername/mobile-app",
+      "date": "2025-02-30T00:00:00",
       "category": "Fullstack",
       "featured": true,
       "results": [
         { "title": "Enhanced user experience by 40%" },
         { "title": "Improved site speed by 50%" },
         { "title": "Increased mobile traffic by 35%" }
-      ]
+      ],
+      "inProgress": true
     },
     {
       "id": 2,
-      "documentId": "project-2",
-      "title": "Task Management App",
-      "slug": "task-management-app",
+      "documentId": "layers",
+      "title": "Layers Landing Page",
+      "slug": "layers-landing-page",
       "description": "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      "image": "/images/project-2.png",
-      "live-site": "https://github.com/yourusername/mobile-app",
-      "github" :  "https://github.com/yourusername/mobile-app", 
-      "date": "2025-02-25T00:00:00",
+      "image": "/images/projects/layers/landing.png",
+      "featuredImage":"/images/projects/layers/featured.png",
+      "live-site": "https://layers-fawn.vercel.app/",
+      "github" :  "https://github.com/sleepielle/Layers", 
+      "date": "2025-10-21T00:00:00",
       "category": "Frontend",
       "featured": true,  "results": [
         { "title": "Enhanced user experience by 40%" },
         { "title": "Improved site speed by 50%" },
         { "title": "Increased mobile traffic by 35%" }
-      ]
+      ],
+      "inProgress": false
+
     },
     {
       "id": 3,
-      "documentId": "project-3",
-      "title": "Weather Dashboard",
-      "slug": "task-management-app",
+      "documentId": "one-task",
+      "title": "One Task Landing Page",
+      "slug": "one-task-landing-page",
       "description": "A weather application that displays current weather conditions and forecasts using OpenWeatherMap API with beautiful visualizations.",
-      "image": "/images/project-3.png",
-      "live-site": "https://github.com/yourusername/mobile-app",
-      "github" :  "https://github.com/yourusername/mobile-app",          "date": "2025-02-2T00:00:00",
-
+      "image": "/images/projects/onetask/landing.png",
+"featuredImage":"/images/projects/onetask/featured.png",
+      "live-site": "https://one-task-tau.vercel.app/",
+      "github" :  "https://github.com/sleepielle/OneTask",
+      "date": "2025-08-28T00:00:00",
       "category": "Frontend",
-      "featured": false
+      "featured": false,
+      "inProgress": false
+
     },
     {
       "id": 4,
@@ -54,10 +63,12 @@
       "slug": "task-management-app",
       "description": "A content management system for blogs with markdown support, user roles, and SEO optimization features.",
       "image":"/images/project-4.png",
+      "featuredImage":"/images/projects/onetask/featured.png",
       "live-site": "https://github.com/yourusername/mobile-app",
-      "github" :  "https://github.com/yourusername/mobile-app",         "date": "2025-02-5T00:00:00",
-
+      "github" :  "https://github.com/yourusername/mobile-app",
+      "date": "2025-02-5T00:00:00",
       "category": "Frontend",
+      "inProgress": false,
       "featured": false
     }
   ]

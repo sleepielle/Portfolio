@@ -1,5 +1,3 @@
-import { Link } from "react-router";
-
 type EyebrowProps = {
   eyebrowText: string;
   title: string;

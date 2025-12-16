@@ -3,6 +3,16 @@
 import React, { forwardRef, useRef } from "react";
 import { cn } from "~/lib/utils";
 import { AnimatedBeam } from "./ui/animated-beam";
+import {
+  CodeXmlIcon,
+  CommandIcon,
+  ContainerIcon,
+  DatabaseZap,
+  GithubIcon,
+  Palette,
+  UserRoundPenIcon,
+  UserStarIcon,
+} from "lucide-react";
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -12,7 +22,7 @@ const Circle = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "z-10 flex size-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        "z-10 flex size-12 items-center justify-center rounded-full border-2 border-dashed bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
         className
       )}
     >
@@ -41,29 +51,29 @@ export function AnimatedBeamDemo() {
       <div className="flex size-full max-h-[200px] max-w-lg flex-col items-stretch justify-between gap-10">
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div1Ref}>
-            <Icons.googleDrive />
+            <CommandIcon />
           </Circle>
           <Circle ref={div5Ref}>
-            <Icons.googleDocs />
+            <UserStarIcon />
           </Circle>
         </div>
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div2Ref}>
-            <Icons.notion />
+            <DatabaseZap />
           </Circle>
           <Circle ref={div4Ref} className="size-16">
-            <Icons.openai />
+            <CodeXmlIcon />
           </Circle>
           <Circle ref={div6Ref}>
-            <Icons.zapier />
+            <ContainerIcon />
           </Circle>
         </div>
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div3Ref}>
-            <Icons.whatsapp />
+            <Palette />
           </Circle>
           <Circle ref={div7Ref}>
-            <Icons.messenger />
+            <GithubIcon />
           </Circle>
         </div>
       </div>

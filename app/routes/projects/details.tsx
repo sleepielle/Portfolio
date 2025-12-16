@@ -99,7 +99,6 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
             <div className="absolute inset-0 pointer-events-none z-[1] bg-gradient-to-t from-black/10 via-black/5 to-transparent"></div>
           </div>
 
-          {/* CONTENT */}
           <div className="relative z-10 flex flex-col justify-center h-full">
             <div className="max-w-5xl mx-auto px-4 md:px-0">
               <div className="inline-block bg-white/10 backdrop-blur-sm text-white dark:text-white rounded-full px-3 py-1 text-sm mb-4 border-1 border-white/60">

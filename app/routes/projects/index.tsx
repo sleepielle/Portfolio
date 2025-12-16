@@ -32,6 +32,8 @@ export async function loader({
     date: new Date(item.date),
     category: item.category,
     featured: item.featured,
+    inProgress: item.inProgress,
+    featuredImage: item.featuredImage,
   }));
 
   return { projects };

@@ -1,10 +1,6 @@
 "use client";
-import { Link } from "react-router";
-import Eyebrow from "./Eyebrow";
-import { FAQ } from "./FAQ";
-import { DigitalGarden } from "./DigitalGarden";
 import CardHeader from "./CardHeader";
-import { MagicCard } from "components/magicui/magic-card";
+import { MagicCard } from "~/components/ui/magic-card";
 import ToolboxItems from "./ToolboxItems";
 import { motion } from "framer-motion";
 import { useRef } from "react";
@@ -12,6 +8,9 @@ import { useRef } from "react";
 const toolboxItems = [
   { title: "JavaScript" },
   { title: "HTML5" },
+  { title: "Motion" },
+  { title: ".NET" },
+  { title: "UI/UX" },
   { title: "CSS3" },
   { title: "React" },
   { title: "GitHub" },
@@ -19,10 +18,13 @@ const toolboxItems = [
 
 const hobbies = [
   { title: "Reading", emoji: "📖", left: "10%", top: "5%" },
-  { title: "Painting", emoji: "🎨", left: "35%", top: "25%" },
-  { title: "Writing", emoji: "📝", left: "4%", top: "30%" },
-  { title: "Gaming", emoji: "👾", left: "50%", top: "45%" },
-  { title: "Movies", emoji: "🍿", left: "25%", top: "55%" },
+  { title: "Painting", emoji: "🎨", left: "55%", top: "55%" },
+  { title: "Scrapbooking", emoji: "🎨", left: "5%", top: "65%" },
+  { title: "Nature", emoji: "🌲", left: "25%", top: "75%" },
+  { title: "Writing", emoji: "📝", left: "60%", top: "30%" },
+  { title: "Dying Light", emoji: "🧟", left: "70%", top: "45%" },
+  { title: "Studio Ghibli Movies", emoji: "🌺", left: "25%", top: "55%" },
+  { title: "Retro Games", emoji: "⭐", left: "80%", top: "35%" },
 ];
 
 const AboutPreview = () => {
@@ -183,7 +185,7 @@ const AboutPreview = () => {
           </MagicCard>
         </div>
 
-        <div className="w-full grid grid-cols-1 md:grid-cols-5 lg:grid-cols-3 gap-8">
+        <div className="w-full grid grid-cols-1 gap-8">
           <MagicCard
             className="h-[320px] flex flex-col rounded-xl md:col-span-3 lg:col-span-2 w-full  shadow-xs **:transition-all duration-500 
              hover:shadow-md hover:-translate-y-1"
@@ -236,11 +238,11 @@ const AboutPreview = () => {
               }}
             />
             <CardHeader
-              title="Beyond the Code"
+              title="Things I Like"
               description="Explore my interests and hobbies beyond the digital realm. You can drag the hobbies!"
               classname="px-6 py-6"
             />
-            <div className="relative h-[150px] w-full px-4" ref={constraintRef}>
+            <div className="relative h-[150px] w-full p-20" ref={constraintRef}>
               {hobbies.map((hobby) => (
                 <motion.div
                   key={hobby.title}
@@ -253,29 +255,6 @@ const AboutPreview = () => {
                   <span>{hobby.emoji}</span>
                 </motion.div>
               ))}{" "}
-            </div>
-          </MagicCard>
-
-          <MagicCard
-            className="h-[320px] relative flex rounded-xl md:col-span-2 lg:col-span-1 w-full shadow-xs **:transition-all duration-500 
-             hover:shadow-md hover:-translate-y-1"
-          >
-            <div className="w-full h-full rounded-2xl">
-              <img
-                src="/images/honduras-map.png"
-                alt="profile"
-                className="w-full h-full  rounded-2xl object-cover  border-blue-400 shadow-xl"
-              />
-              <div className="absolute inset-0 bg-sky-400/30  mix-blend-multiply rounded-2xl"></div>
-            </div>
-
-            <div>
-              <img
-                src="/images/profile.jpeg"
-                alt="profile"
-                className="z-10 w-40 h-40 rounded-full object-cover border-2 border-blue-400  shadow-xl mt-4 absolute top-14 left-24"
-              />
-              <div className="w-40 h-40 rounded-full object-cover border-2 border-sky-400 bg-sky-300  blur-2xl shadow-xl mt-4 absolute top-10 left-24" />
             </div>
           </MagicCard>
         </div>

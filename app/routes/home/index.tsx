@@ -39,13 +39,15 @@ export async function loader({
       title: item.title,
       slug: item.slug,
       description: item.description,
-      image: item.image?.url || "/images/no-image.png",
+      image: item.image ?? "/images/no-image.png",
       liveSite: item.liveSite,
       github: item.github,
       date: new Date(item.date),
       category: item.category,
       featured: item.featured,
       results: item.results,
+      inProgress: item.inProgress,
+      featuredImage: item.featuredImage,
     }));
 
   // Process posts data to match the expected PostMeta type
@@ -66,6 +68,7 @@ export async function loader({
       date: item.date,
       pdfRoute: item.pdfRoute,
       devNotesLinks: item.devNotesLinks,
+      availableToPublish: item.availableToPublish,
     }));
 
   return { projects, posts };

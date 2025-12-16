@@ -1,13 +1,8 @@
-import { motion } from "framer-motion";
 import { Briefcase, Database, FileText, GitBranch } from "lucide-react";
 import Eyebrow from "./Eyebrow";
-import { MagicCard } from "components/magicui/magic-card";
-import ExperienceGrid from "./ExperienceGrid";
-import { SkillsPreview } from "./SkillsPreview";
-import { RainbowButton } from "components/magicui/rainbow-button";
 import { AnimatedBeamDemo } from "./AnimatedBeam";
-import { OrbitingCircles } from "./ui/orbiting-circles";
 import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
+import { RainbowButton } from "./ui/rainbow-button";
 
 const experiences = [
   {
