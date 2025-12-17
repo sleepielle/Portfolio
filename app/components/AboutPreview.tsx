@@ -32,7 +32,7 @@ const AboutPreview = () => {
   const controls = useAnimation();
   return (
     <motion.div
-      key="project-page"
+      key="about-preview"
       initial={{ opacity: 0, y: 20 }}
       animate={controls}
       onViewportEnter={() => {
@@ -51,7 +51,7 @@ const AboutPreview = () => {
       }}
       viewport={{ amount: 0.4 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
-      className="group relative rounded-2xl bg-white border border-transparent 
+      className="group relative rounded-2xl  border border-transparent 
                 transition-all duration-300 "
     >
       <div className="flex flex-col justify-center items-center py-20">

@@ -51,11 +51,9 @@ const Navbar = () => {
                 </NavLink>
               ))}
             </div>
-            <ThemeToggle />
           </div>
 
           <div className="md:hidden flex items-center gap-4">
-            <ThemeToggle />
             <button
               className="text-accent text-xl cursor-pointer"
               onClick={() => setMenuOpen(!menuOpen)}

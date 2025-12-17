@@ -83,17 +83,17 @@ layers-landing-page/
 
 ## 🖼️ UI Showcase
 
-![Hero](/public/images/projects/layers/hero.gif)
+![Hero](/images/projects/layers/hero.gif)
 
 
 <br/> 
 
-![Features](/public/images/projects/layers/features.gif)
+![Features](/images/projects/layers/features.gif)
 
 
 <br/> 
 
-![Integrations](/public/images/projects/layers/integrations.gif)    
+![Integrations](/images/projects/layers/integrations.gif)    
 
 
 <br/> 

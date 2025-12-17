@@ -71,7 +71,7 @@ const FeaturedProjectCard = ({
 
             <div className="relative w-[45rem]  ">
               <img
-                src={`../../public${project.featuredImage}`}
+                src={`${project.featuredImage}`}
                 alt={project.title}
                 className="lg:absolute  mt-8 -mb-10  md:-mb-0 lg:mt-0 lg:h-[400px]  lg:max-w-none rounded-2xl border-blue-300 border-2 w-full object-cover  object-[300%_70%] h-full"
               />

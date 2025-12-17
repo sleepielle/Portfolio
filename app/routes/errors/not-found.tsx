@@ -8,13 +8,13 @@ const NotFoundPage = () => {
     <section className="max-w-5xl min-h-screen mx-auto flex items-center justify-center ">
       <AnimatePresence>
         <motion.div
-          key="project-page"
+          key="not-found"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="group relative rounded-2xl bg-white border border-transparent 
+          className="group relative rounded-2xl  border border-transparent 
                 transition-all duration-300 "
         >
           <SocialsDock />

@@ -99,7 +99,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
       selectedTag.toString() === "All" ? (
         <AnimatePresence>
           <motion.div
-            key="project-page"
+            key="blog-page-empty"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
@@ -144,7 +144,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
           <>
             <AnimatePresence>
               <motion.div
-                key="project-page"
+                key="blog-page-data"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}

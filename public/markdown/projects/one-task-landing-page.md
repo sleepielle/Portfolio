@@ -94,22 +94,22 @@ Each section represents a visual block from the original Figma layout — implem
 
 ## 🖼️ UI Showcase
 
-![hero](/public/images/projects/onetask/hero.gif)
+![hero](/images/projects/onetask/hero.gif)
 
 <br/>
 
 
-![features](/public/images/projects/onetask/features.gif)
+![features](/images/projects/onetask/features.gif)
 
 <br/>
 
 
-![interface](/public/images/projects/onetask/interface.gif)
+![interface](/images/projects/onetask/interface.gif)
 
 <br/>
 
 
-![cta](/public/images/projects/onetask/cta.gif)
+![cta](/images/projects/onetask/cta.gif)
 
 <br/>
 
@@ -181,6 +181,6 @@ Now open 👉 http://localhost:3000
 
 
 
-![banner](/public/images/general/contact-banner.png)
+![banner](/images/general/contact-banner.png)
 Let’s connect on [LinkedIn](https://linkedin.com/in/mercedesgpaz) or drop a ⭐ if you liked this project!
 
