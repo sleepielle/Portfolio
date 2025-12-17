@@ -5,7 +5,12 @@ import { FaArrowLeft } from "react-icons/fa";
 import PostMarkdown from "~/components/PostMarkdown";
 import { getToc } from "../blog/toc";
 import { Button } from "~/components/ui/button";
-import { ArrowLeft, Circle, LetterTextIcon } from "lucide-react";
+import {
+  ArrowLeft,
+  Circle,
+  LetterTextIcon,
+  TableOfContentsIcon,
+} from "lucide-react";
 import { useNavigate } from "react-router";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
@@ -17,6 +22,17 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "~/components/ui/popover";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "~/components/ui/sheet";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
   // Use the request URL to construct absolute URLs for fetch
@@ -108,15 +124,16 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
   return (
     <div
       className={cn(
-        "min-h-screen mx-auto  ",
-        smallWidth === true && "w-6xl",
-        mediumWidth === true && "w-7xl -translate-x-20",
-        largeWidth === true && "w-[84rem] -translate-x-25"
+        "min-h-screen mx-auto  overflow-x-hidden",
+        smallWidth === true && "sm:w-2xl md:w-3xl lg:w-4xl xl:w-5xl  ",
+        mediumWidth === true && "w-7xl lg:-translate-x-20 ",
+        largeWidth === true &&
+          "sm:w-[60sm] md:w-[68rem]  lg:w-[76rem]  xl:w-[84rem] -translate-x-25"
       )}
     >
       <div className="w-full py-12 -top-10 relative ">
-        <div className="px-6 pt-15 h-116 ">
-          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden w-full  rounded-2xl mx-5 lg:mx-auto p-5 h-100 top-24 ">
+        <div className="px-6 pt-15 h-116 w-full ">
+          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden max-w-full  rounded-2xl  lg:mx-auto p-5 h-100 top-24 ">
             <div className="absolute inset-0 bg-gradient-to-br from-white/12 to-gray-100/8" />
 
             {/* large blurred colorful "clouds" — higher alpha + large blur */}
@@ -177,8 +194,8 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-auto px-4 md:px-0 z-10 text-gray-500 mt-10 ">
-          <main className="md:col-span-2">
+        <div className="grid grid-cols-3 gap-10 mx-auto px-4 md:px-0 z-10 text-gray-500 mt-10 ">
+          <main className=" col-span-3 md:col-span-3 lg:col-span-2">
             <PostMarkdown
               markdown={markdown}
               smallText={smallText}
@@ -187,7 +204,8 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
             />
           </main>
 
-          <aside className="md:block hidden md:col-span-1 rounded-lg px-5 sticky h-fit top-28 ">
+          {/**TABLE OF CONTENTS AND A11Y */}
+          <aside className="lg:block hidden md:col-span-1 rounded-lg px-5 sticky h-fit top-28  ">
             <div className="px-5 ">
               <nav>
                 <ul className="space-y-1 text-sm">
@@ -347,6 +365,157 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
               </>
             )} */}
           </aside>
+
+          {/**MOBILE TOC AND A11Y */}
+          <div className="fixed w-full  lg:hidden  float left-[65%] sm:left-[75%] lg:left-[80%]  top-[60rem]  ">
+            <div>
+              <Sheet>
+                <SheetTrigger>
+                  <Button variant="outline" className="shadow-md">
+                    <TableOfContentsIcon /> Table of Contents
+                  </Button>
+                </SheetTrigger>
+                <SheetContent className="">
+                  <div className="grid gap-4 translate-y-1/2 text-gray-500">
+                    <aside className="sm:block lg:hidden md:col-span-1 rounded-lg px-5 sticky h-fit top-28 ">
+                      <div className="px-5 ">
+                        <nav>
+                          <ul className="space-y-1 text-sm">
+                            {toc.map(({ id, text, depth }) => (
+                              <li key={id} className={depth > 2 ? "pl-4" : ""}>
+                                <a
+                                  href={`#${id}`}
+                                  className="block text-slate-400 hover:font-semibold"
+                                >
+                                  ─ ✦ {text}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </nav>
+                        <hr className="my-5" />
+
+                        <div className=" flex justify-start items-center gap-3 mt-5">
+                          <img
+                            className="rounded-full w-10 h-10"
+                            src="../../../images/profile.jpeg"
+                          />
+                          <div className=" flex flex-col justify-start items-start">
+                            <p className="font-semibold text-sm">
+                              Mercedes Paz
+                            </p>
+                            <span className="text-xs">
+                              Computer Systems Engineer
+                            </span>
+                          </div>
+                        </div>
+
+                        <hr className="my-5" />
+                        <div className="flex justify-between items-center">
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div
+                                className="size-10 rounded-full border-1 border-gray-300 flex items-center justify-center"
+                                onClick={() => clickSmallText()}
+                              >
+                                <LetterTextIcon className="size-4" />
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Small text</p>
+                            </TooltipContent>
+                          </Tooltip>
+
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div
+                                className="size-10 rounded-full border-1 border-gray-300 flex items-center justify-center"
+                                onClick={() => clickMediumText()}
+                              >
+                                <LetterTextIcon className="size-6" />
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Medium text</p>
+                            </TooltipContent>
+                          </Tooltip>
+
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div
+                                className="size-10 rounded-full border-1 border-gray-300 flex items-center justify-center"
+                                onClick={() => clickLargeText()}
+                              >
+                                <LetterTextIcon className="size-8" />
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Large text</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </div>
+                        <hr className="my-5" />
+                        <div className=" justify-between items-center hidden lg:block ">
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div
+                                className="size-10 rounded-full border-1 border-gray-300 flex items-center justify-center"
+                                onClick={() => clickSmallWidth()}
+                              >
+                                <WidthIcon className="size-4" />
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Small width</p>
+                            </TooltipContent>
+                          </Tooltip>
+
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div
+                                className="size-10 rounded-full border-1 border-gray-300 flex items-center justify-center"
+                                onClick={() => clickMediumWidth()}
+                              >
+                                <WidthIcon className="size-6" />
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Medium width</p>
+                            </TooltipContent>
+                          </Tooltip>
+
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div
+                                className="size-10 rounded-full border-1 border-gray-300 flex items-center justify-center hover:bg-blue-200 "
+                                onClick={() => clickLargeWidth()}
+                              >
+                                <WidthIcon className="size-8 hover:text-blue-500" />
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Large width</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </div>
+
+                        <hr className="my-5 hidden lg:block " />
+
+                        <Button
+                          variant={"outline"}
+                          className="border-[#d1d5dc] w-full"
+                          onClick={(e) => navigate("/projects")}
+                        >
+                          <ArrowLeft className="text-gray-600" />
+                          Back to Projects
+                        </Button>
+                      </div>
+                    </aside>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </div>
         </div>
       </div>
     </div>
