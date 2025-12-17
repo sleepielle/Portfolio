@@ -367,7 +367,7 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
           </aside>
 
           {/**MOBILE TOC AND A11Y */}
-          <div className="fixed w-full  lg:hidden  float left-[65%] sm:left-[75%] lg:left-[80%]  top-[60rem]  ">
+          <div className="fixed w-full  lg:hidden  float  sm:left-[75%] lg:left-[80%]  bottom-4 z-50 right-4  ">
             <div>
               <Sheet>
                 <SheetTrigger>
@@ -375,7 +375,10 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
                     <TableOfContentsIcon /> Table of Contents
                   </Button>
                 </SheetTrigger>
-                <SheetContent className="">
+                <SheetContent
+                  className="max-h-[85vh] overflow-y-auto"
+                  side="bottom"
+                >
                   <div className="grid gap-4 translate-y-1/2 text-gray-500">
                     <aside className="sm:block lg:hidden md:col-span-1 rounded-lg px-5 sticky h-fit top-28 ">
                       <div className="px-5 ">
