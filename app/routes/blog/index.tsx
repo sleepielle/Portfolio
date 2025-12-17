@@ -97,185 +97,219 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
 
       {availableFilteredPosts.length === 0 &&
       selectedTag.toString() === "All" ? (
-        <div>
-          <img
-            src="../../../public/images/general/no-posts.png"
-            className="animate-pulse duration-300 ease-in-out"
-          />
-          <div className="mx-auto text-center">
-            <h2 className="text-3xl text-primary  text-center tracking-tighter ">
-              Knowledge Lab
-            </h2>
-            <p className="text-center text-gray-400 mb-8 mt-2 max-w-[50ch] mx-auto">
-              This is my knowledge lab 🧪 A mix of code notes, industry research
-              paper breakdowns, summaries, what I'm currently learning, among
-              others.<b> Stay tuned for future posts!</b> In the meantime, take
-              a look at my projects or contact me.
-            </p>
-            <div className="flex gap-2 items-center justify-center">
-              <RainbowButton
-                variant={"outline"}
-                className={`${GRADIENT_BUTTON_CLASSNAME}`}
-              >
-                <Link to={"/projects"}>Projects</Link>
-              </RainbowButton>
+        <AnimatePresence>
+          <motion.div
+            key="project-page"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            viewport={{ once: false, amount: 0.4 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="translate-y-1/4 sm:w-full sm:translate-y-10 group relative rounded-2xl bg-white border border-transparent transition-all duration-300 "
+          >
+            <img
+              src="/images/general/no-posts.png"
+              className="animate-pulse duration-300 ease-in-out"
+            />
+            <div className="mx-auto text-center">
+              <h2 className="text-3xl text-primary  text-center tracking-tighter">
+                Knowledge Lab
+              </h2>
+              <p className="text-center text-gray-400 mb-8 mt-2  max-w-[30ch] sm:max-w-[50ch] mx-auto">
+                This is my knowledge lab 🧪 A mix of code notes, industry
+                research paper breakdowns, summaries, what I'm currently
+                learning, among others.
+                <br />
+                <br />
+                <b> Stay tuned for future posts!</b> In the meantime, take a
+                look at my projects or contact me.
+              </p>
+              <div className="flex gap-2 items-center justify-center">
+                <RainbowButton
+                  variant={"outline"}
+                  className={`${GRADIENT_BUTTON_CLASSNAME}`}
+                >
+                  <Link to={"/projects"}>Projects</Link>
+                </RainbowButton>
 
-              <RainbowButton variant={"outline"}>
-                <Link to={"/contact"}>Contact Me</Link>
-              </RainbowButton>
+                <RainbowButton variant={"outline"}>
+                  <Link to={"/contact"}>Contact Me</Link>
+                </RainbowButton>
+              </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       ) : (
         <>
-          <h2 className="text-4xl text-primary  text-center tracking-tighter ">
-            Blog
-          </h2>
-          <p className="text-center text-sm text-gray-400 mb-8 mt-2 max-w-[50ch] mx-auto">
-            This is my knowledge lab 🧪 — a mix of code notes, industry research
-            paper breakdowns and summaries, what I'm currently learning, among
-            others. Take a look around :)
-          </p>
-          <div className="flex flex-wrap gap-2  justify-between items-center">
-            <div className="hidden sm:flex sm:justify-between sm:items-center sm:gap-1">
-              {tags.map((tag, i) => (
-                <button
-                  className={clsx(
-                    "h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2  ",
-                    selectedTag === tag &&
-                      "bg-selected text-primary font-semibold",
-                    tag === "All" &&
-                      "text-primary hover:border-2 hover:border-blue-500  ",
-                    tag === "Notes" &&
-                      "text-notes-color border-notes-strong bg-notes-pastel hover:border-2  ",
-                    tag === "Now" &&
-                      "text-now-color border-now-strong bg-now-pastel hover:border-2  ",
-                    tag === "Research" &&
-                      "text-research-color border-research-strong bg-research-pastel hover:border-2  ",
-                    tag === "Snippets" &&
-                      "text-snippets-color border-snippets-strong bg-snippets-pastel hover:border-2  "
-                  )}
-                  key={tag}
-                  onClick={() => {
-                    setSelectedTag(tag);
-                    setCurrentPage(1);
-                  }}
-                >
-                  <span className={`${selectedTag === tag && "font-bold"}`}>
-                    {tag}
-                  </span>
+          <>
+            <AnimatePresence>
+              <motion.div
+                key="project-page"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                viewport={{ once: false, amount: 0.4 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="group relative rounded-2xl bg-white border border-transparent 
+                transition-all duration-300 "
+              >
+                <h2 className="text-4xl text-primary  text-center tracking-tighter ">
+                  Blog
+                </h2>
+                <p className="text-center text-sm text-gray-400 mb-8 mt-2 max-w-[50ch] mx-auto">
+                  This is my knowledge lab 🧪 — a mix of code notes, industry
+                  research paper breakdowns and summaries, what I'm currently
+                  learning, among others. Take a look around :)
+                </p>
+                <div className="flex flex-wrap gap-2  justify-between items-center">
+                  <div className="hidden sm:flex sm:justify-between sm:items-center sm:gap-1">
+                    {tags.map((tag, i) => (
+                      <button
+                        className={clsx(
+                          "h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2  ",
+                          selectedTag === tag &&
+                            "bg-selected text-primary font-semibold",
+                          tag === "All" &&
+                            "text-primary hover:border-2 hover:border-blue-500  ",
+                          tag === "Notes" &&
+                            "text-notes-color border-notes-strong bg-notes-pastel hover:border-2  ",
+                          tag === "Now" &&
+                            "text-now-color border-now-strong bg-now-pastel hover:border-2  ",
+                          tag === "Research" &&
+                            "text-research-color border-research-strong bg-research-pastel hover:border-2  ",
+                          tag === "Snippets" &&
+                            "text-snippets-color border-snippets-strong bg-snippets-pastel hover:border-2  "
+                        )}
+                        key={tag}
+                        onClick={() => {
+                          setSelectedTag(tag);
+                          setCurrentPage(1);
+                        }}
+                      >
+                        <span
+                          className={`${selectedTag === tag && "font-bold"}`}
+                        >
+                          {tag}
+                        </span>
 
-                  {/* Show only the count for this specific tag */}
-                  <span
-                    className={`ml-2 text-xs  h-6 min-w-6 font-medium flex items-center justify-center ${selectedTag === tag && "text-blue  font-bold"}`}
-                  >
-                    {numberPostsPerTag[tag]}
-                  </span>
-                </button>
-              ))}
-            </div>
+                        {/* Show only the count for this specific tag */}
+                        <span
+                          className={`ml-2 text-xs  h-6 min-w-6 font-medium flex items-center justify-center ${selectedTag === tag && "text-blue  font-bold"}`}
+                        >
+                          {numberPostsPerTag[tag]}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
 
-            <div className="flex justify-between items-center  w-full sm:w-fit gap-10">
-              <button onClick={handleOpenMenu}>
-                <div className="font-bold text-2xl  flex items-center h-8 p-4 rounded-lg cursor-pointer   transition-colors hover:border-2 sm:hidden shadow-xs border">
-                  {!menuOpen ? (
-                    <Ellipsis className="font-bold text-2xl text-gray-400 " />
-                  ) : (
-                    <XIcon className="" />
-                  )}
-                </div>
-              </button>
-
-              {/* Mobile Dropdown  */}
-              {menuOpen && (
-                <div className="flex-col sm:hidden absolute top-[22rem] bg-white/70 z-10 w-[10rem] p-5 rounded-2xl border shadow-md gap-16 backdrop-blur-3xl ">
-                  {tags.map((tag, i) => (
-                    <button
-                      key={tag}
-                      className={clsx(
-                        "h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2 gap-6 my-2 ",
-                        selectedTag === tag &&
-                          "bg-selected text-primary font-semibold",
-                        tag === "All" &&
-                          "text-primary hover:border-2 hover:border-blue-500",
-                        tag === "Notes" &&
-                          "text-notes-color border-notes-strong bg-notes-pastel hover:border-2",
-                        tag === "Now" &&
-                          "text-now-color border-now-strong bg-now-pastel hover:border-2",
-                        tag === "Research" &&
-                          "text-research-color border-research-strong bg-research-pastel hover:border-2",
-                        tag === "Snippets" &&
-                          "text-snippets-color border-snippets-strong bg-snippets-pastel hover:border-2"
-                      )}
-                      onClick={() => {
-                        setSelectedTag(tag);
-                        setCurrentPage(1);
-                        setMenuOpen(!menuOpen);
-                      }}
-                    >
-                      <span className={selectedTag === tag ? "font-bold" : ""}>
-                        {tag}
-                      </span>
+                  <div className="flex justify-between items-center  w-full sm:w-fit gap-10">
+                    <button onClick={handleOpenMenu}>
+                      <div className="font-bold text-2xl  flex items-center h-8 p-4 rounded-lg cursor-pointer   transition-colors hover:border-2 sm:hidden shadow-xs border">
+                        {!menuOpen ? (
+                          <Ellipsis className="font-bold text-2xl text-gray-400 " />
+                        ) : (
+                          <XIcon className="" />
+                        )}
+                      </div>
                     </button>
-                  ))}
-                </div>
-              )}
 
-              {/* Tablet and Desktop Nav */}
-              <div className="hidden  justify-between items-center gap-1">
-                {tags.map((tag, i) => (
-                  <button
-                    className={clsx(
-                      "h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2  ",
-                      selectedTag === tag &&
-                        "bg-selected text-primary font-semibold",
-                      tag === "All" &&
-                        "text-primary hover:border-2 hover:border-blue-500  ",
-                      tag === "Notes" &&
-                        "text-notes-color border-notes-strong bg-notes-pastel hover:border-2  ",
-                      tag === "Now" &&
-                        "text-now-color border-now-strong bg-now-pastel hover:border-2  ",
-                      tag === "Research" &&
-                        "text-research-color border-research-strong bg-research-pastel hover:border-2  ",
-                      tag === "Snippets" &&
-                        "text-snippets-color border-snippets-strong bg-snippets-pastel hover:border-2  "
+                    {/* Mobile Dropdown  */}
+                    {menuOpen && (
+                      <div className="flex-col sm:hidden absolute top-[22rem] bg-white/70 z-10 w-[10rem] p-5 rounded-2xl border shadow-md gap-16 backdrop-blur-3xl ">
+                        {tags.map((tag, i) => (
+                          <button
+                            key={tag}
+                            className={clsx(
+                              "h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2 gap-6 my-2 ",
+                              selectedTag === tag &&
+                                "bg-selected text-primary font-semibold",
+                              tag === "All" &&
+                                "text-primary hover:border-2 hover:border-blue-500",
+                              tag === "Notes" &&
+                                "text-notes-color border-notes-strong bg-notes-pastel hover:border-2",
+                              tag === "Now" &&
+                                "text-now-color border-now-strong bg-now-pastel hover:border-2",
+                              tag === "Research" &&
+                                "text-research-color border-research-strong bg-research-pastel hover:border-2",
+                              tag === "Snippets" &&
+                                "text-snippets-color border-snippets-strong bg-snippets-pastel hover:border-2"
+                            )}
+                            onClick={() => {
+                              setSelectedTag(tag);
+                              setCurrentPage(1);
+                              setMenuOpen(!menuOpen);
+                            }}
+                          >
+                            <span
+                              className={selectedTag === tag ? "font-bold" : ""}
+                            >
+                              {tag}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
                     )}
-                    key={tag}
-                    onClick={() => {
-                      setSelectedTag(tag);
-                      setCurrentPage(1);
-                    }}
-                  >
-                    <span className={`${selectedTag === tag && "font-bold"}`}>
-                      {tag}
-                    </span>
 
-                    {/* Show only the count for this specific tag */}
-                    <span
-                      className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border ${selectedTag === tag && "text-blue  font-bold"}`}
-                    >
-                      {numberPostsPerTag[tag]}
-                    </span>
-                  </button>
-                ))}
-              </div>
+                    {/* Tablet and Desktop Nav */}
+                    <div className="hidden  justify-between items-center gap-1">
+                      {tags.map((tag, i) => (
+                        <button
+                          className={clsx(
+                            "h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2  ",
+                            selectedTag === tag &&
+                              "bg-selected text-primary font-semibold",
+                            tag === "All" &&
+                              "text-primary hover:border-2 hover:border-blue-500  ",
+                            tag === "Notes" &&
+                              "text-notes-color border-notes-strong bg-notes-pastel hover:border-2  ",
+                            tag === "Now" &&
+                              "text-now-color border-now-strong bg-now-pastel hover:border-2  ",
+                            tag === "Research" &&
+                              "text-research-color border-research-strong bg-research-pastel hover:border-2  ",
+                            tag === "Snippets" &&
+                              "text-snippets-color border-snippets-strong bg-snippets-pastel hover:border-2  "
+                          )}
+                          key={tag}
+                          onClick={() => {
+                            setSelectedTag(tag);
+                            setCurrentPage(1);
+                          }}
+                        >
+                          <span
+                            className={`${selectedTag === tag && "font-bold"}`}
+                          >
+                            {tag}
+                          </span>
 
-              <PostFilter
-                searchQuery={searchQuery}
-                onSearchChange={(query) => {
-                  setSearchQuery(query);
-                  setCurrentPage(1);
-                }}
-              ></PostFilter>
-            </div>
-          </div>
+                          {/* Show only the count for this specific tag */}
+                          <span
+                            className={`ml-2 text-xs border rounded-md h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border ${selectedTag === tag && "text-blue  font-bold"}`}
+                          >
+                            {numberPostsPerTag[tag]}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+
+                    <PostFilter
+                      searchQuery={searchQuery}
+                      onSearchChange={(query) => {
+                        setSearchQuery(query);
+                        setCurrentPage(1);
+                      }}
+                    ></PostFilter>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>{" "}
+          </>
           <AnimatePresence mode="wait">
             <motion.div className=" grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3  justify-items-center grid-flow-row mt-8">
               {availableFilteredPosts.length === 0 && selectedTag.length > 0 ? (
                 <div className="col-span-full flex items-center justify-center min-h-[50vh]">
                   <div className="flex flex-col items-center text-center gap-3 max-w-2xl mx-auto">
                     <img
-                      src="../../../public/images/general/no-posts.png"
+                      src="/images/general/no-posts.png"
                       className="animate-pulse duration-300 ease-in-out "
                     />
                     <p className="text-lg text-gray-500 max-w-[40ch]">

@@ -227,7 +227,7 @@ export default function ContactForm() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.06 } },
           }}
-          className="w-[55rem]"
+          className="w-sm md:w-2xl lg:w-[55rem] "
         >
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
             {field(1, {
@@ -304,6 +304,13 @@ export default function ContactForm() {
               )}
             </RainbowButton>
           </motion.div>
+          <div className="hidden md:flex md:w-2xl lg:flex lg:w-[54rem] mx-auto mt-10">
+            <img
+              src="/images/general/contact-banner.png"
+              alt="banner"
+              className="rounded-xl"
+            />
+          </div>
         </motion.form>
 
         <AnimatePresence>

@@ -1,6 +1,6 @@
 "use client";
 import { RainbowButton } from "./ui/rainbow-button";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { Code, Cpu, Database, Layout, Cloud, Github } from "lucide-react";
 
 const icons = [
@@ -15,6 +15,7 @@ const icons = [
 ];
 
 export default function CTASection() {
+  const controls = useAnimation();
   return (
     <section className=" py-28 overflow-hidden h-fit border-none">
       {/* Background glow */}
@@ -23,10 +24,22 @@ export default function CTASection() {
         <motion.div
           key="cta"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          viewport={{ once: false, amount: 0.4 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          animate={controls}
+          onViewportEnter={() => {
+            controls.start({
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.4, ease: "easeInOut" },
+            });
+          }}
+          onViewportLeave={() => {
+            controls.start({
+              opacity: 0.95,
+              y: 6,
+              transition: { duration: 0.25, ease: "easeOut" },
+            });
+          }}
+          viewport={{ amount: 0.4 }}
           className="group relative rounded-2xl bg-white border border-transparent 
                 transition-all duration-300 "
         >

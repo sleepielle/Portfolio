@@ -4,9 +4,8 @@ import FeaturedProjects from "~/components/FeaturedProjects";
 import type { Projects, PostMeta } from "~/types";
 import AboutPreview from "~/components/AboutPreview";
 import LatestPosts from "~/components/LatestPosts";
-import ExperiencePreview from "~/components/ExperiencePreview";
-import ContactForm from "~/components/ContactForm";
 import CTASection from "~/components/CTA";
+import BeyondTheCode from "~/components/BeyondTheCode";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -81,7 +80,7 @@ const HomePage = ({ loaderData }: Route.ComponentProps) => {
   return (
     <>
       <FeaturedProjects projects={projects} count={2} />
-      <ExperiencePreview />
+      <BeyondTheCode />
       <LatestPosts posts={posts} />
       <AboutPreview />
       <CTASection />

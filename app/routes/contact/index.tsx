@@ -7,13 +7,6 @@ const ContactPage = () => {
     <div className="min-h-screen relative max-w-6xl ">
       <SocialsDock noEmail />
       <ContactForm />
-      <div className="w-[54rem] mx-auto">
-        <img
-          src="../../public/images/general/contact-banner.png"
-          alt="banner"
-          className="rounded-xl"
-        />
-      </div>
     </div>
   );
 };
