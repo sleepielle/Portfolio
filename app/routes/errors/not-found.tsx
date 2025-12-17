@@ -17,7 +17,6 @@ const NotFoundPage = () => {
           className="group relative rounded-2xl  border border-transparent 
                 transition-all duration-300 "
         >
-          <SocialsDock />
           <div className="flex justify-center items-center flex-col gap-2 -top-24 relative ">
             <div className="">
               <img
@@ -40,7 +39,7 @@ const NotFoundPage = () => {
                 </RainbowButton>
               </NavLink>
             </div>
-          </div>{" "}
+          </div>
         </motion.div>
       </AnimatePresence>
     </section>

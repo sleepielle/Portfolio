@@ -74,80 +74,88 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
   };
 
   return (
-    <section className="text-primary min-h-screen pt-10">
-      <motion.div
-        key="project-index"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-        className="group relative rounded-2xl  border border-transparent 
-                transition-all duration-300 "
-      >
-        <div className=" mx-auto px-4">
-          <h2 className="text-4xl text-primary mb-8 text-center tracking-tighter">
-            Projects
-          </h2>
-          <p className="text-center text-sm text-gray-400 mb-8 mt-2 max-w-[50ch] mx-auto">
-            This is my knowledge lab 🧪 — a mix of code notes, industry research
-            paper breakdowns and summaries, what I'm currently learning, among
-            others.
-          </p>
-          <SocialsDock />
-
-          <div className="flex flex-wrap gap-2 mb-8">
-            {categories.map((category) => (
-              <button
-                className={` rounded-full  ${
-                  selectedCategory === category ? "font-semibold" : ""
-                }`}
-                key={category}
-                onClick={() => {
-                  setSelectedCategory(category);
-                  setCurrentPage(1);
-                }}
-              >
-                <span
-                  className={clsx(
-                    `h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2 `,
-                    category === "All" &&
-                      "text-primary hover:border-2 hover:border-blue-500  ",
-
-                    category === "Frontend" &&
-                      "text-research-color border-research-strong bg-research-pastel hover:border-2  ",
-                    category === "Fullstack" &&
-                      "text-notes-color border-notes-strong bg-notes-pastel hover:border-2  "
-                  )}
+    <section className="text-primary min-h-screen pt-10 flex ">
+      <div>
+        <AnimatePresence>
+          <motion.div
+            key="project-index"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className=" text-center px-4 group relative rounded-2xl   
+                transition-all duration-300"
+          >
+            <h2 className="text-4xl text-primary mb-8 text-center tracking-tighter">
+              Projects
+            </h2>
+            <p className="text-center text-sm text-gray-400 mb-8 mt-2 max-w-[50ch] mx-auto">
+              This is my knowledge lab 🧪 — a mix of code notes, industry
+              research paper breakdowns and summaries, what I'm currently
+              learning, among others.
+            </p>
+            <div className="flex flex-wrap gap-2 mb-8">
+              {categories.map((category) => (
+                <button
+                  className={` rounded-full  ${
+                    selectedCategory === category ? "font-semibold" : ""
+                  }`}
+                  key={category}
+                  onClick={() => {
+                    setSelectedCategory(category);
+                    setCurrentPage(1);
+                  }}
                 >
-                  {category}
                   <span
-                    className={`ml-2 text-xs  h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border  ${selectedCategory && "text-blue font-bold"}`}
+                    className={clsx(
+                      `h-8 flex items-center px-1 pl-3 rounded-full cursor-pointer border text-sm transition-colors hover:border-2 `,
+                      category === "All" &&
+                        "text-primary hover:border-2 hover:border-blue-500  ",
+
+                      category === "Frontend" &&
+                        "text-research-color border-research-strong bg-research-pastel hover:border-2  ",
+                      category === "Fullstack" &&
+                        "text-notes-color border-notes-strong bg-notes-pastel hover:border-2  "
+                    )}
                   >
-                    {projectsPerTag[category]}
+                    {category}
+                    <span
+                      className={`ml-2 text-xs  h-6 min-w-6 font-medium flex items-center justify-center border-border dark:border-border  ${selectedCategory && "text-blue font-bold"}`}
+                    >
+                      {projectsPerTag[category]}
+                    </span>
                   </span>
-                </span>
-              </button>
-            ))}
-          </div>
-
-          <AnimatePresence mode="wait">
-            <motion.div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {currentProjects.map((project) => (
-                <motion.div key={project.id} layout>
-                  <ProjectCard key={project.id} project={project} />
-                </motion.div>
+                </button>
               ))}
-            </motion.div>
-          </AnimatePresence>
+            </div>{" "}
+          </motion.div>
+        </AnimatePresence>
 
-          <Pagination
-            totalPages={totalPages}
-            currentPage={currentPage}
-            onPageChange={setCurrentPage}
-          />
+        <div className="relative top-148">
+          <SocialsDock />
         </div>
-      </motion.div>
+        <motion.div
+          key="project-cards"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          viewport={{ once: true, amount: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {currentProjects.map((project) => (
+            <motion.div key={project.id} layout>
+              <ProjectCard key={project.id} project={project} />
+            </motion.div>
+          ))}
+        </motion.div>
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
+      </div>
     </section>
   );
 };

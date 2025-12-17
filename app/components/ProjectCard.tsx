@@ -39,11 +39,11 @@ const ProjectCard = (props: ProjectCardProps) => {
           {project.description}
         </p>
 
-        <div className="flex flex-row align-center gap-2 justify-center  ">
+        <div className="flex flex-col sm:flex-row sm:w-fit  align-center gap-2 justify-center sm:mx-auto ">
           <Link to={project.liveSite}>
             <RainbowButton
               variant={"outline"}
-              className={`flex-1 hover: ${className}`}
+              className={`w-full sm:flex-1 hover: ${className}`}
             >
               Live Site
             </RainbowButton>
@@ -51,7 +51,7 @@ const ProjectCard = (props: ProjectCardProps) => {
           <Link to={`/projects/${project.slug}`}>
             <RainbowButton
               variant={"outline"}
-              className={`flex-2  ${className}`}
+              className={`w-full sm:flex-2  ${className}`}
             >
               Case Study
             </RainbowButton>
@@ -59,7 +59,7 @@ const ProjectCard = (props: ProjectCardProps) => {
           <Link to={project.github}>
             <RainbowButton
               variant={"outline"}
-              className={`flex-1 ${className}`}
+              className={`w-full sm:w-auto  sm:flex-1 ${className}`}
             >
               Code
             </RainbowButton>

@@ -1,7 +1,6 @@
 import { NavLink } from "react-router";
-import { FaLaptopCode, FaTimes, FaBars } from "react-icons/fa";
+import { FaTimes, FaBars } from "react-icons/fa";
 import { useState } from "react";
-import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const base = "transition rounded-3xl p-1.5";

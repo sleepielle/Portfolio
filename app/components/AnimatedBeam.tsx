@@ -10,7 +10,6 @@ import {
   DatabaseZap,
   GithubIcon,
   Palette,
-  UserRoundPenIcon,
   UserStarIcon,
 } from "lucide-react";
 

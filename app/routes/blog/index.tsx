@@ -105,7 +105,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
             exit={{ opacity: 0, y: 20 }}
             viewport={{ once: false, amount: 0.4 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="translate-y-1/4 sm:w-full sm:translate-y-10 group relative rounded-2xl bg-white border border-transparent transition-all duration-300 "
+            className="translate-y-1/4 sm:w-full sm:-translate-y-5 group relative rounded-2xl  border border-transparent transition-all duration-300 "
           >
             <img
               src="/images/general/no-posts.png"
