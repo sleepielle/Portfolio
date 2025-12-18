@@ -29,10 +29,10 @@ const FeaturedProjectCard = ({
         gradientTo="#ffffff"
       >
         {" "}
-        <div className="absolute inset-0 z-0" />
+        <div className="absolute inset-0 z-0 " />
         <div>
           <div
-            className="absolute inset-0 -z-10 opacity-20"
+            className="absolute inset-0 -z-10 opacity-20 "
             style={{ backgroundImage: `url("/images/grain.jpg")` }}
           ></div>
 
@@ -41,39 +41,39 @@ const FeaturedProjectCard = ({
               <h3 className="text-2xl mt-2 md:mt-5 text-gray-500 border-b-gray-300 pb-2 border-b-1 ">
                 {project.title}
               </h3>
-              <p className=" mt-2 text-gray-400">{project.description}</p>
+              <p className=" mt-2 text-gray-500">{project.description}</p>
               <ul className="flex flex-col gap-4 mt-4 md:mt-5">
                 {project.results &&
                   project.results.map((result) => (
                     <li
                       key={result.title}
-                      className="text-gray-400 flex gap-2 "
+                      className="text-gray-500 flex gap-2 "
                     >
                       ✦<span>{result.title}</span>
                     </li>
                   ))}
               </ul>
 
-              <div className="flex gap-2 mt-5">
+              <div className="flex gap-2 mt-5 text-gray-500">
                 {" "}
                 <RainbowButton
                   variant="outline"
-                  className={`${GRADIENT_BUTTON_CLASSNAME}`}
+                  className={`${GRADIENT_BUTTON_CLASSNAME} text-gray-500`}
                 >
                   Visit Live Site <ExternalLink />
                 </RainbowButton>
-                <RainbowButton variant="outline">
+                <RainbowButton variant="outline" className="text-gray-500">
                   GitHub Repo
                   <ExternalLink />
                 </RainbowButton>{" "}
               </div>
             </div>
 
-            <div className="relative w-[45rem]  ">
+            <div className="relative sm:w-full lg:w-[45rem] ">
               <img
                 src={`${project.featuredImage}`}
                 alt={project.title}
-                className="lg:absolute  mt-8 -mb-10  md:-mb-0 lg:mt-0 lg:h-[400px]  lg:max-w-none rounded-2xl border-blue-300 border-2 w-full object-cover  object-[300%_70%] h-full"
+                className="lg:absolute  relative mt-8 -mb-10 mx-auto  md:-mb-0 lg:mt-0 lg:h-[400px]   lg:max-w-none rounded-2xl border-blue-300 border-2 object-cover lg:object-[300%_70%]  sm md:right-0 md:w-5xl lg:w-full sm:mx-auto   sm:h-full  sm:w-full  sm:top-5 sm:overflow-y-clip   "
               />
             </div>
           </div>

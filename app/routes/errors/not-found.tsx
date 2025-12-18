@@ -20,7 +20,7 @@ const NotFoundPage = () => {
           <div className="flex justify-center items-center flex-col gap-2 -top-24 relative ">
             <div className="">
               <img
-                src="../../../public/images/general/404.png"
+                src="/images/general/404.png"
                 alt="404"
                 className="rounded-4xl h-full w-full animate-move-y duration-300 ease-in-out "
               />

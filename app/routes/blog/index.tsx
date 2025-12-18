@@ -1,5 +1,5 @@
 "use client";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import type { Route } from "./+types/index";
 import type { PostMeta, TagCounts } from "~/types";
@@ -91,21 +91,33 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
     setMenuOpen(!menuOpen);
   };
 
+  const controls = useAnimation();
   return (
-    <div className=" max-w-7xl w-full  min-h-screen ">
-      <SocialsDock />
-
+    <div className=" max-w-7xl w-full  min-h-screen  translate-y-1/44 sm:translate-y-0 ">
       {availableFilteredPosts.length === 0 &&
       selectedTag.toString() === "All" ? (
         <AnimatePresence>
           <motion.div
             key="blog-page-empty"
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            viewport={{ once: false, amount: 0.4 }}
+            animate={controls}
+            onViewportEnter={() => {
+              controls.start({
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.4, ease: "easeOut" },
+              });
+            }}
+            onViewportLeave={() => {
+              controls.start({
+                opacity: 0.9,
+                y: 1,
+                transition: { duration: 0.25, ease: "easeOut" },
+              });
+            }}
+            viewport={{ amount: 0.2 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="translate-y-1/4 sm:w-full sm:-translate-y-5 group relative rounded-2xl  border border-transparent transition-all duration-300 "
+            className="translate-y-3 sm:w-full sm:-translate-y-5 group relative rounded-2xl   transition-all duration-300 h-full "
           >
             <img
               src="/images/general/no-posts.png"
@@ -124,7 +136,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
                 <b> Stay tuned for future posts!</b> In the meantime, take a
                 look at my projects or contact me.
               </p>
-              <div className="flex gap-2 items-center justify-center">
+              <div className="flex gap-2 items-center justify-center text-gray-400">
                 <RainbowButton
                   variant={"outline"}
                   className={`${GRADIENT_BUTTON_CLASSNAME}`}

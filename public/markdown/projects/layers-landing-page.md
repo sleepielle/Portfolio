@@ -145,5 +145,5 @@ Then open 👉 http://localhost:3000
 <br/> 
 
 
-![Banner](/public/images/general/contact-banner.png)
+![Banner](/images/general/contact-banner.png)
 Let's connect on [LinkedIn](https://www.linkedin.com/in/mercedesgpaz/) or send me an email!

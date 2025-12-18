@@ -14,7 +14,9 @@ const Eyebrow = (props: EyebrowProps) => {
       <h2 className="text-center text-primary text-4xl tracking-tighter">
         {title}
       </h2>{" "}
-      <p className="text-gray-500 text-center max-w-[45ch]">{description}</p>
+      <p className="text-gray-500 text-center max-w-[45ch] text-lg">
+        {description}
+      </p>
     </div>
   );
 };

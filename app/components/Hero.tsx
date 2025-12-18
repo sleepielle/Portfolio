@@ -41,7 +41,7 @@ export default function Hero() {
             animation="blurInUp"
             startOnView
             as={"p"}
-            className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 text-center   ring-gray-900/10 hover:ring-gray-900/20 w-fit mx-auto"
+            className="relative rounded-full px-3 mb-8 text-sm/6 text-gray-600 ring-1 text-center   ring-gray-900/10 hover:ring-gray-900/20 w-fit mx-auto"
           >
             💻 Software Engineer | 🌎 Based in Honduras | 🎨 Creative at heart
           </TextAnimate>
