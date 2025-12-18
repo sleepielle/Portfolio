@@ -50,7 +50,7 @@ export default function Hero() {
             <TextAnimate
               animation="blurInUp"
               startOnView
-              as={"h1"}
+              as={"p"}
               className="text-5xl font-semibold tracking-tight text-balance text-primary text-shadow-gray-500 text-shadow-2xs  sm:text-7xl no-"
             >
               Passionate about software quality and elegant solutions
@@ -69,7 +69,7 @@ export default function Hero() {
 
             <AnimatePresence>
               <motion.div
-                key="cta"
+                key="home-hero"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}

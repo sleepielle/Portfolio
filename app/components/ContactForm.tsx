@@ -10,6 +10,7 @@ import {
   MessageSquareText,
 } from "lucide-react";
 import { RainbowButton } from "./ui/rainbow-button";
+import Eyebrow from "./Eyebrow";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 12 },
@@ -209,14 +210,12 @@ export default function ContactForm() {
         className="mx-auto max-w-6xl"
       >
         <div className="mb-8 flex flex-col justify-center h-fit items-center text-center mx-auto ">
-          <div>
-            <h1 className="text-4xl  tracking-tighter text-blue-500 ">
-              Contact Me
-            </h1>
-            <p className="mt-1 text-sm text-gray-500">
-              Reach out and I'll happily answer within 1-2 business days.
-            </p>
-          </div>
+          <Eyebrow
+            title="Contact Me"
+            eyebrowText=""
+            description="Reach out and I'll happily answer within 1-2 business days."
+            className=" md:mt-10"
+          />
         </div>
 
         <motion.form
@@ -227,7 +226,7 @@ export default function ContactForm() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.06 } },
           }}
-          className="w-sm md:w-2xl lg:w-[55rem] "
+          className="xs:w-[19rem] sm:w-sm md:w-2xl lg:w-[55rem] py-5 md:py-10 "
         >
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
             {field(1, {
@@ -283,7 +282,7 @@ export default function ContactForm() {
             />
           </div>
 
-          <motion.div className="mt-6 flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+          <motion.div className="mt-6 flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between  w-full ">
             <p className="text-xs text-gray-400">
               By contacting me, you accept receiving a follow up e-mail to
               continue the conversation.
@@ -292,6 +291,7 @@ export default function ContactForm() {
               disabled={submitting}
               type="submit"
               variant={"outline"}
+              className=" w-full  sm:w-fit"
             >
               {submitting ? (
                 <>

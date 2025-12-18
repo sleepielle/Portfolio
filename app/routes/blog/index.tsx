@@ -93,7 +93,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
 
   const controls = useAnimation();
   return (
-    <div className=" max-w-7xl w-full  min-h-screen  translate-y-1/44 sm:translate-y-0 ">
+    <div className=" max-w-7xl w-full  min-h-screen  translate-y-1/44 sm:translate-y-0  ">
       {availableFilteredPosts.length === 0 &&
       selectedTag.toString() === "All" ? (
         <AnimatePresence>
@@ -117,17 +117,17 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
             }}
             viewport={{ amount: 0.2 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="translate-y-3 sm:w-full sm:-translate-y-5 group relative rounded-2xl   transition-all duration-300 h-full "
+            className="translate-y-3 sm:w-full sm:-translate-y-5 group relative rounded-2xl   transition-all duration-300 h-full  "
           >
             <img
               src="/images/general/no-posts.png"
               className="animate-pulse duration-300 ease-in-out"
             />
             <div className="mx-auto text-center">
-              <h2 className="text-3xl text-primary  text-center tracking-tighter">
+              <h2 className="text-3xl text-primary  text-center tracking-tighter mb-8">
                 Knowledge Lab
               </h2>
-              <p className="text-center text-gray-400 mb-8 mt-2  max-w-[30ch] sm:max-w-[50ch] mx-auto">
+              <p className="text-center text-gray-500 mb-8 mt-2  max-w-[30ch] sm:max-w-[50ch] mx-auto">
                 This is my knowledge lab 🧪 A mix of code notes, industry
                 research paper breakdowns, summaries, what I'm currently
                 learning, among others.
@@ -136,7 +136,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
                 <b> Stay tuned for future posts!</b> In the meantime, take a
                 look at my projects or contact me.
               </p>
-              <div className="flex gap-2 items-center justify-center text-gray-400">
+              <div className="flex gap-2 items-center justify-center text-gray-500 mt-8">
                 <RainbowButton
                   variant={"outline"}
                   className={`${GRADIENT_BUTTON_CLASSNAME}`}

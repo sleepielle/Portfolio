@@ -78,11 +78,11 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
       <div>
         <AnimatePresence>
           <motion.div
-            key="project-index"
+            key="all-projects-index"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            viewport={{ once: true, amount: 0.4 }}
+            viewport={{ once: false, amount: 0.4 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className=" text-center px-4 group relative rounded-2xl   
                 transition-all duration-300"
@@ -90,7 +90,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
             <h2 className="text-4xl text-primary mb-8 text-center tracking-tighter">
               Projects
             </h2>
-            <p className="text-center text-sm text-gray-400 mb-8 mt-2 max-w-[50ch] mx-auto">
+            <p className="text-center  text-gray-500 mb-8 mt-1 max-w-[50ch] mx-auto text-base">
               This is my knowledge lab 🧪 — a mix of code notes, industry
               research paper breakdowns and summaries, what I'm currently
               learning, among others.

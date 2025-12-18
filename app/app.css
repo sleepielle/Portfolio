@@ -246,8 +246,8 @@ body {
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
-  --animate-move-left: scroll-left 15s linear infinite;
-  --animate-move-right: scroll-right 15s linear infinite;
+  --animate-move-left: scroll-left 30s linear infinite;
+  --animate-move-right: scroll-right 30s linear infinite;
   --animate-move-y: move-y 15s ease-in-out infinite;
   --color-color-5: var(--color-5);
   --color-color-4: var(--color-4);

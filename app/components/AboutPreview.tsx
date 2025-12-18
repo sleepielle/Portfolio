@@ -4,16 +4,21 @@ import { MagicCard } from "~/components/ui/magic-card";
 import ToolboxItems from "./ToolboxItems";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useRef } from "react";
+import Eyebrow from "./Eyebrow";
 
 const toolboxItems = [
-  { title: "JavaScript" },
-  { title: "HTML5" },
-  { title: "Motion" },
-  { title: ".NET" },
-  { title: "UI/UX" },
-  { title: "CSS3" },
-  { title: "React" },
-  { title: "GitHub" },
+  { title: "💻 JavaScript" },
+  { title: "🎨 HTML5" },
+  { title: "🎨 Motion" },
+  { title: "💻 .NET" },
+  { title: "🎨 UI/UX" },
+  { title: "🎨 CSS3" },
+  { title: "🎨 React" },
+  { title: "💻 GitHub" },
+  { title: "💻 Git" },
+  { title: "🔨 VSCode" },
+  { title: "💻 SQL Server" },
+  { title: "💻 PostgreSQL" },
 ];
 
 const hobbies = [
@@ -54,19 +59,16 @@ const AboutPreview = () => {
       className="group relative rounded-2xl  border border-transparent 
                 transition-all duration-300 "
     >
-      <div className="flex flex-col justify-center items-center py-20">
-        <div className="flex justify-center items-center flex-col gap-4">
-          <h2 className="text-center text-primary text-4xl tracking-tighter">
-            About Me
-          </h2>
+      <Eyebrow
+        title="About Me"
+        eyebrowText=""
+        description="  I'm passionate about software quality while still maintaining
+            connections with the users and clients."
+        className=" mt-10"
+      />
 
-          <p className="text-gray-500 text-center max-w-[45ch]">
-            I'm passionate about software quality while still maintaining
-            connections with the users and clients.
-          </p>
-        </div>
-
-        <div className="mt-20 flex flex-col gap-8">
+      <div className="flex flex-col justify-center items-center  py-10">
+        <div className=" flex flex-col gap-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3 ">
             <MagicCard
               className="relative h-[320px] md:col-span-2 lg:col-span-1 
@@ -124,11 +126,14 @@ const AboutPreview = () => {
               />
               <CardHeader
                 title="My Reads"
-                description=" Explore the books shaping my perspectives"
+                description="Improving my UI skills using practical, actionable tactics."
               />
 
-              <div className="w-40 mx-auto mt-2 md:mt-0 ">
-                <img src={"/images/book-cover.png"} alt="book cover" />
+              <div className="w-55 mx-auto mt-2 md:mt-0 relative ">
+                <img
+                  src={"/images/general/refactoring-ui.png"}
+                  alt="book cover"
+                />
               </div>
             </MagicCard>
 
@@ -191,19 +196,19 @@ const AboutPreview = () => {
               <div>
                 <CardHeader
                   title="My Toolbox"
-                  description="Explore the technologies and tools I use to craft exceptional
-                  digital experiences"
+                  description="Explore the front-end and back-end technologies/tools I use to craft exceptional
+                  digital experiences."
                 />
               </div>
 
               <ToolboxItems
                 items={toolboxItems}
-                itemsWrapperClassName="animate-move-left [animation-duration:15s]"
+                itemsWrapperClassName="animate-move-left "
               />
               <ToolboxItems
                 items={toolboxItems}
                 className="mt-6"
-                itemsWrapperClassName="animate-move-right  [animation-duration:15s]"
+                itemsWrapperClassName="animate-move-right "
               />
             </MagicCard>
           </div>

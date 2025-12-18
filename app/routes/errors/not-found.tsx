@@ -27,7 +27,7 @@ const NotFoundPage = () => {
             </div>
 
             <div className="flex justify-center items-center flex-col gap-2">
-              <p className="text-center text-lg text-gray-400 mt-2 ">
+              <p className="text-center text-lg text-gray-500 mt-2 ">
                 <b>Page not found.</b>
                 <br />
                 The page you're looking for doesn&apos;t exist, has been removed

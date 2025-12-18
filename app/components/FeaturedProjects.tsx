@@ -40,9 +40,9 @@ const FeaturedProjects = ({ projects, count = 4 }: FeaturedProjectsProps) => {
           title="Featured Projects"
           eyebrowText="See all my projects"
           description="A selection of websites I've built to learn, grow, and create value. Check out the Case Studies to see engineering tools like documentation, user stories, etc."
-          className=" mb-10"
+          className=" mt-10"
         />
-        <div className="relative">
+        <div className="relative py-5 md:py-10">
           {projects.map((project, index) => (
             <FeaturedProjectCard
               key={project.id}

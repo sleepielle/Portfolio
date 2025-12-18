@@ -28,7 +28,6 @@ const FeaturedProjectCard = ({
         gradientFrom="#ffffff"
         gradientTo="#ffffff"
       >
-        {" "}
         <div className="absolute inset-0 z-0 " />
         <div>
           <div
@@ -54,8 +53,7 @@ const FeaturedProjectCard = ({
                   ))}
               </ul>
 
-              <div className="flex gap-2 mt-5 text-gray-500">
-                {" "}
+              <div className="flex gap-2 mt-5 text-gray-500 flex-col sm:flex-row ">
                 <RainbowButton
                   variant="outline"
                   className={`${GRADIENT_BUTTON_CLASSNAME} text-gray-500`}
@@ -73,7 +71,7 @@ const FeaturedProjectCard = ({
               <img
                 src={`${project.featuredImage}`}
                 alt={project.title}
-                className="lg:absolute  relative mt-8 -mb-10 mx-auto  md:-mb-0 lg:mt-0 lg:h-[400px]   lg:max-w-none rounded-2xl border-blue-300 border-2 object-cover lg:object-[300%_70%]  sm md:right-0 md:w-5xl lg:w-full sm:mx-auto   sm:h-full  sm:w-full  sm:top-5 sm:overflow-y-clip   "
+                className="lg:absolute  relative mt-8 -mb-10 mx-auto  md:-mb-0 lg:mt-0 h-[200px] lg:h-[400px]   lg:max-w-none rounded-2xl border-blue-300 border-2 object-cover lg:object-[300%_70%]  sm md:right-0 md:w-5xl lg:w-full sm:mx-auto   sm:h-full  sm:w-full  sm:top-5 sm:overflow-y-clip   "
               />
             </div>
           </div>
