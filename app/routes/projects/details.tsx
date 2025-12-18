@@ -33,6 +33,7 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "~/components/ui/sheet";
+import { RainbowButton } from "~/components/ui/rainbow-button";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
   // Use the request URL to construct absolute URLs for fetch
@@ -163,12 +164,14 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
 
             <div className="absolute inset-0 pointer-events-none">
               <div
-                className="w-full h-full mix-blend-overlay"
+                className="hidden sm:flex w-full h-full mix-blend-overlay"
                 style={{
                   background:
                     "linear-gradient(90deg, rgba(255,90,90,0.28), rgba(255,160,90,0.22), rgba(180,230,120,0.24), rgba(110,225,240,0.24), rgba(125,120,255,0.26), rgba(235,110,240,0.28))",
                 }}
               />
+
+              <div className="sm:hidden w-full h-full mix-blend-overlay bg-gradient-to-b from-purple-200 to-purple-400" />
             </div>
 
             <div className="absolute inset-0 backdrop-blur-[3px] bg-white/4" />
@@ -178,23 +181,22 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
           {/* CONTENT */}
           <div className="relative z-10 flex flex-col justify-center h-full">
             <div className="max-w-5xl mx-auto px-4 md:px-0">
-              <div className="inline-block bg-white/10 backdrop-blur-sm text-white dark:text-white rounded-full px-3 py-1 text-sm mb-4 border-1 border-white/60">
+              <div className="inline-block bg-white/10 backdrop-blur-sm text-white rounded-full px-3 py-1 text-sm mb-4 border-1 border-white/60 shadow-md [text-shadow:0_2px_8px_rgba(0,0,0,0.40)]">
                 {project.category} {" ── .✦"}{" "}
-                {new Date(project.date).toDateString()}
               </div>
 
-              <h1 className="text-4xl md:text-5xl font-bold text-white dark:text-white leading-tight mb-3 max-w-2xl">
+              <h1 className="text-3xl md:text-4xl font-bold text-white  leading-tight mb-3  md:max-w-2xl  [text-shadow:0_2px_8px_rgba(0,0,0,0.40)] ">
                 {project.title}
               </h1>
 
-              <p className="text-lg text-white/80 dark:text-gray-200 max-w-2xl">
+              <p className="text-lg text-white/80  max-w-2xl [text-shadow:0_2px_8px_rgba(0,0,0,0.40)] ">
                 {project.description}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-10 mx-auto px-4 md:px-0 z-10 text-gray-500 mt-10 ">
+        <div className="grid grid-cols-3 gap-10 mx-auto md:px-4 lg:px-0 z-10 text-gray-500 mt-10 ">
           <main className=" col-span-3 md:col-span-3 lg:col-span-2">
             <PostMarkdown
               markdown={markdown}
@@ -204,8 +206,8 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
             />
           </main>
 
-          {/**TABLE OF CONTENTS AND A11Y */}
-          <aside className="lg:block hidden md:col-span-1 rounded-lg px-5 sticky h-fit top-28  ">
+          {/**DESKTOP TOC AND A11Y */}
+          <aside className="hidden lg:block lg:sticky  md:col-span-1 rounded-lg px-5  h-fit top-28  ">
             <div className="px-5 ">
               <nav>
                 <ul className="space-y-1 text-sm">
@@ -213,7 +215,7 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
                     <li key={id} className={depth > 2 ? "pl-4" : ""}>
                       <a
                         href={`#${id}`}
-                        className="block text-slate-400 hover:font-semibold"
+                        className="block text-gray-500 hover:font-semibold"
                       >
                         ─ ✦ {text}
                       </a>
@@ -278,8 +280,8 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
                   </TooltipContent>
                 </Tooltip>
               </div>
-              <hr className="my-5" />
-              <div className="flex justify-between items-center">
+              <hr className="hidden  xl:flex xl:my-5" />
+              <div className="hidden xl:flex justify-between items-center">
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <div
@@ -325,14 +327,14 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
 
               <hr className="my-5" />
 
-              <Button
+              <RainbowButton
                 variant={"outline"}
-                className="border-[#d1d5dc] w-full"
+                className=" w-full"
                 onClick={(e) => navigate("/projects")}
               >
                 <ArrowLeft className="text-gray-600" />
                 Back to Projects
-              </Button>
+              </RainbowButton>
             </div>
 
             {/* {(project.devNotesLinks?.length ?? 0) > 0 && (
@@ -366,21 +368,21 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
             )} */}
           </aside>
 
-          {/**MOBILE TOC AND A11Y */}
-          <div className="fixed w-full  lg:hidden  float  sm:left-[75%] lg:left-[80%]  bottom-4 z-50 right-4  ">
+          {/**MOBILE TOC AND A11Y  sm:left-[75%] lg:left-[80%]*/}
+          <div className="fixed  lg:hidden  float    bottom-4 z-50  flex justify-center items-center  mx-auto w-fit  left-[90%] bg-white rounded-lg  ">
             <div>
               <Sheet>
-                <SheetTrigger>
-                  <Button variant="outline" className="shadow-md">
-                    <TableOfContentsIcon /> Table of Contents
+                <SheetTrigger className="">
+                  <Button variant="outline" className="shadow-md bg-white">
+                    <TableOfContentsIcon />
                   </Button>
                 </SheetTrigger>
                 <SheetContent
-                  className="max-h-[85vh] overflow-y-auto"
+                  className="max-h-[85vh] overflow-y-auto rounded-t-2xl"
                   side="bottom"
                 >
-                  <div className="grid gap-4 translate-y-1/2 text-gray-500">
-                    <aside className="sm:block lg:hidden md:col-span-1 rounded-lg px-5 sticky h-fit top-28 ">
+                  <div className="grid gap-4 p-5 text-gray-500  rounded-t-full">
+                    <aside className="sm:block lg:hidden md:col-span-1 rounded-lg  sticky h-fit ">
                       <div className="px-5 ">
                         <nav>
                           <ul className="space-y-1 text-sm">
@@ -388,7 +390,7 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
                               <li key={id} className={depth > 2 ? "pl-4" : ""}>
                                 <a
                                   href={`#${id}`}
-                                  className="block text-slate-400 hover:font-semibold"
+                                  className="block text-gray-500 hover:font-semibold"
                                 >
                                   ─ ✦ {text}
                                 </a>
@@ -504,14 +506,14 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
 
                         <hr className="my-5 hidden lg:block " />
 
-                        <Button
+                        <RainbowButton
                           variant={"outline"}
-                          className="border-[#d1d5dc] w-full"
+                          className="w-full"
                           onClick={(e) => navigate("/projects")}
                         >
                           <ArrowLeft className="text-gray-600" />
                           Back to Projects
-                        </Button>
+                        </RainbowButton>
                       </div>
                     </aside>
                   </div>

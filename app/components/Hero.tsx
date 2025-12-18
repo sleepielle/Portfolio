@@ -18,7 +18,7 @@ export default function Hero() {
 
   return (
     <div>
-      <div className="relative isolate px-6 py-20 lg:px-8">
+      <div className="relative isolate px-6  md:py-20 lg:px-8">
         {/* <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -41,9 +41,18 @@ export default function Hero() {
             animation="blurInUp"
             startOnView
             as={"p"}
-            className="relative rounded-full px-3 mb-8 text-sm/6 text-gray-600 ring-1 text-center   ring-gray-900/10 hover:ring-gray-900/20 w-fit mx-auto"
+            className="relative rounded-full px-3 mb-8 text-sm/6 text-gray-600 ring-1 text-center   ring-gray-900/10 hover:ring-gray-900/20 w-fit mx-auto hidden sm:flex"
           >
             💻 Software Engineer | 🌎 Based in Honduras | 🎨 Creative at heart
+          </TextAnimate>
+
+          <TextAnimate
+            animation="blurInUp"
+            startOnView
+            as={"p"}
+            className="relative rounded-full px-3 mb-8 text-sm/6 text-gray-600 ring-1 text-center   ring-gray-900/10 hover:ring-gray-900/20 w-fit mx-auto max-w-[20ch] sm:hidden "
+          >
+            🎨 Creative at heart
           </TextAnimate>
 
           <div className="text-center">
@@ -51,7 +60,7 @@ export default function Hero() {
               animation="blurInUp"
               startOnView
               as={"p"}
-              className="text-5xl font-semibold tracking-tight text-balance text-primary text-shadow-gray-500 text-shadow-2xs  sm:text-7xl no-"
+              className="text-4xl md:text-5xl font-semibold tracking-tight text-balance text-primary text-shadow-gray-500 text-shadow-2xs  sm:text-7xl "
             >
               Passionate about software quality and elegant solutions
             </TextAnimate>
@@ -60,7 +69,7 @@ export default function Hero() {
               animation="blurInUp"
               startOnView
               as={"p"}
-              className="mt-8 text-lg  text-pretty text-gray-600 sm:text-xl/8"
+              className="mt-8  text-base md:text-lg  text-pretty text-gray-600 sm:text-xl/8"
             >
               I'm Mercedes Paz, a Software Engineer specialized on building
               scalable, user-friendly applications with a focus on code quality
@@ -87,9 +96,12 @@ export default function Hero() {
                 </Link>
 
                 <Link to="/contact">
-                  <button className="text-sm font-semibold text-gray-500">
+                  <RainbowButton
+                    variant={"outline"}
+                    className="text-sm font-semibold text-gray-500"
+                  >
                     Contact Me <span aria-hidden="true">📩</span>
-                  </button>
+                  </RainbowButton>
                 </Link>
               </motion.div>
             </AnimatePresence>

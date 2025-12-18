@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { FaTimes, FaBars } from "react-icons/fa";
 import { useState } from "react";
 
@@ -32,9 +32,18 @@ const Navbar = () => {
     },
   ];
 
+  const navigate = useNavigate();
+
   return (
     <>
-      <nav className=" border-b sticky top-3 z-100 mx-auto  backdrop-blur-md bg-white/30 text-center px-8 w-fit left-[85%] sm:left-0 rounded-md md:rounded-full ">
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 transition-opacity"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
+
+      <nav className="border-b sticky top-3 z-50 mx-auto backdrop-blur-md bg-white/90 text-center px-8 w-fit left-[90%] sm:left-0 rounded-l-xl md:rounded-full">
         <div className="py-4 flex sm:items-center sm:justify-center items-end justify-end ">
           {/*Desktop nav*/}
           <div className="hidden md:flex items-center gap-6">
@@ -52,7 +61,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="md:hidden flex items-center gap-4">
+          <div className=" md:hidden flex right-1 items-center gap-4">
             <button
               className="text-accent text-xl cursor-pointer"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -65,12 +74,17 @@ const Navbar = () => {
 
         {/*Mobile Nav*/}
         {menuOpen && (
-          <div className="backdrop-blur-md bg-white/30  md:hidden rounded-md border-t border-theme px-6 py-4 space-y-2 space-x-4 text-center flex flex-col">
+          <div className="absolute -left-12 top-20 z-50 backdrop-blur-md bg-white/90 md:hidden rounded-md border-t px-6 py-4 space-y-2 text-center flex flex-col">
             {navbarItems.map((item) => (
               <NavLink
+                key={item.route}
                 to={item.route}
                 className={({ isActive }) => (isActive ? active : base)}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault(); // stop NavLink auto-nav
+                  setMenuOpen(false); // close sheet first
+                  navigate(item.route); // then navigate
+                }}
               >
                 {item.title}
               </NavLink>

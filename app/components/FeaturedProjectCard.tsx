@@ -40,8 +40,10 @@ const FeaturedProjectCard = ({
               <h3 className="text-2xl mt-2 md:mt-5 text-gray-500 border-b-gray-300 pb-2 border-b-1 ">
                 {project.title}
               </h3>
-              <p className=" mt-2 text-gray-500">{project.description}</p>
-              <ul className="flex flex-col gap-4 mt-4 md:mt-5">
+              <p className=" mt-2 text-gray-500 text-base">
+                {project.description}
+              </p>
+              <ul className="flex flex-col gap-4 mt-4 md:mt-5 text-base">
                 {project.results &&
                   project.results.map((result) => (
                     <li
