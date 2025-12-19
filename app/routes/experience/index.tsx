@@ -11,9 +11,13 @@ const Experience = () => {
   const [experience, setExperience] = useState<ExperienceProps[]>([]);
 
   useEffect(() => {
-    fetch("../../../public/data/experience.json")
-      .then((res) => res.json())
-      .then((data) => setExperience(data.experience));
+    fetch("/data/experience.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("Network response was not ok");
+        return res.json();
+      })
+      .then((data) => setExperience(data.experience))
+      .catch((err) => console.error("Fetch failed:", err));
   }, []);
 
   const controls = useAnimation();
