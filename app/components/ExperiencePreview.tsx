@@ -4,7 +4,6 @@ import { AnimatedList } from "./ui/animated-list";
 import { useEffect, useState } from "react";
 import type { ExperienceProps } from "~/types";
 import { Notification } from "~/components/Notification";
-import EyebrowPages from "./EyebrowPages";
 import Eyebrow from "./Eyebrow";
 
 const ExperiencePreview = ({ classname }: { classname: string }) => {
@@ -46,7 +45,7 @@ const ExperiencePreview = ({ classname }: { classname: string }) => {
             {/* LEFT COLUMN */}
             <AnimatePresence>
               <motion.div
-                key="experience-details"
+                key={`experience-${id}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
