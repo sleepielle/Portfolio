@@ -11,8 +11,8 @@ import EyebrowPages from "~/components/EyebrowPages";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Projects " },
-    { name: "description", content: "My personal website" },
+    { title: "All Projects " },
+    { name: "description", content: "Mercedes Paz's Portfolio" },
   ];
 }
 

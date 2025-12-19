@@ -1,6 +1,14 @@
 import AboutPreview from "~/components/AboutPreview";
 import ContactForm from "~/components/ContactForm";
 import { SocialsDock } from "~/components/SocialsDock";
+import type { Route } from "../../+types/root";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Contact Me" },
+    { name: "description", content: "Mercedes Paz's Portfolio" },
+  ];
+}
 
 const ContactPage = () => {
   return (

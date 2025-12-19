@@ -2,6 +2,14 @@ import { NavLink } from "react-router";
 import { RainbowButton } from "~/components/ui/rainbow-button";
 import { SocialsDock } from "~/components/SocialsDock";
 import { AnimatePresence, motion } from "framer-motion";
+import type { Route } from "./+types/not-found";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "404 | Page Not Found" },
+    { name: "description", content: "Mercedes Paz's Portfolio" },
+  ];
+}
 
 const NotFoundPage = () => {
   return (

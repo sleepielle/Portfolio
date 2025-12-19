@@ -13,6 +13,13 @@ import { RainbowButton } from "~/components/ui/rainbow-button";
 import { Link } from "react-router";
 import { GRADIENT_BUTTON_CLASSNAME } from "~/lib/constants";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Dev Blog " },
+    { name: "description", content: "Mercedes Paz's Portfolio" },
+  ];
+}
+
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ posts: PostMeta[] }> {

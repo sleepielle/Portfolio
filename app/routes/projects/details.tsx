@@ -74,6 +74,13 @@ export async function loader({ request, params }: Route.LoaderArgs) {
   return { project, markdown: markdown.default };
 }
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Project Case Study " },
+    { name: "description", content: "Mercedes Paz's Portfolio" },
+  ];
+}
+
 const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
   const { project, markdown } = loaderData;
   const toc = getToc(markdown);

@@ -13,7 +13,7 @@ import Eyebrow from "~/components/Eyebrow";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Mercedes Paz" },
-    { name: "description", content: "My personal website" },
+    { name: "description", content: "Mercedes Paz's Portfolio" },
   ];
 }
 

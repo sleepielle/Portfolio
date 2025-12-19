@@ -5,9 +5,16 @@ import EyebrowPages from "~/components/EyebrowPages";
 import Markdown from "~/components/Markdown";
 import { Notification } from "~/components/Notification";
 import PDFViewer from "~/components/PDFViever";
-import Tag from "~/components/Tag";
-import { AnimatedList } from "~/components/ui/animated-list";
 import type { ExperienceProps } from "~/types";
+import type { Route } from "./+types";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Experience " },
+    { name: "description", content: "Mercedes Paz's Portfolio" },
+  ];
+}
+
 const Experience = () => {
   const [experience, setExperience] = useState<ExperienceProps[]>([]);
 
