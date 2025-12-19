@@ -82,7 +82,11 @@ const LatestPosts = ({ posts }: { posts: PostMeta[] }) => {
 
         <div className="mx-auto mt-5 gap-5">
           {CATEGORIES.map((cat) => (
-            <Tag key={cat} title={cat} />
+            <Tag
+              key={cat}
+              title={cat}
+              classname="hover:text-blue-400 hover:border-blue-400 bg-white border-gray-300 mx-3 text-gray-500"
+            />
           ))}
         </div>
       </div>

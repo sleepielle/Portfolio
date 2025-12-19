@@ -2,7 +2,7 @@ import type { Route } from "./+types/details";
 import type { ProjectDetailsPageProps, Projects } from "~/types";
 import { Link } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
-import PostMarkdown from "~/components/PostMarkdown";
+import PostMarkdown from "~/components/Markdown";
 import { getToc } from "../blog/toc";
 import { Button } from "~/components/ui/button";
 import {

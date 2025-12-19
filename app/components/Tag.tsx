@@ -1,9 +1,12 @@
-const Tag = ({ title }: { title: string }) => {
+import { cn } from "~/lib/utils";
+
+const Tag = ({ title, classname }: { title: string; classname: string }) => {
   return (
     <div
-      className="w-fit inline-flex border bg-white border-gray-300 mx-3 text-gray-500 px-3 py-1 rounded-full  items-center 
-               shadow-xs hover:shadow-sm  hover:text-blue-400 hover:border-blue-400 
-               transition-all duration-500 ease-in-out cursor-pointer"
+      className={cn(
+        "w-fit inline-flex border  px-3 py-1 rounded-full  items-center shadow-xs hover:shadow-sm   transition-all duration-500 ease-in-out cursor-pointer",
+        classname
+      )}
     >
       <span className="text-sm mx-auto transition-transform duration-300">
         &#10038;

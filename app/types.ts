@@ -80,3 +80,21 @@ export type ProjectDetailsPageProps = {
     markdown: string;
   };
 };
+
+export type ExperienceProps = {
+  id: number;
+  title: string;
+  excerpt: string;
+  additional?: string;
+  description: string;
+  skills: string[];
+  "animated-list": AnimatedListItem[];
+};
+
+export type AnimatedListItem = {
+  name: string;
+  description: string;
+  time: string;
+  icon: string;
+  color: string;
+};

@@ -18,7 +18,7 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 // Import styles
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import { ShareDock } from "~/components/ShareDock";
-import PostMarkdown from "~/components/PostMarkdown";
+import PostMarkdown from "~/components/Markdown";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
   const { slug } = params;
@@ -238,36 +238,6 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
 
             <hr className="my-5" />
 
-            {/* {(postMeta.devNotesLinks?.length ?? 0) > 0 && (
-              <>
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <Button variant="outline">Dev Notes</Button>
-                  </SheetTrigger>
-
-                  <SheetContent>
-                    <SheetHeader>
-                      <SheetTitle>Developer Notes</SheetTitle>
-                      <SheetDescription>
-                        {postMeta.devNotesLinks!.map((link, index) => (
-                          <a
-                            key={index}
-                            href={link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block text-blue-600 underline hover:text-blue-800 mb-2"
-                          >
-                            {link}
-                          </a>
-                        ))}
-                      </SheetDescription>
-                    </SheetHeader>
-                  </SheetContent>
-                </Sheet>
-                <hr className="my-5" />
-              </>
-            )} */}
-
             <Button
               variant={"outline"}
               className="border-[#d1d5dc] w-full"
@@ -312,4 +282,35 @@ params }: Route.LoaderArgs) {
 
   return { post };
 }
+
+  {/* {(postMeta.devNotesLinks?.length ?? 0) > 0 && (
+              <>
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <Button variant="outline">Dev Notes</Button>
+                  </SheetTrigger>
+
+                  <SheetContent>
+                    <SheetHeader>
+                      <SheetTitle>Developer Notes</SheetTitle>
+                      <SheetDescription>
+                        {postMeta.devNotesLinks!.map((link, index) => (
+                          <a
+                            key={index}
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block text-blue-600 underline hover:text-blue-800 mb-2"
+                          >
+                            {link}
+                          </a>
+                        ))}
+                      </SheetDescription>
+                    </SheetHeader>
+                  </SheetContent>
+                </Sheet>
+                <hr className="my-5" />
+              </>
+            )} 
+
  */

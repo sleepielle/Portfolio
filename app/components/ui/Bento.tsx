@@ -34,7 +34,7 @@ const Bento = (props: BentoProps) => {
   const features = latestPosts.map((post, i) => ({
     Icon: ICONS[i % ICONS.length], // <-- single component, not array
     name: post.title,
-    description: post.excerpt,
+    description: post.shortExcerpt,
     href: post.slug, // ensure this matches BentoCard’s expected href
 
     cta: "Read more",

@@ -49,7 +49,7 @@ export const AnimatedList = React.memo(
 
     return (
       <div
-        className={cn(`flex flex-col items-center gap-4`, className)}
+        className={cn(`flex flex-col items-center gap-4   w-full`, className)}
         {...props}
       >
         <AnimatePresence>

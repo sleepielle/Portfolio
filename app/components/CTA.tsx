@@ -18,8 +18,6 @@ export default function CTASection() {
   const controls = useAnimation();
   return (
     <section className=" py-28 overflow-hidden h-fit border-none">
-      {/* Background glow */}
-
       <AnimatePresence>
         <motion.div
           key="cta"

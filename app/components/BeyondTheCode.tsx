@@ -34,7 +34,7 @@ const experiences = [
 export default function BeyondTheCode() {
   const controls = useAnimation();
   return (
-    <section className="relative z-10 pt-44 pb-16">
+    <section className="relative z-10 mt-32">
       <AnimatePresence>
         <motion.div
           key="beyond-code-page"

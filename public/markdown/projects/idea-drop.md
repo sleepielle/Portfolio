@@ -1,149 +1,200 @@
 
 
-> A **pixel-perfect implementation** of a Figma community design, built with **Next.js**, **TailwindCSS**, and **Framer Motion**. The goal was to recreate the design faithfully, while also adding a **component-based architecture** and **motion design integration** to elevate the user experience. 
+# IdeaDrop 🧠💡
 
-<br/>   
+*A full-stack ideas platform with secure authentication and modern React architecture*
 
-🌐 **Live Preview:** [https://layers-fawn.vercel.app/](https://layers-fawn.vercel.app/)  
+IdeaDrop is a full-stack application that allows users to register, authenticate, and manage ideas through a clean, responsive UI and a secure Node.js/Express API. The project implements **JWT-based authentication with refresh tokens**, protected routes, and full CRUD functionality.
 
-<br/> 
-
----
-
-## 🧰 Tech Stack
-
-| Category | Technology | Purpose |
-|-----------|-------------|----------|
-| ⚙️ Framework | Next.js 14 | Routing, static generation, image optimization |
-| 🎨 Styling | TailwindCSS 3 | Utility-first responsive styling |
-| 💫 Animation | Framer Motion 11 | Section transitions & microinteractions |
-| 💻 Language | TypeScript | Type safety and cleaner DX |
-| ✒️ CI/CD | Vercel | Modern continuous integration&deployment management |
-
-<br/> 
+This section documents **both the frontend UI and the backend API**, including setup, authentication flow, and available routes.
 
 ---
 
-## ✨ Key Highlights   
+## ✨ Features
 
-|Focus Area | Description |
-|-------------|-------------|
-|**Figma-to-Code Accuracy** | Achieved pixel-perfect translation from a Figma layout |
-|**Custom Animations** | Implemented custom animations based on scroll, hover, and motion effects  |
-|**Visual Refinements** | Adjusted spacing, timing, and contrast for better aesthetic balance |
-|**Responsive Layouts** | Carefully adapted design to multiple breakpoints by using TailwindCSS |
-|**Accessibility Considerations** | Semantic structure and contrast-aware styling |
+### UI Features
 
-<br/> 
+* User registration and login
+* JWT-based authentication with automatic token refresh
+* Create, read, update, and delete (CRUD) ideas
+* Protected routes for creating and editing ideas
+* Responsive and clean UI
 
----
+### API Features
 
-## 🧪 Development 
-
-1. **Figma Analysis** : Extracted spacing, colors, typography, and layout specs  
-2. **Component Breakdown** : Divided the UI into modular, reusable components  
-3. **Implementation** : Built layout using TailwindCSS utilities  
-4. **Motion Design** : Added Framer Motion for smooth section transitions  
-5. **Refinement** : Adjusted minor inconsistencies and visual flow  
-
-The goal was to implement the Figma design with precision, ensuring a pixel-perfect landing page.
-
-<br/> 
-
+* Secure authentication with access and refresh tokens
+* Full CRUD API for ideas
+* Route-level authorization (owner-only updates & deletes)
+* HTTP-only cookies for refresh tokens
+* MongoDB-backed persistence
 
 ---
 
-## 🧱 Project Structure
+## 🛠 Tech Stack
 
-<br/> 
+### Frontend
 
-Organized for clarity, reusability and maintainability:
-```bash
-layers-landing-page/
-├── src/
-│ ├── app/ # App entry Next.js 14
-│ ├── public/ # Static assets 
-│ ├── components/ # Reusable UI components
-│ ├── sections/ # Page sections (Hero, Features, CTA, etc.)
-│ ├── styles/ # Global Tailwind styles
-│ ├── lib/ # Motion configs and constants
-│ └── pages/ # Next.js pages
-├── .eslintrc.json
-├── .prettierrc
-├── next.config.js
-├── package.json
-├── postcss.config.mjs
-├── tailwind.config.ts
-└── tsconfig.json
-```
-<br/> 
+* **React** (via Vite)
+* **TanStack Router** – routing & protected routes
+* **TanStack Query** – server-state management
+* **Axios** – API communication
+* Context API – authentication state
 
+### Backend
+
+* **Node.js**
+* **Express**
+* **MongoDB** (via Mongoose)
+* **JWT** for authentication
+* **Cookie-based refresh tokens**
 
 ---
 
-## 🖼️ UI Showcase
+## 📦 Frontend Setup (UI)
 
-![Hero](/public/images/projects/layers/hero.gif)
-
-
-<br/> 
-
-![Features](/public/images/projects/layers/features.gif)
-
-
-<br/> 
-
-![Integrations](/public/images/projects/layers/integrations.gif)    
-
-
-<br/> 
-
-🎥 **Live Demo:** [View the website](https://layers-fawn.vercel.app/)   
-
-
-Optimized for desktop and mobile. Resize the browser to see the responsive adjustments and animations in action.
-
-<br/> 
-
----
-
-
-
-## 🪄 What I Learned
-
-- I learnt how to bridge static designs and production-ready code by managing responsiveness and motion without breaking design fidelity.
-- I learnt how to use the Motion framework to create beautiful animations to enhance static designs.
-- Polished my UI/UX skills to guarantee a seamless and attractive page, positioning the user at the centre of the project.
-
-<br/>
-
----
-
-
-## 🚀 Getting Started
+### Installation
 
 ```bash
-# Clone this repository
-git clone https://github.com/sleepielle/layers-landing-page.git
-
-# Navigate into it
-cd layers-landing-page
-
-# Install dependencies
 npm install
+```
 
-# Run the local server
+### Run Development Server
+
+```bash
 npm run dev
-
-Then open 👉 http://localhost:3000
 ```
 
 ---
 
+### 🔐 Environment Variables (Frontend)
 
+Rename `example.env` to `.env` and configure:
 
-<br/> 
+```env
+VITE_API_URL=http://localhost:5000/api
+```
 
+> Update the URL if your backend runs on a different host or port.
 
-![Banner](/public/images/general/contact-banner.png)
-Let's connect on [LinkedIn](https://www.linkedin.com/in/mercedesgpaz/) or send me an email!
+---
+
+## 🔄 Frontend Authentication Flow
+
+1. User logs in or registers.
+2. API returns:
+
+   * `accessToken` (short-lived)
+   * `refreshToken` stored in a **secure, HTTP-only cookie**
+3. `accessToken` is:
+
+   * Stored in React context
+   * Sent in the `Authorization` header as a Bearer token
+4. When:
+
+   * The access token expires **or**
+   * A hard refresh occurs
+
+   The app automatically requests a new access token using the refresh token.
+
+> Translation: seamless auth, zero manual re-login, maximum UX delight.
+
+---
+
+## 📦 Backend Setup (API)
+
+### Installation
+
+```bash
+npm install
+```
+
+### Environment Variables (Backend)
+
+Rename `example.env` to `.env` and configure:
+
+```env
+MONGO_URI="YOUR MONGODB ATLAS URL"
+JWT_SECRET="ADD A SECRET"
+```
+
+---
+
+### Run Server
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔐 How Backend Authentication Works
+
+1. User hits `/register` or `/login`
+2. Server responds with:
+
+   * User data
+   * **Short-lived access token** (default: 1 minute)
+3. A **long-lived refresh token** (30 days) is stored in an **HTTP-only cookie**
+4. Access token is used to:
+
+   * Call protected routes (e.g. `POST /api/ideas`)
+5. When the access token expires:
+
+   * Client calls `/api/auth/refresh`
+   * Server validates refresh token from cookie
+   * Issues a new access token
+
+> Security-first, scalable, and production-ready.
+
+---
+
+## 🛣 API Routes
+
+### 🔐 Auth Routes (`/api/auth`)
+
+| Method | Endpoint    | Description                              | Auth Required  |
+| -----: | ----------- | ---------------------------------------- | -------------- |
+|   POST | `/register` | Register a new user                      | ❌ No           |
+|   POST | `/login`    | Log in an existing user                  | ❌ No           |
+|   POST | `/logout`   | Log out and clear refresh token          | ✅ Yes (cookie) |
+|   POST | `/refresh`  | Get new access token using refresh token | ✅ Yes (cookie) |
+
+**Notes:**
+
+* Refresh tokens are stored in **HTTP-only cookies**
+* Access tokens must be sent as:
+
+  ```
+  Authorization: Bearer <accessToken>
+  ```
+
+---
+
+### 💡 Idea Routes (`/api/ideas`)
+
+| Method | Endpoint | Description                 | Auth Required |
+| -----: | -------- | --------------------------- | ------------- |
+|    GET | `/`      | Get all public ideas        | ❌ No          |
+|    GET | `/:id`   | Get a single idea by ID     | ❌ No          |
+|   POST | `/`      | Create a new idea           | ✅ Yes         |
+|    PUT | `/:id`   | Update an idea (owner only) | ✅ Yes         |
+| DELETE | `/:id`   | Delete an idea (owner only) | ✅ Yes         |
+
+---
+
+## 🚀 Project Status
+* ✅ Authentication fully implemented
+* ✅ Secure token refresh flow
+* ✅ Protected routes enforced
+* 🔄 Pending UI design renovation
+* 🔄 Ready for deployment and scaling
+
+---
+
+## 📌 Final Notes
+
+This project demonstrates:
+* Real-world authentication patterns
+* Clean separation of frontend & backend concerns
+* Modern React architecture
+* Security-aware API design

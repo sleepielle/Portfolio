@@ -11,6 +11,7 @@ export default [
     route("about", "./routes/about/index.tsx"),
     route("contact", "./routes/contact/index.tsx"),
     route("projects", "./routes/projects/index.tsx"),
+    route("experience", "./routes/experience/index.tsx"),
     route("projects/:slug", "./routes/projects/details.tsx"),
     route("blog", "./routes/blog/index.tsx"),
     route("blog/:slug", "./routes/blog/details.tsx"),

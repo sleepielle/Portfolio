@@ -1,0 +1,87 @@
+{ "experience": [ {
+    "id": "1",
+    "title": "Escuela Internacional Sampedrana | 2024",
+    "excerpt": "Full-Stack Developer ✦ Admin WebApp ✦ SAPB1 ✦ Internship",
+    "additional": " * Below you can read a detailed summary of my work developed during this experience and how I used ISO/IEC standards to improve software quality. ",
+    "description": "Built and shipped 15 full-stack modules with SAP Business One integration in 6 months, focusing on UX, maintainability, and operational efficiency. Led UI planning, reduced ERP dependency through a custom SAP emulator, and improved product quality using ISO/IEC  standards.",
+    "skills": [
+      "Frontend",
+      "Backend",
+      "ASP.NET WebForms",
+      "VB.NET",
+      "SAP Business One",
+      "SQL Server",
+      "UI/UX",
+      "Wireframes",
+      "User Flows"
+    ],
+    "animated-list": [
+        {
+          "name": "UI-First Design",
+          "description": "Designed UI-first solutions, applying UX best practices to improve usability and operational efficiency.",
+          "time": "2024",
+          "icon": "🎨",
+          "color": "#6B8CFF"
+        },
+        {
+          "name": "Frontend Planning",
+          "description": "Led frontend planning by creating wireframes and user flows, identifying bottlenecks early and minimizing rework.",
+          "time": "2024",
+          "icon": "🧭",
+          "color": "#22C55E"
+        },
+        {
+          "name": "Technical Documentation",
+          "description": "Produced core technical documentation (knowledge base, Git/GitHub best practices, Agile proposal), translating pain points into actionable process improvements.",
+          "time": "2024",
+          "icon": "📄",
+          "color": "#F59E0B"
+        }
+      ]
+  }
+,{
+  "id": "2",
+  "title": "Virtual & On-Site Medical Clinic Web Application | 2023",
+  "excerpt": "Full-Stack Developer ✦ Healthcare Web Platform ✦ REST API",
+  "additional":"https://github.com/ISW-UNITEC-2023/AsesoriaPsicologia-Grupo2-3",
+  "description": "Designed and developed a web application for a medical clinic supporting both virtual and in-person consultations. Focused on scalable architecture, intuitive user experiences, and robust backend services to ensure reliability and usability in a healthcare context.",
+  "skills": [
+    "Frontend",
+    "Backend",
+    "UI/UX",
+    "REST API",
+    "NodeJS",
+    "ExpressJS",
+    "MySQL",
+    "Docker",
+    "Scrum",
+    "System Architecture"
+  ], "animated-list": [
+    {
+      "name": "User-Centered Design",
+      "description": "Designed user-centered interfaces and experiences to improve usability and overall application quality.",
+      "time": "2023",
+      "icon": "🧠",
+      "color": "#A855F7"
+    },
+    {
+      "name": "Scrum Leadership",
+      "description": "Worked under the Scrum framework as Scrum Master, ensuring team alignment and adherence to agile best practices.",
+      "time": "2023",
+      "icon": "🔁",
+      "color": "#0EA5E9"
+    },
+    {
+      "name": "REST API Development",
+      "description": "Built a RESTful API using JavaScript, Node.js, and Express.js to support core application features.",
+      "time": "2023",
+      "icon": "⚙️",
+      "color": "#EF4444"
+    }
+  ]
+}] } 
+   
+
+
+
+

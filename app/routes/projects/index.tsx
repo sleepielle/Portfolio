@@ -3,9 +3,11 @@ import ProjectCard from "~/components/ProjectCard";
 import type { Route } from "./+types/index";
 import type { Projects, TagCounts } from "~/types";
 import Pagination from "~/components/Pagination";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { SocialsDock } from "~/components/SocialsDock";
 import clsx from "clsx";
+import Eyebrow from "~/components/Eyebrow";
+import EyebrowPages from "~/components/EyebrowPages";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -73,6 +75,8 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
     Fullstack: projects.filter((proj) => proj.category === "Fullstack").length,
   };
 
+  const controls = useAnimation();
+
   return (
     <section className="text-primary min-h-screen pt-10 flex ">
       <div>
@@ -80,21 +84,33 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
           <motion.div
             key="all-projects-index"
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            viewport={{ once: false, amount: 0.4 }}
+            animate={controls}
+            onViewportEnter={() => {
+              controls.start({
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.4, ease: "easeOut" },
+              });
+            }}
+            onViewportLeave={() => {
+              controls.start({
+                opacity: 0.9,
+                y: 1,
+                transition: { duration: 0.25, ease: "easeOut" },
+              });
+            }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className=" text-center px-4 group relative rounded-2xl   
                 transition-all duration-300"
           >
-            <h2 className="text-4xl text-primary mb-8 text-center tracking-tighter">
-              Projects
-            </h2>
-            <p className="text-center  text-gray-500 mb-8 mt-1 max-w-[50ch] mx-auto text-base">
-              This is my knowledge lab 🧪 — a mix of code notes, industry
+            <EyebrowPages
+              title="Projects"
+              description="This is my knowledge lab 🧪 — a mix of code notes, industry
               research paper breakdowns and summaries, what I'm currently
               learning, among others.
-            </p>
+            "
+            />
+
             <div className="flex flex-wrap gap-2 mb-8">
               {categories.map((category) => (
                 <button
@@ -128,7 +144,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
                   </span>
                 </button>
               ))}
-            </div>{" "}
+            </div>
           </motion.div>
         </AnimatePresence>
 

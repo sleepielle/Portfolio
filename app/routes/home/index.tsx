@@ -6,6 +6,8 @@ import AboutPreview from "~/components/AboutPreview";
 import LatestPosts from "~/components/LatestPosts";
 import CTASection from "~/components/CTA";
 import BeyondTheCode from "~/components/BeyondTheCode";
+import Experience from "../experience";
+import ExperiencePreview from "~/components/ExperiencePreview";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -80,8 +82,7 @@ const HomePage = ({ loaderData }: Route.ComponentProps) => {
   return (
     <>
       <FeaturedProjects projects={projects} count={2} />
-      <BeyondTheCode />
-      <LatestPosts posts={posts} />
+      <ExperiencePreview classname="mt-32" />
       <AboutPreview />
       <CTASection />
     </>
