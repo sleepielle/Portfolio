@@ -5,39 +5,45 @@
       "documentId": "idea-drop",
       "slug": "idea-drop",
       "title": "Idea Drop",
-      "description": "IdeaDrop is a full-stack application that allows users to register, authenticate, and manage ideas through a clean, responsive UI and a secure Node.js/Express API. The project implements **JWT-based authentication with refresh tokens**, protected routes, and full CRUD functionality.",
+      "description": "Full-stack application that allows users to register, JWT-based authentication, and manage ideas through a clean, responsive UI and a secure Node.js/Express API.",
       "image": "/images/projects/ideadrop/idea-drop.png",
       "featuredImage":"",
-      "live-site": "https://idea-drop-pink.vercel.app/",
+      "liveSite": "https://idea-drop-pink.vercel.app/",
       "github" :  "https://github.com/sleepielle/IdeaDrop.git",
-      "date": "2025-02-30T00:00:00",
+      "date": "2025-09-31T00:00:00",
       "category": "Fullstack",
-      "featured": true,
+      "featured": false,
       "results": [
         { "title": "Enhanced user experience by 40%" },
         { "title": "Improved site speed by 50%" },
         { "title": "Increased mobile traffic by 35%" }
       ],
-      "inProgress": true
+      "inProgress": true,
+      "hideLiveSite":false,
+      "hideCaseStudy":false,
+      "hideCode":false
     },
     {
       "id": 2,
       "documentId": "layers",
       "title": "Layers Landing Page",
       "slug": "layers-landing-page",
-      "description": "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+      "description": "Pixel-perfect implementation of a Figma landing page using Next.js and TailwindCSS, enhanced with custom Framer Motion animations and fully responsive layouts across breakpoints.",
       "image": "/images/projects/layers/landing.png",
       "featuredImage":"/images/projects/layers/featured.png",
-      "live-site": "https://layers-fawn.vercel.app/",
+      "liveSite": "https://layers-fawn.vercel.app/",
       "github" :  "https://github.com/sleepielle/Layers", 
       "date": "2025-10-21T00:00:00",
       "category": "Frontend",
       "featured": true,  "results": [
-        { "title": "Enhanced user experience by 40%" },
-        { "title": "Improved site speed by 50%" },
-        { "title": "Increased mobile traffic by 35%" }
+        { "title": "Fully responsive across mobile, tablet, and desktop" },
+        { "title": "Figma-to-Code Fidelity" },
+        { "title": "Motion-enhanced UI using custom Framer Motion animations" }
       ],
-      "inProgress": false
+      "inProgress": false,
+      "hideLiveSite":false,
+      "hideCaseStudy":false,
+      "hideCode":false
 
     },
     {
@@ -45,16 +51,23 @@
       "documentId": "one-task",
       "title": "One Task Landing Page",
       "slug": "one-task-landing-page",
-      "description": "A weather application that displays current weather conditions and forecasts using OpenWeatherMap API with beautiful visualizations.",
+      "description": "Motion-driven SaaS landing page recreated from Figma using Next.js, TailwindCSS, and Framer Motion. Built with pixel-perfect fidelity, scroll-based animations, reusable components, and performance-safe interactions.",
       "image": "/images/projects/onetask/landing.png",
 "featuredImage":"/images/projects/onetask/featured.png",
-      "live-site": "https://one-task-tau.vercel.app/",
+      "liveSite": "https://one-task-tau.vercel.app/",
       "github" :  "https://github.com/sleepielle/OneTask",
       "date": "2025-08-28T00:00:00",
       "category": "Frontend",
-      "featured": false,
-      "inProgress": false
-
+       "featured": true, 
+       "results": [
+        { "title": "Figma-to-Code Fidelity" },
+        { "title": "Performance & Animation Efficiency" },
+        { "title": "Component Reusability & Architecture" }
+      ],
+      "inProgress": false,
+      "hideLiveSite":false,
+      "hideCaseStudy":false,
+      "hideCode":false
     },
     {
       "id": 4,
@@ -64,27 +77,33 @@
       "description": "A content management system for blogs with markdown support, user roles, and SEO optimization features.",
       "image": "/images/projects/prostore/prostore.png",
       "featuredImage":"",
-      "live-site": "https://github.com/yourusername/mobile-app",
-      "github" :  "https://github.com/yourusername/mobile-app",
+      "liveSite": "https://github.com/yourusername/mobile-app",
+      "github" :  "https://github.com/sleepielle/ProStore.git",
       "date": "2025-02-5T00:00:00",
-      "category": "Frontend",
-      "inProgress": false,
-      "featured": false
+      "category": "Fullstack",
+      "inProgress": true,
+      "featured": false,
+      "hideLiveSite":true,
+      "hideCaseStudy":true,
+      "hideCode":false
     },
     {
       "id": 5,
-      "documentId": "github=finder",
+      "documentId": "github-finder",
       "title": "GitHub Finder",
-      "slug": "github=finder",
+      "slug": "github-finder",
       "description": "A content management system for blogs with markdown support, user roles, and SEO optimization features.",
-      "image": "/images/projects/githubfinder/github=finder.png",
+      "image": "/images/projects/githubfinder/github-finder.png",
       "featuredImage":"",
-      "live-site": "https://github.com/yourusername/mobile-app",
-      "github" :  "https://github.com/yourusername/mobile-app",
+      "liveSite": "https://github.com/yourusername/mobile-app",
+      "github" :  "https://github.com/sleepielle/github-finder.git",
       "date": "2025-02-5T00:00:00",
-      "category": "Frontend",
-      "inProgress": false,
-      "featured": false
+      "category": "Fullstack",
+      "inProgress": true,
+      "featured": false,
+      "hideLiveSite":true,
+      "hideCaseStudy":true,
+      "hideCode":false
     },
     {
       "id": 6,
@@ -94,12 +113,15 @@
       "description": "A content management system for blogs with markdown support, user roles, and SEO optimization features.",
       "image": "/images/projects/portfolio/portfolio.png",
       "featuredImage":"",
-      "live-site": "https://github.com/yourusername/mobile-app",
-      "github" :  "https://github.com/yourusername/mobile-app",
+      "liveSite": "https://github.com/yourusername/mobile-app",
+      "github" :  "https://github.com/sleepielle/Portfolio.git",
       "date": "2025-02-5T00:00:00",
       "category": "Frontend",
       "inProgress": false,
-      "featured": false
+      "featured": false,
+      "hideLiveSite":true,
+      "hideCaseStudy":true,
+      "hideCode":false
     }
   ]
 }

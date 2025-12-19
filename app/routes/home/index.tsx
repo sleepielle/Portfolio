@@ -49,6 +49,9 @@ export async function loader({
       results: item.results,
       inProgress: item.inProgress,
       featuredImage: item.featuredImage,
+      hideLiveSite: item.hideLiveSite,
+      hideCaseStudy: item.hideCaseStudy,
+      hideCode: item.hidenCode,
     }));
 
   // Process posts data to match the expected PostMeta type
@@ -81,8 +84,8 @@ const HomePage = ({ loaderData }: Route.ComponentProps) => {
   //loaders should go into the main page
   return (
     <>
-      <FeaturedProjects projects={projects} count={2} />
       <ExperiencePreview classname="mt-32" />
+      <FeaturedProjects projects={projects} count={2} />
       <AboutPreview />
       <CTASection />
     </>

@@ -36,6 +36,9 @@ export async function loader({
     featured: item.featured,
     inProgress: item.inProgress,
     featuredImage: item.featuredImage,
+    hideLiveSite: item.hideLiveSite,
+    hideCaseStudy: item.hideCaseStudy,
+    hideCode: item.hidenCode,
   }));
 
   return { projects };

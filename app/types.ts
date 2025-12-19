@@ -21,6 +21,9 @@ export type Projects = {
   featured: boolean;
   results?: ProjectResult[];
   inProgress: boolean;
+  hideLiveSite?: boolean;
+  hideCaseStudy?: boolean;
+  hideCode?: boolean;
 };
 
 export type PostMeta = {

@@ -64,7 +64,7 @@ const AboutPreview = () => {
         eyebrowText=""
         description="  I'm passionate about software quality while still maintaining
             connections with the users and clients."
-        className=" mt-52"
+        className=" mt-32"
       />
 
       <div className="flex flex-col justify-center items-center  py-10">

@@ -207,7 +207,8 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
           </main>
 
           {/**DESKTOP TOC AND A11Y */}
-          <aside className="hidden lg:block lg:sticky  md:col-span-1 rounded-lg px-5  h-fit top-28  ">
+          <aside className="hidden lg:block sticky top-28 md:col-span-1 rounded-lg px-5">
+            {" "}
             <div className="px-5 ">
               <nav>
                 <ul className="space-y-1 text-sm">
@@ -336,36 +337,6 @@ const ProjectDetailsPage = ({ loaderData }: ProjectDetailsPageProps) => {
                 Back to Projects
               </RainbowButton>
             </div>
-
-            {/* {(project.devNotesLinks?.length ?? 0) > 0 && (
-              <>
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <Button variant="outline">Dev Notes</Button>
-                  </SheetTrigger>
-
-                  <SheetContent>
-                    <SheetHeader>
-                      <SheetTitle>Developer Notes</SheetTitle>
-                      <SheetDescription>
-                        {project.devNotesLinks!.map((link, index) => (
-                          <a
-                            key={index}
-                            href={link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block text-blue-600 underline hover:text-blue-800 mb-2"
-                          >
-                            {link}
-                          </a>
-                        ))}
-                      </SheetDescription>
-                    </SheetHeader>
-                  </SheetContent>
-                </Sheet>
-                <hr className="my-5" />
-              </>
-            )} */}
           </aside>
 
           {/**MOBILE TOC AND A11Y  sm:left-[75%] lg:left-[80%]*/}

@@ -39,31 +39,40 @@ const ProjectCard = (props: ProjectCardProps) => {
           {project.description}
         </p>
 
-        <div className="flex flex-col sm:flex-row sm:w-fit  align-center gap-2 justify-center sm:mx-auto ">
-          <Link to={project.liveSite}>
-            <RainbowButton
-              variant={"outline"}
-              className={`w-full sm:flex-1 hover: ${className}`}
+        <div className="flex flex-col sm:flex-row gap-2 w-full">
+          {!project.hideLiveSite && project.liveSite && (
+            <a
+              href={project.liveSite}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1"
             >
-              Live Site
-            </RainbowButton>
-          </Link>
-          <Link to={`/projects/${project.slug}`}>
-            <RainbowButton
-              variant={"outline"}
-              className={`w-full sm:flex-2  ${className}`}
+              <RainbowButton variant="outline" className="w-full">
+                Live Site
+              </RainbowButton>
+            </a>
+          )}
+
+          {!project.hideCaseStudy && (
+            <Link to={`/projects/${project.slug}`} className="flex-1">
+              <RainbowButton variant="outline" className="w-full">
+                Case Study
+              </RainbowButton>
+            </Link>
+          )}
+
+          {!project.hideCode && project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1"
             >
-              Case Study
-            </RainbowButton>
-          </Link>
-          <Link to={project.github}>
-            <RainbowButton
-              variant={"outline"}
-              className={`w-full sm:w-auto  sm:flex-1 ${className}`}
-            >
-              Code
-            </RainbowButton>
-          </Link>
+              <RainbowButton variant="outline" className="w-full">
+                Code
+              </RainbowButton>
+            </a>
+          )}
         </div>
       </div>
     </MagicCard>
