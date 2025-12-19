@@ -108,10 +108,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
           >
             <EyebrowPages
               title="Projects"
-              description="This is my knowledge lab 🧪 — a mix of code notes, industry
-              research paper breakdowns and summaries, what I'm currently
-              learning, among others.
-            "
+              description="End-to-end projects combining backend logic, frontend systems, and polished user experiences."
             />
 
             <div className="flex flex-wrap gap-2 mb-8">
@@ -151,9 +148,9 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
           </motion.div>
         </AnimatePresence>
 
-        <div className="relative top-148">
+        {/* <div className="relative top-148">
           <SocialsDock />
-        </div>
+        </div> */}
         <motion.div
           key="project-cards"
           initial={{ opacity: 0, y: 20 }}

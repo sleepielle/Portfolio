@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { RainbowButton } from "./ui/rainbow-button";
 import Eyebrow from "./Eyebrow";
+import EyebrowPages from "./EyebrowPages";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 12 },
@@ -209,12 +210,10 @@ export default function ContactForm() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="mx-auto max-w-6xl"
       >
-        <div className="mb-8 flex flex-col justify-center h-fit items-center text-center mx-auto ">
-          <Eyebrow
+        <div className="mb-4 flex flex-col justify-center h-fit items-center text-center mx-auto ">
+          <EyebrowPages
             title="Contact Me"
-            eyebrowText=""
             description="Reach out and I'll happily answer within 1-2 business days."
-            className=" md:mt-10"
           />
         </div>
 
@@ -226,7 +225,7 @@ export default function ContactForm() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.06 } },
           }}
-          className="xs:w-[19rem] sm:w-sm md:w-2xl lg:w-[55rem] py-5 md:py-10 "
+          className="xs:w-[19rem] sm:w-sm md:w-2xl lg:w-[55rem]  "
         >
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
             {field(1, {

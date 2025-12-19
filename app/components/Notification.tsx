@@ -27,7 +27,7 @@ export const Notification = ({
         "transform-gpu dark:bg-transparent dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)]"
       )}
     >
-      <div className="flex flex-row items-center gap-3 border-2 border-gray-400  p-5  rounded-lg  w-full bg-white">
+      <div className="flex flex-row items-center gap-3 border-2 border-gray-300  p-5  rounded-lg  w-full bg-white">
         <div
           className="flex size-10 shrink-0 items-center justify-center rounded-full"
           style={{

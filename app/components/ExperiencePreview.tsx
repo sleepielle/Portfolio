@@ -17,12 +17,6 @@ const ExperiencePreview = ({ classname }: { classname: string }) => {
 
   return (
     <div className={classname}>
-      <Eyebrow
-        title="Experience"
-        description="Experience building real-world applications while contributing end-to-end solutions with a focus on quality, usability and maintainability. "
-        eyebrowText={""}
-        className={null}
-      />
       {experience.map((project) => {
         const {
           id,

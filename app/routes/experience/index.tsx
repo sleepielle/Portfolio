@@ -25,6 +25,10 @@ const Experience = () => {
 
   return (
     <section className="max-w-6xl py-10 ">
+      <EyebrowPages
+        title="Experience"
+        description="Experience building real-world applications while contributing end-to-end solutions with a focus on quality, usability and maintainability. "
+      />
       <ExperiencePreview classname={""} />
 
       <hr className="p-5" />

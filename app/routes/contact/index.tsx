@@ -5,7 +5,7 @@ import { SocialsDock } from "~/components/SocialsDock";
 const ContactPage = () => {
   return (
     <div className="min-h-screen relative max-w-6xl ">
-      <SocialsDock noEmail />
+      {/* <SocialsDock noEmail /> */}
       <ContactForm />
     </div>
   );

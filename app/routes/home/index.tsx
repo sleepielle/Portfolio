@@ -8,6 +8,7 @@ import CTASection from "~/components/CTA";
 import BeyondTheCode from "~/components/BeyondTheCode";
 import Experience from "../experience";
 import ExperiencePreview from "~/components/ExperiencePreview";
+import Eyebrow from "~/components/Eyebrow";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -84,7 +85,13 @@ const HomePage = ({ loaderData }: Route.ComponentProps) => {
   //loaders should go into the main page
   return (
     <>
-      <ExperiencePreview classname="mt-32" />
+      <Eyebrow
+        title="Experience"
+        description="Experience building real-world applications while contributing end-to-end solutions with a focus on quality, usability and maintainability. "
+        eyebrowText={""}
+        className={"mt-32"}
+      />
+      <ExperiencePreview classname="" />
       <FeaturedProjects projects={projects} count={2} />
       <AboutPreview />
       <CTASection />
