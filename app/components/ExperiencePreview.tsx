@@ -11,7 +11,7 @@ const ExperiencePreview = ({ classname }: { classname: string }) => {
   const [experience, setExperience] = useState<ExperienceProps[]>([]);
 
   useEffect(() => {
-    fetch("../../../public/data/experience.json")
+    fetch("../../public/data/experience.json")
       .then((res) => res.json())
       .then((data) => setExperience(data.experience));
   }, []);
